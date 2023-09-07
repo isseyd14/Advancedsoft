@@ -1,2 +1,0 @@
-# Advancedsoft
-# test teams
