@@ -11,10 +11,9 @@
 <head>
     <title>Registration Page</title>
     <style>
-        /* Style for aligning form elements */
         label {
             display: inline-block;
-            width: 150px; /* Adjust the width as needed for your layout */
+            width: 150px;
             text-align: right;
             margin-right: 10px;
         }
@@ -22,11 +21,11 @@
         input[type="text"],
         input[type="password"],
         input[type="email"] {
-            width: 200px; /* Adjust the width as needed for your layout */
+            width: 200px;
         }
 
         button[type="submit"] {
-            margin-left: 160px; /* Adjust the margin as needed for your layout */
+            margin-left: 200px;
         }
     </style>
 </head>
