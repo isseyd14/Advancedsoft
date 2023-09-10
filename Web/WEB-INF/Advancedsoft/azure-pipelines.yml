@@ -11,7 +11,7 @@ pool:
 steps:
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: '(System.DefaultWorkingDirectory)/Web/WEB-INF/Advancedsoft/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
@@ -22,7 +22,7 @@ steps:
 # Maven
 - task: Maven@4
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: '(System.DefaultWorkingDirectory)/Web/WEB-INF/Advancedsoft/pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
