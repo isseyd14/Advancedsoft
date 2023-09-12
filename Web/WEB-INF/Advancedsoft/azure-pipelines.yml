@@ -16,7 +16,7 @@ steps:
     jdkSourceOption: 'PreInstalled'
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '11'
