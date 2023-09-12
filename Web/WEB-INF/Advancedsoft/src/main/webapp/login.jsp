@@ -65,7 +65,7 @@
 
         .form-group input[type="text"],
         .form-group input[type="password"] {
-            /*width: 100%;*/
+            width: 20%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -97,7 +97,7 @@
 </head>
 <body>
 <header>
-    <h1>Welcome to Frontline Bank</h1>
+    <h1>Frontline Bank</h1>
 </header>
 
 <div class="banner">

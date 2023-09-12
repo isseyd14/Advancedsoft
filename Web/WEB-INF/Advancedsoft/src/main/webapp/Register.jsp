@@ -11,8 +11,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontline Bank - Login</title>
+    <title>Frontline Bank - Create an Account</title>
     <style>
+        /* Your existing styles here */
+
+        /* Add additional styles for the new form fields if needed */
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="number"],
+        .form-group input[type="date"] {
+            /* Your styles for form fields here */
+            width: 20%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
         .banner {
             /*  background-image: url('your-banner-image.jpg'); /* Replace with your banner image URL */
             background-size: contain; /* Fit the image within the container */
@@ -93,48 +106,89 @@
             font-size: 16px;
             cursor: pointer;
         }
+
     </style>
 </head>
 <body>
 <header>
-    <h1>Welcome to Frontline Bank</h1>
+    <h1>Frontline Bank</h1>
 </header>
 
 <div class="banner">
-    <h2>Hi, welcome to Frontline Bank. Please log in to your account.</h2>
+    <h2>Hi, welcome to Frontline Bank. Please create your account.</h2>
 </div>
 
 <div class="container">
-    <!-- Login Form -->
+    <!-- Create Account Form -->
     <div class="login-container">
         <div class="login-box">
-            <h3>Login</h3>
-            <form action="RegisterServlet" method="post">
+            <h3>Create an Account</h3>
+            <form action="RegisterServlet" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="text" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="Password">Password:</label>
-                    <input type="Password" id="Password" name="Password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Log In">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="Firstname">First Name:</label>
+                    <input type="text" id="Firstname" name="Firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="Lastname">Last Name:</label>
+                    <input type="text" id="Lastname" name="Lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="startingBalance">Starting Balance:</label>
+                    <input type="number" id="startingBalance" name="startingBalance" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create Account">
                 </div>
             </form>
             <c:if test="${not empty errorMessage}">
                 <p style="color: red;">${errorMessage}</p>
             </c:if>
             <div class="centered-button-container">
-                <a href="Register.jsp" class="centered-button">Create an account</a>
+                <a href="login.jsp" class="centered-button">Already have an account? Log in</a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            alert("Password and Confirm Password do not match.");
+            return false;
+        }
+
+        if (startingBalance < 0) {
+            alert("Starting Balance cannot be negative.");
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+
 </body>
 </html>
-
-
-
-
-
