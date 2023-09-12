@@ -13,9 +13,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class CardDAO{
-    private String URL = "jdbc:mysql://localhost:3306/bank?userSSL=false";    
-    private String dbuser = "root";
-    private String dbpass = "admin123";  
+
+    String url = "jdbc:mysql://127.0.0.1:3306/bank?useSSL=false";
+    String username = "root";
+    String password = "admin123"; 
    
 
     protected Connection getConnection(){
@@ -23,7 +24,7 @@ public class CardDAO{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             
-            conn = DriverManager.getConnection(URL, dbuser, dbpass);
+            conn = DriverManager.getConnection(url, username, password);
             return conn;
         } catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException("Error connecting to the database", e);
@@ -36,7 +37,7 @@ public class CardDAO{
 
     // add card to database
     public void addCard(Card card) throws SQLException{
-        String sql = "INSERT INTO card (cardNumber, cardHolder, expiryDate, CVV, cardType, cardStatus, customerId, accountId, balance, pin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO card (card_number, card_holder, expiry_date, CVV, card_type, card_status, customer_id, account_id, balance, pin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql);) {
                   
@@ -70,13 +71,14 @@ public class CardDAO{
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next()){
-                String cardHolder = rs.getString("cardHolder");
-                String expiryDate = rs.getString("expiryDate");
+                
+                String cardHolder = rs.getString("card_holder");
+                String expiryDate = rs.getString("expiry_date");
                 String cvv = rs.getString("CVV");
-                String cardType = rs.getString("cardType");
-                String cardStatus = rs.getString("cardStatus");
-                String customerId = rs.getString("customerId");
-                String accountId = rs.getString("accountId");
+                String cardType = rs.getString("card_type");
+                String cardStatus = rs.getString("card_status");
+                String customerId = rs.getString("customer_id");
+                String accountId = rs.getString("account_id");
                 Double balance = rs.getDouble("balance");
                 String pin = rs.getString("pin");
                 card = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin);
@@ -98,13 +100,14 @@ public class CardDAO{
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next()){
-                String cardNumber = rs.getString("cardNumber");
-                String cardHolder = rs.getString("cardHolder");
-                String expiryDate = rs.getString("expiryDate");
+                String cardNumber = rs.getString("card_number");
+                String cardHolder = rs.getString("card_holder");
+                String expiryDate = rs.getString("expiry_date");
                 String cvv = rs.getString("CVV");
-                String cardType = rs.getString("cardType");
-                String cardStatus = rs.getString("cardStatus");
-                String accountId = rs.getString("accountId");
+                String cardType = rs.getString("card_type");
+                String cardStatus = rs.getString("card_status");
+                
+                String accountId = rs.getString("account_id");
                 Double balance = rs.getDouble("balance");
                 String pin = rs.getString("pin");
                 cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));
@@ -125,14 +128,14 @@ public class CardDAO{
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next()){
-                String cardNumber = rs.getString("cardNumber");
-                String cardHolder = rs.getString("cardHolder");
-                String expiryDate = rs.getString("expiryDate");
+                String cardNumber = rs.getString("card_number");
+                String cardHolder = rs.getString("card_holder");
+                String expiryDate = rs.getString("expiry_date");
                 String cvv = rs.getString("CVV");
-                String cardType = rs.getString("cardType");
-                String cardStatus = rs.getString("cardStatus");
-                String customerId = rs.getString("customerId");
-                String accountId = rs.getString("accountId");
+                String cardType = rs.getString("card_type");
+                String cardStatus = rs.getString("card_status");
+                String customerId = rs.getString("customer_id");
+                String accountId = rs.getString("account_id");
                 Double balance = rs.getDouble("balance");
                 String pin = rs.getString("pin");
                 cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));

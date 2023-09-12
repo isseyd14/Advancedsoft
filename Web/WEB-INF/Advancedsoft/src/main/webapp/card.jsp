@@ -7,10 +7,11 @@
 </head>
 <body>
     <center>
-        <h1>Books Management</h1>
+        <h1>Card Management</h1>
         <h2>
-            <a href="addCard.jsp">Add New Card</a>
+            <a href="new">Add New Card</a>
             &nbsp;&nbsp;&nbsp;
+            
            
              
         </h2>
@@ -19,8 +20,9 @@
         <table border="1" cellpadding="5">
             <caption><h2>List of Cards</h2></caption>
             <tr>
-                <th>Number</th>
-                <th>Holder Name</th>
+                <th>Card Number</th>
+                <th>Card Holder</th>
+                <th>Action</th>
 
             </tr>
             <c:forEach var="card" items="${listCard}">

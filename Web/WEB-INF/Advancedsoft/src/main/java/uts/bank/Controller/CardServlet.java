@@ -82,7 +82,7 @@ public class CardServlet extends HttpServlet {
           
             List<Card> listCard = cardDAO.findAllCards();
             request.setAttribute("listCard", listCard);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("cardList.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("card.jsp");
             dispatcher.forward(request, response);
         }
 

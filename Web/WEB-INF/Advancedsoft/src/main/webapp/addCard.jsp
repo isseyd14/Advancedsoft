@@ -13,9 +13,9 @@
     <label for="cardType">Card Type:</label>
     <input type="text" id="cardType" name="cardType"><br><br>
     <label for="cardExpiry">Card Expiry:</label>
-    <input type="text" id="cardExpiry" name="cardExpiry"><br><br>
+    <input type="text" id="expiryDate" name="expiryDate"><br><br>
     <label for="cardCvv">Card CVV:</label>
-    <input type="text" id="cardCvv" name="cardCvv"><br><br>
+    <input type="text" id="cvv" name="cvv"><br><br>
     <input type="submit" value="Submit">
 </form>
 </body>
