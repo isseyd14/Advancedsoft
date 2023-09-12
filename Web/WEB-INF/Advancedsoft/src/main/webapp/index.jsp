@@ -72,6 +72,8 @@
 </div>
 <div class="centered-button-container">
     <a href="login.jsp" class="centered-button">Go to Login</a>
+    <a href="card.jsp" class="centered-button">Go to Card Management</a>
 </div>
+  
 </body>
 </html>

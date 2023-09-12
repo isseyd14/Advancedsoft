@@ -1,4 +1,4 @@
-package uts.bank.advancedsoft;
+package uts.bank.Controller;
 
 public class Logoutservlet {
 }
