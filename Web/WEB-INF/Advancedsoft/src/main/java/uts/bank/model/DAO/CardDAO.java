@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class CardDAO{
 
-    String url = "jdbc:mysql://127.0.0.1:3306/bank?useSSL=false";
+    String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
     String username = "root";
     String password = "admin123"; 
    
