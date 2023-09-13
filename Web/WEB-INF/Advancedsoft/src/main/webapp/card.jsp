@@ -4,20 +4,26 @@
 <html>
 <head>
     <title>Books Store Application</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <center>
         <h1>Card Management</h1>
         <h2>
-            <a href="new">Add New Card</a>
+            
+           
             &nbsp;&nbsp;&nbsp;
             
            
              
         </h2>
     </center>
-    <div align="center">
-        <table border="1" cellpadding="5">
+    <div class="container">
+        <table class="table table-hover">
             <caption><h2>List of Cards</h2></caption>
             <tr>
                 <th>Card Number</th>
@@ -37,6 +43,10 @@
                 </tr>
             </c:forEach>
         </table>
-    </div>   
+      
+    <div>
+    <a href="new" class="btn btn-info" role="button">Add New Card</a>
+    </div>
+    </div> 
 </body>
 </html>
