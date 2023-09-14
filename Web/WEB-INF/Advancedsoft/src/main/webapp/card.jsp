@@ -11,18 +11,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <center>
-        <h1>Card Management</h1>
-        <h2>
-            
-           
-            &nbsp;&nbsp;&nbsp;
-            
-           
-             
-        </h2>
-    </center>
-    <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Frontline Bank</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.jsp">Home</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="link">Card</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+            <li><a href="list"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container" style="margin-top:50px">
         <table class="table table-hover">
             <caption><h2>List of Cards</h2></caption>
             <tr>
