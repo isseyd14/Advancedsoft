@@ -19,11 +19,11 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="#">Account</a></li>
-            <li><a href="link">Card</a></li>
+            <li><a href="CardServlet">Card</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-            <li><a href="list"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
           </ul>
         </div>
       </nav>
@@ -33,6 +33,7 @@
             <tr>
                 <th>Card Number</th>
                 <th>Card Holder</th>
+                <th>Balance</th>
                 <th>Action</th>
 
             </tr>
@@ -40,17 +41,17 @@
                 <tr>
                     <td><c:out value="${card.cardNumber}" /></td>
                     <td><c:out value="${card.cardHolder}" /></td>
+                    <td><c:out value="${card.balance}" /></td>
                     <td>
-                        <!-- <a href="/edit?id=<c:out value='${book.id}' />">active</a> -->
-                        <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
-                        <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>                     
+     
+                        <a href="DeleteCardServlet?cardNumber=<c:out value='${card.cardNumber}' />">Delete</a>                     
                     </td>
                 </tr>
             </c:forEach>
         </table>
       
     <div>
-    <a href="new" class="btn btn-info" role="button">Add New Card</a>
+    <a href="addCard.jsp" class="btn btn-info" role="button">Add New Card</a>
     </div>
     </div> 
 </body>

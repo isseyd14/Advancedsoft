@@ -153,7 +153,20 @@ public class CardDAO{
     // set card status to "active"
     
     
-
+    // delete card by cardNumber from database
+    public void deleteCard(String cardNumber) throws SQLException{
+        String sql = "DELETE FROM card WHERE card_number = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);) {
+                  
+            stmt.setString(1, cardNumber);
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
+    }
 
 
 
