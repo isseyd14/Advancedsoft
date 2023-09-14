@@ -13,7 +13,7 @@ import java.sql.*;
 
 
 @WebServlet("/LoginServlet")
-public class Loginservlet extends HttpServlet {
+public class viewbalanceservlet extends HttpServlet {
     private void setSessionAttrs(HttpSession session, String email ) {
         session.setAttribute("email", email);
         //session.setAttribute("name", nameDB);
