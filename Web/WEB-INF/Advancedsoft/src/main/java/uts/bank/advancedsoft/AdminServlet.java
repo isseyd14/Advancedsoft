@@ -25,7 +25,7 @@ public class AdminServlet extends HttpServlet {
             request.setAttribute("userId", userId);
             request.setAttribute("name", name);
             request.setAttribute("dob", dob);
-            request.setAttribute("email", email)
+            request.setAttribute("email", email);
 
             account = manager.fetchAccount();
             request.setAttribute("accountName", accountName);
@@ -52,7 +52,7 @@ public class AdminServlet extends HttpServlet {
 
         }
 
-        response.sendRedirect(request.getContextPath() + "/ProductServlet");
+        response.sendRedirect(request.getContextPath() + "");
         return;
     }
 }
