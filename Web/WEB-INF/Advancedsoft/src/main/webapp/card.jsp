@@ -33,7 +33,7 @@
             <tr>
                 <th>Card Number</th>
                 <th>Card Holder</th>
-                <th>Balance</th>
+                <th>Status</th>
                 <th>Action</th>
 
             </tr>
@@ -41,7 +41,7 @@
                 <tr>
                     <td><c:out value="${card.cardNumber}" /></td>
                     <td><c:out value="${card.cardHolder}" /></td>
-                    <td><c:out value="${card.balance}" /></td>
+                    <td><c:out value="${card.cardStatus}" /></td>
                     <td>
      
                         <a href="DeleteCardServlet?cardNumber=<c:out value='${card.cardNumber}' />">Delete</a>                     
