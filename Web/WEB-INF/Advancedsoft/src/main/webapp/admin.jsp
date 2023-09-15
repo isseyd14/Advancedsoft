@@ -152,43 +152,43 @@
 <body>
 <div class="Header">
     <button type="button" id="create_btn">Create Account</button>
-    <input type="text" id="search_tf" placeholder="Search" />
+    <input type="text" id="search_tf" placeholder="Search"/>
     <button type="button" id="logout_btn">Logout</button>
 </div>
 <div class="body">
     <div class="account_info">
-        <form action="AdminServlet" method="Get">
+        <form>
             <div class="form_row">
                 <label id="accountId_T">Account ID: </label>
-                <label id="account_id">${userId}</label>
+                <label id="account_id"></label>
             </div>
             <div class="form_row">
                 <label id="name_T">Name:</label>
-                <label id="name">${firstname}</label>
+                <label id="name"></label>
             </div>
             <div class="form_row">
                 <label id="dob_T">Date of Birth:</label>
-                <label id="dob">${dob}</label>
+                <label id="dob"></label>
             </div>
             <div class="form_row">
                 <label id="email_T">Email:</label>
-                <label id="email">${email}</label>
+                <label id="email"></label>
             </div>
         </form>
     </div>
     <div class="profile">
         <div class="accounts_view">
             <div class="account_box">
-                <form action="/AdminServlet" method="Get">
-                    <label class="account_name">${accountName}</label>
-                    <label class="account_number">${account_no}</label>
-                    <label class="balance">${balance}</label>
+                <form>
+                    <label class="account_name">Credit</label>
+                    <label class="account_number">1200-3488</label>
+                    <label class="balance">1200</label>
                 </form>
             </div>
             <div class="account_box"></div>
         </div>
         <div class="account_actions">
-            <form id="actions_bar" action="/AdminServlet" method="Post">
+            <form id="actions_bar">
                 <button type="submit" name="action" id="add_btn">Add</button>
                 <button type="submit" name="action" id="del_btn">Delete</button>
             </form>

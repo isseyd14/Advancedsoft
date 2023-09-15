@@ -1,4 +1,4 @@
-package uts.bank.advancedsoft;
+/* package uts.bank.advancedsoft;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,9 +10,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.*;
+import model.User
 
 
-@WebServlet("/AdminServlet")
+/@WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
 
     @Override
@@ -55,4 +56,4 @@ public class AdminServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "");
         return;
     }
-}
+} */
