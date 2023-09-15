@@ -9,8 +9,5 @@
         <module name="Advancedsoft" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Advancedsoft" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
