@@ -1,8 +1,9 @@
-package uts.bank.model.DAO;
+package uts.bank.Model.DAO;
 
-import uts.bank.model.Card;
 import java.util.ArrayList;
 import java.util.List;
+
+import uts.bank.Model.Card;
 
 //import org.hibernate.mapping.List;
 

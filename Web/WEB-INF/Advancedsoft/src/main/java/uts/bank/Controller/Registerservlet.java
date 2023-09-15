@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+
 
 import java.sql.*;
 import java.io.IOException;
@@ -52,8 +52,10 @@ public class Registerservlet extends HttpServlet {
                 ps.executeUpdate();
                 request.setAttribute("errorMessage","Account succesfully created");
                 //response.sendRedirect("login.jsp");
+                
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 rd.forward(request, response);
+                
             }
             response.sendRedirect("login.jsp");
             //int rowsUpdated = ps.executeUpdate();
@@ -74,6 +76,7 @@ public class Registerservlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            
         }
     }
 }

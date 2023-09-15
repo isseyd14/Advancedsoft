@@ -10,9 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import uts.bank.model.Card;
-import uts.bank.model.DAO.CardDAO;
+import uts.bank.Model.Card;
+import uts.bank.Model.DAO.CardDAO;
 
 @WebServlet("/CardServlet")
 public class CardServlet extends HttpServlet {
