@@ -1,3 +1,4 @@
+package uts.bank.Model;
 public class User {
 
     private int userId;

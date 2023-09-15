@@ -1,59 +1,59 @@
-/* package uts.bank.advancedsoft;
+// package uts.bank.Controller;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+// import jakarta.servlet.RequestDispatcher;
+// import jakarta.servlet.ServletException;
+// import jakarta.servlet.annotation.WebServlet;
+// import jakarta.servlet.http.HttpServlet;
+// import jakarta.servlet.http.HttpServletRequest;
+// import jakarta.servlet.http.HttpServletResponse;
+// import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-import java.sql.*;
-import model.User
-
-
-/@WebServlet("/AdminServlet")
-public class AdminServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+// import java.io.IOException;
+// import java.sql.*;
+// import model.User
 
 
-        try {
-            user = manager.fetchUser();
-            request.setAttribute("userId", userId);
-            request.setAttribute("name", name);
-            request.setAttribute("dob", dob);
-            request.setAttribute("email", email);
+// /@WebServlet("/AdminServlet")
+// public class AdminServlet extends HttpServlet {
 
-            account = manager.fetchAccount();
-            request.setAttribute("accountName", accountName);
-            request.setAttribute("account_no", accountNumber);
-            request.setAttribute("bsb", bsb);
-            request.setAttribute("balance", balance);
+//     @Override
+//     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//             throws ServletException, IOException {
 
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//         try {
+//             user = manager.fetchUser();
+//             request.setAttribute("userId", userId);
+//             request.setAttribute("name", name);
+//             request.setAttribute("dob", dob);
+//             request.setAttribute("email", email);
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
+//             account = manager.fetchAccount();
+//             request.setAttribute("accountName", accountName);
+//             request.setAttribute("account_no", accountNumber);
+//             request.setAttribute("bsb", bsb);
+//             request.setAttribute("balance", balance);
 
-        if ("add_btn".equals(action)) {
-            response.sendRedirect(request.getContextPath() + "/addAccountServlet");
-        }
-        if ("del_btn".equals(action)) {
+//             request.getRequestDispatcher("admin.jsp").forward(request, response);
 
-        }
+//         } catch (SQLException ex) {
+//             Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+//         }
+//     }
 
-        response.sendRedirect(request.getContextPath() + "");
-        return;
-    }
-} */
+//     @Override
+//     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//             throws ServletException, IOException {
+//         String action = request.getParameter("action");
+
+//         if ("add_btn".equals(action)) {
+//             response.sendRedirect(request.getContextPath() + "/addAccountServlet");
+//         }
+//         if ("del_btn".equals(action)) {
+
+//         }
+
+//         response.sendRedirect(request.getContextPath() + "");
+//         return;
+//     }
+// } 
