@@ -1,4 +1,4 @@
-package uts.bank.advancedsoft;
+package uts.bank.Servlet;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
