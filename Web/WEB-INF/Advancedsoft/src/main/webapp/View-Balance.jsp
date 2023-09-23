@@ -5,66 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accounts</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: white; /* White background */
-            color: black; /* Black text */
-            font-family: Arial, sans-serif;
-            justify-content: center;
-            align-items: center;
-        }
-
-        header {
-            background-color: #222; /* Slightly darker grey for the header */
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 36px;
-            color: white; /* White text color for the header */
-        }
-
-
-        .banner {
-            /*  background-image: url('your-banner-image.jpg'); /* Replace with your banner image URL */
-            background-size: contain; /* Fit the image within the container */
-            background-repeat: no-repeat; /* Prevent image repetition */
-            background-position: right top; /* Position the image in the top-right corner */
-            height: 300px; /* Adjust the height as needed */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        p {
-            font-size: 18px;
-        }
-        .centered-button-container {
-            text-align: center;
-        }
-
-        .centered-button {
-            padding: 10px 20px;
-            background-color: #007bff; /* Blue button color */
-            color: white; /* White text color for the button */
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
     <%
         boolean isLoggedIn = (session.getAttribute("email") != null);
         if(!isLoggedIn){
@@ -74,9 +18,22 @@
     %>
 </head>
 <body>
-<header>
-    <h1>Accounts</h1>
-</header>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Frontline Bank</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.jsp">Home</a></li>
+            <li><a href="Pay-Transfer.jsp">Pay and Transfer</a></li>
+            <li><a href="CardServlet">Card</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+            <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
 <div >
     <table class="table table-hover">
         <caption><h2>List of Accounts</h2></caption>
