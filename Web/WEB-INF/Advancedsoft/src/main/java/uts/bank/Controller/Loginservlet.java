@@ -39,7 +39,7 @@ public class Loginservlet extends HttpServlet {
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
             System.out.println("Login Connected");
 
-            String sql = "select * from bank.account where Email=? and PASS=?";
+            String sql = "select * from bank.User where Email=? and PASS=?";
 
             ps = con.prepareStatement(sql);
 
@@ -69,13 +69,13 @@ public class Loginservlet extends HttpServlet {
             }
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
-                System.out.println("in If");
+                System.out.println("in customer");
 
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, email);
                 //createUserLog(session, con, email);
 
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("viewbalanceservlet");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
 
                 HttpSession session = request.getSession();

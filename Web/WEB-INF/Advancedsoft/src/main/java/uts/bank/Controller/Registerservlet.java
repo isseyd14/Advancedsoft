@@ -29,7 +29,7 @@ public class Registerservlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
-            String sql = "SELECT * FROM bank.account WHERE Email=?";
+            String sql = "SELECT * FROM bank.User WHERE Email=?";
             ps = con.prepareStatement(sql);
             ps.setString(1,email);
             rs = ps.executeQuery();
@@ -39,7 +39,7 @@ public class Registerservlet extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                String sql1 = "INSERT INTO bank.account (Email, Pass, Type, fname, lname, Address, Balance,DOB) VALUES(?,?,?,?,?,?,?,? )";
+                String sql1 = "INSERT INTO bank.User (Email, Pass, Type, fname, lname, Address, Balance,DOB) VALUES(?,?,?,?,?,?,?,? )";
                 ps = con.prepareStatement(sql1);
                 ps.setString(1, email);
                 ps.setString(2, password);
