@@ -20,7 +20,7 @@ public class AccountDAOTest {
     @Test
     public void testAddAccount() throws SQLException {
         // Create a sample account
-        Account account = new Account("test@email.com", "Test Account", "Savings", 1000.0, 1000.0);
+        Account account = new Account("test", "unit Test Account", "Savings", 1000.0, 1000.0);
 
         // Call the addAccount method
         accountDAO.addAccount(account);
@@ -28,6 +28,7 @@ public class AccountDAOTest {
         // You can add additional assertions here to check the result of the operation if needed
 
         // Clean up by deleting the test data (if necessary)
+        accountDAO.deleteAccount("unit Test Account");
         // Implement this based on your application's requirements
     }
 

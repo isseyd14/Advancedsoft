@@ -26,7 +26,7 @@ public class AccountDAO {
     }
 
     public void addAccount(Account account)throws SQLException{
-        String sql = "INSERT INTO account (Email, name, type, avaliable_funds, currentt_funds) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO account (Email, name, type, avaliable_funds, current_funds) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
@@ -70,15 +70,16 @@ public class AccountDAO {
         return account;
     }
 
-//    public void deleteAccount(String cardNumber) throws SQLException{
-//        String sql = "DELETE FROM card WHERE card_number = ?";
-//        try (Connection conn = getConnection();
-//             PreparedStatement stmt = conn.prepareStatement(sql);) {
-//
-//            stmt.setString(1, cardNumber);
-//            stmt.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+    public void deleteAccount(String accountName) throws SQLException {
+        String sql = "DELETE FROM account WHERE name = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);) {
+
+            stmt.setString(1, accountName);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
