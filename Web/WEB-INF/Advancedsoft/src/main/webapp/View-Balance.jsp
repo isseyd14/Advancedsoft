@@ -1,5 +1,3 @@
-<%@ page import="uts.bank.model.Account" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -26,15 +24,15 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="Pay-Transfer.jsp">Pay and Transfer</a></li>
+            <li><a href="savecontactservlet">Contacts Management</a></li>
             <li><a href="CardServlet">Card</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.jsp"><span class="glyphicon glyphicon-user"></span> Login</a></li>
             <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
-<div >
+<div  class="container" style="margin-top:50px">
     <table class="table table-hover">
         <caption><h2>List of Accounts</h2></caption>
         <tr>

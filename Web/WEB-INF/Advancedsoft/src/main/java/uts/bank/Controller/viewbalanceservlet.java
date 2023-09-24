@@ -8,13 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.bank.model.Account;
-import uts.bank.model.Card;
 import uts.bank.model.DAO.AccountDAO;
-import uts.bank.model.DAO.CardDAO;
-import uts.bank.model.User;
-
 import java.io.IOException;
-import java.sql.*;
 import java.util.List;
 
 
@@ -33,19 +28,10 @@ public class viewbalanceservlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
-        System.out.println("does the servlet run twice?");
         List<Account> listAccount = accountDAO.findaccounts(email);
         session.setAttribute("listaccount", listAccount);
-
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("View-Balance.jsp");
         dispatcher.forward(request, response);
-        if(listAccount.isEmpty()){
-            System.out.println("list is empty");
-        }else{
-            System.out.println("viewbalanceservlet " +listAccount.size() );
-        }
-
     }
 }
 

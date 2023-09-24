@@ -46,3 +46,26 @@ create table User
     Balance double       null,
     DOB     date         null
 );
+
+create table contacts
+(
+    contacts_id      int auto_increment
+        primary key,
+    owner_email      varchar(100) null,
+    contact_name     varchar(100) null,
+    contact_nic_name varchar(100) null,
+    contact_email    varchar(100) null,
+    constraint contacts_User_Email_fk
+        foreign key (owner_email) references User (Email)
+);
+
+create table transaction
+(
+    transaction_id int auto_increment
+        primary key,
+    amount         int          null,
+    owner_email    varchar(100) null,
+    payee_email    varchar(100) null,
+    constraint transaction_account_Email_fk
+        foreign key (owner_email) references account (Email)
+);

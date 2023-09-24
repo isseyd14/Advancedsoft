@@ -46,13 +46,13 @@ public class AccountDAO {
     }
 
     //find all accounts by customer email
-    public List<Account> findaccounts(String customerId) {
+    public List<Account> findaccounts(String customerEmail) {
         List<Account> account = new ArrayList<>();
         String sql = "SELECT * FROM account WHERE Email = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);){
             System.out.println("database connected in find accounts");
-            stmt.setString(1, customerId);
+            stmt.setString(1, customerEmail);
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
