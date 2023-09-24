@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- josh_release1
+- josh
 
 pool:
   vmImage: ubuntu-latest
