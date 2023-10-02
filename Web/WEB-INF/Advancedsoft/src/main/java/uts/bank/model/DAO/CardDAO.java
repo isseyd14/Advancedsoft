@@ -149,9 +149,67 @@ public class CardDAO{
     }
 
     // find card information by account id
+    public List<Card> findCardByAccountId(String accountId) {
+        List<Card> cards = new ArrayList<>();
+        String sql = "SELECT * FROM card WHERE accountId = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);){
+
+            stmt.setString(1, accountId);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                String cardNumber = rs.getString("card_number");
+                String cardHolder = rs.getString("card_holder");
+                String expiryDate = rs.getString("expiry_date");
+                String cvv = rs.getString("CVV");
+                String cardType = rs.getString("card_type");
+                String cardStatus = rs.getString("card_status");
+                String customerId = rs.getString("customer_id");
+                
+                Double balance = rs.getDouble("balance");
+                String pin = rs.getString("pin");
+                cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cards;
+    }
+
     
 
     // set card status to "active"
+    public void activateCard(String cardNumber) throws SQLException{
+        String sql = "UPDATE card SET card_status = 'Active' WHERE card_number = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);) {
+                  
+            stmt.setString(1, cardNumber);
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
+    }
+
+
+    //set card status to "inactive"
+    public void deactivateCard(String cardNumber) throws SQLException{
+        String sql = "UPDATE card SET card_status = 'Inactive' WHERE card_number = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);) {
+                  
+            stmt.setString(1, cardNumber);
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
+    }
     
     
     // delete card by cardNumber from database

@@ -82,7 +82,7 @@
 </div>
 <div class="centered-button-container">
     <a href="login.jsp" class="centered-button">Go to Login</a>
-    <a href="CardServlet" class="centered-button">Go to Card Management</a>
+    <a href="card/selectAll" class="centered-button">Go to Card Management</a>
 </div>
   
 </body>

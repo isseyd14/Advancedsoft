@@ -19,7 +19,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="#">Account</a></li>
-            <li><a href="CardServlet">Card</a></li>
+            <li><a href="card/selectAll">Card</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
@@ -44,7 +44,7 @@
                     <td><c:out value="${card.cardStatus}" /></td>
                     <td>
      
-                        <a href="DeleteCardServlet?cardNumber=<c:out value='${card.cardNumber}' />">Delete</a>                     
+                        <a href="card/delete?cardNumber=<c:out value='${card.cardNumber}' />">Delete</a>                     
                     </td>
                 </tr>
             </c:forEach>
