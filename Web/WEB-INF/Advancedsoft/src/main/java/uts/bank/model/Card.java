@@ -1,4 +1,4 @@
-package uts.bank.Model;
+package uts.bank.model;
 
 import java.io.Serializable;
 

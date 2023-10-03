@@ -10,8 +10,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import uts.bank.Model.Card;
-import uts.bank.Model.DAO.CardDAO;
+import uts.bank.model.Card;
+import uts.bank.model.DAO.CardDAO;
 
 @WebServlet("/card/*")
 public class CardServlet extends BaseServlet {
@@ -48,7 +48,7 @@ public class CardServlet extends BaseServlet {
             try {
                 cardDAO.addCard(newCard);
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
+                
                 e.printStackTrace();
             }
             response.sendRedirect("selectAll");   
@@ -63,6 +63,65 @@ public class CardServlet extends BaseServlet {
          
             try{
             cardDAO.deleteCard(cardNumber);
+            
+
+            response.sendRedirect("selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
+
+    public void activate (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+         
+            try{
+            cardDAO.activateCard(cardNumber);
+            
+
+            response.sendRedirect("selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
+
+    public void deactivate (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+         
+            try{
+            cardDAO.deactivateCard(cardNumber);
+            
+
+            response.sendRedirect("selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
+
+    public void changePin (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            String pin = request.getParameter("pin");
+            session.setAttribute("cardNumber", cardNumber);
+            session.setAttribute("pin", pin);
+         
+            try{
+            cardDAO.changePin(cardNumber, pin);
             
 
             response.sendRedirect("selectAll");
