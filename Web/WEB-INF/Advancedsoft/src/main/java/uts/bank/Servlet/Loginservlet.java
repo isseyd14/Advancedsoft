@@ -14,9 +14,9 @@ import java.sql.*;
 
 @WebServlet("/LoginServlet")
 public class Loginservlet extends HttpServlet {
-    private void setSessionAttrs(HttpSession session, String email ) {
+    private void setSessionAttrs(HttpSession session, String email, String nameDB ) {
         session.setAttribute("email", email);
-        //session.setAttribute("name", nameDB);
+        session.setAttribute("Fname", nameDB);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Loginservlet extends HttpServlet {
             String emailDB = "";
             String passwordDB = "";
             String typeDB = "";
-            //String nameDB = "";
+            String nameDB = "";
             //int userIdDB = 0;
 
             rs = ps.executeQuery();
@@ -67,19 +67,30 @@ public class Loginservlet extends HttpServlet {
                 //System.out.println("nameDB: " + nameDB);
                 //System.out.println("userID: " + userIdDB);
             }
+            String sql1 = "select * from bank.account where Email=?";
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                nameDB = rs.getString(("Fname"));
+            }
+           //request.setAttribute("Fname", nameDB);
+
+
+
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
                 System.out.println("in If");
 
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email);
+                setSessionAttrs(session, email, nameDB);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("home.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
 
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email);
+                setSessionAttrs(session, email, nameDB);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("staff-home.jsp");

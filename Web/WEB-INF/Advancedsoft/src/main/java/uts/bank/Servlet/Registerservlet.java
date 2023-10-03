@@ -23,6 +23,7 @@ public class Registerservlet extends HttpServlet {
         String address = request.getParameter("address");
         double bal = Double.parseDouble(request.getParameter("startingBalance"));
         Date dob = Date.valueOf(request.getParameter("dob"));
+        String phone = request.getParameter("phone");
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -39,16 +40,21 @@ public class Registerservlet extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                String sql1 = "INSERT INTO bank.account (Email, Pass, Type, fname, lname, Address, Balance,DOB) VALUES(?,?,?,?,?,?,?,? )";
+                String sql1 = "INSERT INTO bank.accountnfo (Email, fname, lname, Address, Balance,DOB,phone) VALUES(?,?,?,?,?,?,? )";
                 ps = con.prepareStatement(sql1);
+                ps.setString(1, email);
+                ps.setString(2, fname);
+                ps.setString(3, lname);
+                ps.setString(4, address);
+                ps.setDouble(5,bal);
+                ps.setDate(6,dob);
+                ps.setString(7, phone);
+                ps.executeUpdate();
+                String sql2 = "INSERT INTO bank.account (Email, Pass, Type) VALUES(?,?,? )";
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ps.setString(3, "customer");
-                ps.setString(4, fname);
-                ps.setString(5, lname);
-                ps.setString(6, address);
-                ps.setDouble(7,bal);
-                ps.setDate(8,dob);
+                ps = con.prepareStatement(sql2);
                 ps.executeUpdate();
                 request.setAttribute("errorMessage","Account succesfully created");
                 //response.sendRedirect("login.jsp");

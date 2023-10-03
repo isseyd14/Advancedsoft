@@ -9,9 +9,6 @@
         <module name="Advancedsoft" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Advancedsoft" target="11" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="PREFER_TARGET_JDK_COMPILER" value="false" />

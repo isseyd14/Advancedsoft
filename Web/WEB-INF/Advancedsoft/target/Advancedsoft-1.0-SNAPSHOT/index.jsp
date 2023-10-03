@@ -17,7 +17,7 @@
 
         header {
             background-color: #222; /* Slightly darker grey for the header */
-            padding: 12px 0;
+            padding: 1px 0;
             text-align: left;
             display: flex; /* Enable flexbox layout for header */
             align-items: center; /* Vertically center content */

@@ -68,7 +68,7 @@
         }
         header {
             background-color: #222; /* Slightly darker grey for the header */
-            padding: 12px 0;
+            padding: 1px 0;
             text-align: left;
             display: flex; /* Enable flexbox layout for header */
             align-items: center; /* Vertically center content */
@@ -164,8 +164,12 @@
                     <input type="number" id="startingBalance" name="startingBalance" required>
                 </div>
                 <div class="form-group">
-                    <label for="dob">Date of Birth:</label>
+                    <label for="dob">Date of Birtsh:</label>
                     <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">phone:</label>
+                    <input type="text" id="phone" name="phone" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create Account">
