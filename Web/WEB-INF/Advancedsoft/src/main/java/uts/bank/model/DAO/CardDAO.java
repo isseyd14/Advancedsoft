@@ -1,9 +1,9 @@
-package uts.bank.Model.DAO;
+package uts.bank.model.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import uts.bank.Model.Card;
+import uts.bank.model.Card;
 
 //import org.hibernate.mapping.List;
 
@@ -17,7 +17,7 @@ public class CardDAO{
 
     String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
     String username = "root";
-    String password = "admin123"; 
+    String password = "root"; 
    
 
     protected Connection getConnection(){
@@ -219,6 +219,21 @@ public class CardDAO{
                 PreparedStatement stmt = conn.prepareStatement(sql);) {
                   
             stmt.setString(1, cardNumber);
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
+    }
+    //change card pin
+    public void changePin(String cardNumber, String pin) throws SQLException{
+        String sql = "UPDATE card SET pin = ? WHERE card_number = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);) {
+                  
+            stmt.setString(1, pin);
+            stmt.setString(2, cardNumber);
             stmt.executeUpdate();
             
         } catch (SQLException e) {
