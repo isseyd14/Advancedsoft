@@ -1,4 +1,4 @@
-package uts.bank.advancedsoft;
+package uts.bank.Servlet;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -30,7 +30,7 @@ public class Registerservlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
-            String sql = "SELECT * FROM bank.account WHERE Email=?";
+            String sql = "SELECT * FROM bank.account WHERE Email=? ";
             ps = con.prepareStatement(sql);
             ps.setString(1,email);
             rs = ps.executeQuery();
@@ -40,7 +40,7 @@ public class Registerservlet extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                String sql1 = "INSERT INTO bank.accountnfo (Email, fname, lname, Address, Balance,DOB,phone) VALUES(?,?,?,?,?,?,? )";
+                String sql1 = "INSERT INTO bank.account (Email, Fname, Lname, Address, Balance,dob,Phone,PASS,Type) VALUES(?,?,?,?,?,?,?,?,?)";
                 ps = con.prepareStatement(sql1);
                 ps.setString(1, email);
                 ps.setString(2, fname);
@@ -49,12 +49,8 @@ public class Registerservlet extends HttpServlet {
                 ps.setDouble(5,bal);
                 ps.setDate(6,dob);
                 ps.setString(7, phone);
-                ps.executeUpdate();
-                String sql2 = "INSERT INTO bank.account (Email, Pass, Type) VALUES(?,?,? )";
-                ps.setString(1, email);
-                ps.setString(2, password);
-                ps.setString(3, "customer");
-                ps = con.prepareStatement(sql2);
+                ps.setString(8, password);
+                ps.setString(9, "customer");
                 ps.executeUpdate();
                 request.setAttribute("errorMessage","Account succesfully created");
                 //response.sendRedirect("login.jsp");

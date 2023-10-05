@@ -17,3 +17,18 @@ CREATE TABLE `bank`.`accountinfo` (
                                       PRIMARY KEY (`Email`));
 ALTER TABLE `bank`.`accountinfo`
     ADD COLUMN `dob` DATE NULL DEFAULT NULL AFTER `balance`;
+
+ALTER TABLE `bank`.`account`
+    ADD COLUMN `Fname` VARCHAR(45) NULL AFTER `Type`,
+    ADD COLUMN `Lname` VARCHAR(45) NULL AFTER `Fname`,
+    ADD COLUMN `Address` VARCHAR(45) NULL AFTER `Lname`,
+    ADD COLUMN `Phone` VARCHAR(45) NULL AFTER `Address`,
+    ADD COLUMN `Balance` VARCHAR(45) NULL AFTER `Phone`,
+    ADD COLUMN `dob` VARCHAR(45) NULL AFTER `Balance`;
+
+ALTER TABLE `bank`.`account`
+    CHANGE COLUMN `dob` `dob` DATE NULL DEFAULT NULL ;
+
+ALTER TABLE `bank`.`account`
+    CHANGE COLUMN `Balance` `Balance` DOUBLE NULL DEFAULT NULL ;
+

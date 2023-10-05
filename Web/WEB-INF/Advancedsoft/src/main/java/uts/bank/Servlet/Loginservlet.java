@@ -1,5 +1,6 @@
 package uts.bank.Servlet;
 
+import uts.bank.Model.account;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,8 +15,8 @@ import java.sql.*;
 
 @WebServlet("/LoginServlet")
 public class Loginservlet extends HttpServlet {
-    private void setSessionAttrs(HttpSession session, String email, String nameDB ) {
-        session.setAttribute("email", email);
+    private void setSessionAttrs(HttpSession session, account acc, String nameDB ) {
+        session.setAttribute("acc", acc);
         session.setAttribute("Fname", nameDB);
     }
 
@@ -48,8 +49,13 @@ public class Loginservlet extends HttpServlet {
 
             String emailDB = "";
             String passwordDB = "";
-            String typeDB = "";
+            String typeDB = "customer";
             String nameDB = "";
+            String LnameDB = "";
+            String Address = "";
+            String Phone = "";
+            double bal = 0;
+            Date dob = null;
             //int userIdDB = 0;
 
             rs = ps.executeQuery();
@@ -57,9 +63,17 @@ public class Loginservlet extends HttpServlet {
 
             while(rs.next()) {
                 emailDB = rs.getString("email");
-                passwordDB = rs.getString("Pass");
+                passwordDB = rs.getString("PASS");
                 typeDB = rs.getString("Type");
-                //nameDB = rs.getString("name");
+                nameDB = rs.getString("Fname");
+                LnameDB = rs.getString("Lname");
+                Address = rs.getString("Address");
+                Phone = rs.getString("Phone");
+                bal = rs.getDouble("balance");
+                dob = rs.getDate("dob");
+
+
+
                 //userIdDB = rs.getInt("userID");
 
                 System.out.println("emailDB: " + emailDB);
@@ -81,16 +95,18 @@ public class Loginservlet extends HttpServlet {
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
                 System.out.println("in If");
-
+                //    public account(String email, String fname, String lname, String password, double balance, String type, Date dob, String phone, String address) {
+                account acco = new account(emailDB,nameDB,LnameDB,passwordDB,bal,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email, nameDB);
+                setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("home.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
+                account acco = new account(emailDB,nameDB,LnameDB,passwordDB,bal,typeDB,dob,Phone,Address);
 
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email, nameDB);
+                setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("staff-home.jsp");

@@ -164,12 +164,12 @@
                     <input type="number" id="startingBalance" name="startingBalance" required>
                 </div>
                 <div class="form-group">
-                    <label for="dob">Date of Birtsh:</label>
+                    <label for="dob">Date of Birth:</label>
                     <input type="date" id="dob" name="dob" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">phone:</label>
-                    <input type="text" id="phone" name="phone" required>
+                    <label for="phone">Phone:</label>
+                    <input type="number" id="phone" name="phone" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create Account">
