@@ -15,10 +15,14 @@ import java.sql.SQLException;
 
 public class CardDAO{
 
-    String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
-    String username = "root";
-    String password = "root"; 
+    // String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
+    // String username = "root";
+    // String password = "root"; 
    
+    String url = "jdbc:mysql://asdbank.mysql.database.azure.com:3306/asdbank?useSSL=false";
+    String username = "xiaobing01";
+    String password = "admin0-=";
+    
 
     protected Connection getConnection(){
         Connection conn = null;

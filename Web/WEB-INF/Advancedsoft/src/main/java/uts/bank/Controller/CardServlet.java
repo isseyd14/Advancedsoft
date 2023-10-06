@@ -36,6 +36,19 @@ public class CardServlet extends BaseServlet {
 
     }
 
+    public void edit(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+            System.out.println(cardNumber);
+            request.getRequestDispatcher("../changepin.jsp").forward(request, response);
+
+            
+      
+
+    }
+
     public void add(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
             String cardNumber = request.getParameter("cardNumber");
@@ -124,7 +137,7 @@ public class CardServlet extends BaseServlet {
             cardDAO.changePin(cardNumber, pin);
             
 
-            response.sendRedirect("selectAll");
+            response.sendRedirect("../selectAll");
             
     
             }catch (SQLException | NullPointerException ex) {
