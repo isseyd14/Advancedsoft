@@ -51,22 +51,47 @@ public class CardServlet extends BaseServlet {
 
     public void add(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            Validator validator = new Validator();
+            validator.clear(session);
             String cardNumber = request.getParameter("cardNumber");
             String cardHolder = request.getParameter("cardHolder");
             String expiryDate = request.getParameter("expiryDate");
             String cvv = request.getParameter("cvv");
             String cardType = request.getParameter("cardType");
-            
             Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", "1001", "2001", 0, "1234");        
-            try {
-                cardDAO.addCard(newCard);
-            } catch (SQLException e) {
-                
-                e.printStackTrace();
+            Boolean isError = false;
+            
+            if(!validator.validateCardNo(cardNumber)){
+                session.setAttribute("cardErr", "Error: Card Number format incorrect");
+                isError = true;
             }
-            response.sendRedirect("selectAll");   
+            if(!validator.validateName(cardHolder)){
+                session.setAttribute("nameErr", "Error: Name format incorrect");
+                isError = true;
+            }
+            if(!validator.validateExp(expiryDate)){
+                session.setAttribute("expErr", "Error: Expiry Date format incorrect");
+                isError = true;
+            }
+            if(!validator.validateCVV(cvv)){
+                session.setAttribute("cvvErr", "Error: CVV format incorrect");
+                isError = true;
+            }
+            if(!isError){
+                try {
+                    cardDAO.addCard(newCard);
+                    response.sendRedirect("selectAll");
+                } catch (SQLException e) {
+                    
+                    e.printStackTrace();
+                }
+            }else{
+                request.getRequestDispatcher("addCard.jsp").include(request, response);
+            }
+        
     
-        }
+    }
 
     public void delete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
