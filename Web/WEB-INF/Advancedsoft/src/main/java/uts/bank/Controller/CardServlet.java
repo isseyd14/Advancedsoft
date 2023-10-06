@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -44,10 +45,12 @@ public class CardServlet extends BaseServlet {
             System.out.println(cardNumber);
             request.getRequestDispatcher("../changepin.jsp").forward(request, response);
 
-            
-      
-
     }
+    // public void newCard(HttpServletRequest request, HttpServletResponse response)
+    //         throws ServletException, IOException {
+    //         request.getRequestDispatcher("addCard.jsp").forward(request, response);
+
+    // }
 
     public void add(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
@@ -82,12 +85,13 @@ public class CardServlet extends BaseServlet {
                 try {
                     cardDAO.addCard(newCard);
                     response.sendRedirect("selectAll");
-                } catch (SQLException e) {
-                    
-                    e.printStackTrace();
+                } catch (SQLException | NullPointerException ex) {
+                    Logger.getLogger(CardServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                request.getRequestDispatcher("addCard.jsp").include(request, response);
+                
+                response.sendRedirect("../addCard.jsp");
+                //request.getRequestDispatcher("newCard").forward(request, response);
             }
         
     
