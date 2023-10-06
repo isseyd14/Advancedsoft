@@ -44,7 +44,7 @@
                     <td><c:out value="${card.cardStatus}" /></td>
                    
                     <td>
-                      <a href="card/changePin?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Change Pin</a>
+                      <a href="card/edit?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Change Pin</a>
                       <a href="card/delete?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Delete</a> 
                       <c:if test="${card.cardStatus == 'Active'}">
                         <a href="card/deactivate?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Block</a>
