@@ -1,5 +1,6 @@
 package uts.bank.Controller;
 
+import uts.bank.model.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,10 +14,10 @@ import java.sql.*;
 
 
 @WebServlet("/LoginServlet")
-public class Loginservlet extends HttpServlet {
-    private void setSessionAttrs(HttpSession session, String email ) {
-        session.setAttribute("email", email);
-        //session.setAttribute("name", nameDB);
+public class  Loginservlet extends HttpServlet {
+    private void setSessionAttrs(HttpSession session, user acc, String nameDB ) {
+        session.setAttribute("User", acc);
+        session.setAttribute("Fname", nameDB);
     }
 
     @Override
@@ -48,8 +49,13 @@ public class Loginservlet extends HttpServlet {
 
             String emailDB = "";
             String passwordDB = "";
-            String typeDB = "";
-            //String nameDB = "";
+            String typeDB = "customer";
+            String nameDB = "";
+            String LnameDB = "";
+            String Address = "";
+            String Phone = "";
+            double bal = 0;
+            Date dob = null;
             //int userIdDB = 0;
 
             rs = ps.executeQuery();
@@ -57,29 +63,45 @@ public class Loginservlet extends HttpServlet {
 
             while(rs.next()) {
                 emailDB = rs.getString("email");
-                passwordDB = rs.getString("Pass");
+                passwordDB = rs.getString("PASS");
                 typeDB = rs.getString("Type");
-                //nameDB = rs.getString("name");
-                //userIdDB = rs.getInt("userID");
+                nameDB = rs.getString("Fname");
+                LnameDB = rs.getString("Lname");
+                Address = rs.getString("Address");
+                Phone = rs.getString("Phone");
+                dob = rs.getDate("dob");
 
                 System.out.println("emailDB: " + emailDB);
                 System.out.println("passwordDB: " + passwordDB);
                 //System.out.println("nameDB: " + nameDB);
                 //System.out.println("userID: " + userIdDB);
             }
+            String sql1 = "select * from bank.account where Email=?";
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                nameDB = rs.getString(("Fname"));
+            }
+            //request.setAttribute("Fname", nameDB);
+
+
+
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
                 System.out.println("in If");
-
+                //    public account(String email, String fname, String lname, String password, double balance, String type, Date dob, String phone, String address) {
+                user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email);
+                setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
 
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("view-Balance.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
+                user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email);
+                setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("staff-home.jsp");
@@ -109,5 +131,3 @@ public class Loginservlet extends HttpServlet {
         }
     }
 }
-
-
