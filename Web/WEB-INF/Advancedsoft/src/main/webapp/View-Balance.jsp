@@ -57,6 +57,9 @@
         <p>No accounts found for this user.</p>
     </c:if>
 </div>
+<div>
+    <a href="add-account.jsp" class="btn btn-info" role="button">Add New Account</a>
+</div>
 
 </body>
 </html>
