@@ -21,7 +21,7 @@ public class ContactDAO {
     }
 
     public void addContact(Contact contact)throws SQLException{
-        String sql = "INSERT INTO account (owner_email, contact_name, contact_nic_name, contact_email) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO contacts (owner_email, contact_name, contact_nic_name, contact_email) VALUES (?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 

@@ -55,6 +55,9 @@
         <p>No Contacts found for this user.</p>
     </c:if>
 </div>
+<div>
+    <a href="add-contact.jsp" class="btn btn-info" role="button">Add New Contact</a>
+</div>
 
 </body>
 </html>
