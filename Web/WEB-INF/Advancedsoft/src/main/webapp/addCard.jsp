@@ -11,6 +11,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+    <% 
+      
+      String cardErr = (String)session.getAttribute("cardErr");
+      String nameErr = (String)session.getAttribute("nameErr");
+      String expErr = (String)session.getAttribute("expErr");
+      String cvvErr = (String)session.getAttribute("cvvErr");
+    %>
+   
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -33,7 +42,7 @@
 
     <form action="card/add" method="post">
     <div class="form-group">
-        <label for="cardNumber">Card Number:</label>
+        <label for="cardNumber">Card Number: <br><span class = "err"> <%=(cardErr != null ? cardErr : "")%> </span> </label>
         
             <input class="form-control" type="text" id="cardNumber" name="cardNumber"><br><br>
         
