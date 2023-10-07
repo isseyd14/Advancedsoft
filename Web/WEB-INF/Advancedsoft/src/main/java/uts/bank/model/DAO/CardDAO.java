@@ -68,7 +68,7 @@ public class CardDAO{
     // find card information by card number
     public Card findCard(String cardNumber) {
         Card card = null;
-        String sql = "SELECT * FROM card WHERE cardNumber = ?";
+        String sql = "SELECT * FROM card WHERE card_number = ?";
         try (Connection conn = getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql);){
 
