@@ -8,7 +8,7 @@ import java.util.List;
 public class AccountDAO {
 
     protected Connection getConnection(){
-        Connection con = null;
+        Connection con;
         try{
             String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
