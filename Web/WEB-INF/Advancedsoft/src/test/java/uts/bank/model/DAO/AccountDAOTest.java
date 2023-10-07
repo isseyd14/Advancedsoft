@@ -11,13 +11,6 @@ import java.util.List;
 
 public class AccountDAOTest {
 
-    private AccountDAO accountDAO;
-
-    @BeforeEach
-    public void setUp() {
-        accountDAO = new AccountDAO();
-    }
-
     @Test
     public void testAddAccount() throws SQLException {
         // Create a sample account
@@ -27,7 +20,6 @@ public class AccountDAOTest {
         // You can add additional assertions here to check the result of the operation if needed
         Assertions.assertEquals(expected, actual);
         // Clean up by deleting the test data (if necessary)
-        accountDAO.deleteAccount("unit Test Account");
         // Implement this based on your application's requirements
     }
 
