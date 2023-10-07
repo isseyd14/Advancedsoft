@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 </head>
 <body>
 
@@ -42,14 +43,14 @@
 
     <form action="card/add" method="post">
     <div class="form-group">
-        <label for="cardNumber">Card Number: <br><span class = "err"> <%=(cardErr != null ? cardErr : "")%> </span> </label>
+        <label for="cardNumber">Card Number: <br><span class = "text-danger"> <%=(cardErr != null ? cardErr : "")%> </span> </label>
         
             <input class="form-control" type="text" id="cardNumber" name="cardNumber"><br><br>
         
     </div>
 
     <div class="form-group">
-    <label for="cardHolder">Card Holder:<br><span class = "err"> <%=(nameErr != null ? nameErr : "")%> </span></label>
+    <label for="cardHolder">Card Holder:<br><span class = "text-danger"> <%=(nameErr != null ? nameErr : "")%> </span></label>
    
     <input class="form-control" type="text" id="cardHolder" name="cardHolder"><br><br>
     
@@ -64,7 +65,7 @@
 
 
     <div class="form-group">
-    <label for="cardExpiry">Card Expiry: <br><span class = "err"> <%=(expErr != null ? expErr : "")%> </span></label>
+    <label for="cardExpiry">Card Expiry: <br><span class = "text-danger"> <%=(expErr != null ? expErr : "")%> </span></label>
 
     <input class="form-control" type="text" id="expiryDate" name="expiryDate"><br><br>
     </div>
@@ -72,7 +73,7 @@
 
 
     <div class="form-group">
-    <label for="cardCvv">Card CVV: <br><span class = "err"> <%=(cvvErr != null ? cvvErr : "")%> </span></label>
+    <label for="cardCvv">Card CVV: <br><span class = "text-danger"> <%=(cvvErr != null ? cvvErr : "")%> </span></label>
 
     <input class="form-control" type="text" id="cvv" name="cvv"><br><br>
     </div>
