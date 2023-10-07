@@ -15,7 +15,6 @@ public class AccountDAOTest {
     @BeforeAll
     public static void setup(){
         testAccount = new Account("unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
-
     }
     @Test
     public void testAddAccount() throws SQLException {
@@ -38,10 +37,10 @@ public class AccountDAOTest {
 
     }
 
-//    @AfterAll
-//    public static void tearDown() throws Exception{
-//        testCardDao.deleteAccount("unit Test Account");
-//    }
+    @AfterAll
+    public static void tearDown() throws Exception{
+        testCardDao.deleteAccount("unit Test Account");
+    }
 
 
 }
