@@ -8,23 +8,16 @@ import java.util.List;
 
 public class ContactDAO {
 
-    String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
-    String username = "root";
-    String password = "root";
-
-
     protected Connection getConnection(){
-        Connection conn = null;
+        Connection con = null;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            conn = DriverManager.getConnection(url, username, password);
-            return conn;
+            String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
+            return con;
         } catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException("Error connecting to the database", e);
         }
-
-
     }
 
     public void addContact(Contact contact)throws SQLException{

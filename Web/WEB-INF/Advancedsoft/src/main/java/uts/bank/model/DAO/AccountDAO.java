@@ -6,29 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAO {
-    String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
-    String username = "root";
-    String password = "root";
-
 
     protected Connection getConnection(){
-        Connection conn = null;
+        Connection con = null;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            conn = DriverManager.getConnection(url, username, password);
-            return conn;
+            String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
+            return con;
         } catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException("Error connecting to the database", e);
         }
-
-
     }
 
     public void addAccount(Account account)throws SQLException{
         String sql = "INSERT INTO account (Email, name, type, avaliable_funds, current_funds) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);) {
+        try (Connection con = getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql);) {
 
             stmt.setString(1, account.getAccountEmail());
             stmt.setString(2, account.getAccountName());

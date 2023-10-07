@@ -35,8 +35,11 @@ public class Loginservlet extends HttpServlet {
         ResultSet rs = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            //con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
+            String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
             System.out.println("Login Connected");
 
             String sql = "select * from bank.User where Email=? and PASS=?";
