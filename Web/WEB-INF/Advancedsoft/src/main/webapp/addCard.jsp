@@ -49,7 +49,7 @@
     </div>
 
     <div class="form-group">
-    <label for="cardHolder">Card Holder:</label>
+    <label for="cardHolder">Card Holder:<br><span class = "err"> <%=(nameErr != null ? nameErr : "")%> </span></label>
    
     <input class="form-control" type="text" id="cardHolder" name="cardHolder"><br><br>
     
@@ -64,7 +64,7 @@
 
 
     <div class="form-group">
-    <label for="cardExpiry">Card Expiry:</label>
+    <label for="cardExpiry">Card Expiry: <br><span class = "err"> <%=(expErr != null ? expErr : "")%> </span></label>
 
     <input class="form-control" type="text" id="expiryDate" name="expiryDate"><br><br>
     </div>
@@ -72,7 +72,7 @@
 
 
     <div class="form-group">
-    <label for="cardCvv">Card CVV:</label>
+    <label for="cardCvv">Card CVV: <br><span class = "err"> <%=(cvvErr != null ? cvvErr : "")%> </span></label>
 
     <input class="form-control" type="text" id="cvv" name="cvv"><br><br>
     </div>
