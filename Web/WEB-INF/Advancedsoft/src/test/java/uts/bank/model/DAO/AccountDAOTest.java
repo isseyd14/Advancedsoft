@@ -13,7 +13,7 @@ public class AccountDAOTest {
     static Account testAccount;
 
     @BeforeAll
-    public static void setup(){
+    public static void setUp(){
         testAccount = new Account("unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
     }
     @Test
