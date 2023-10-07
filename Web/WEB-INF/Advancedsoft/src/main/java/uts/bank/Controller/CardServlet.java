@@ -63,6 +63,8 @@ public class CardServlet extends BaseServlet {
             String cvv = request.getParameter("cvv");
             String cardType = request.getParameter("cardType");
             Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", "1001", "2001", 0, "1234");        
+           
+           
             Boolean isError = false;
             
             if(!validator.validateCardNo(cardNumber)){
@@ -91,7 +93,7 @@ public class CardServlet extends BaseServlet {
             }else{
                 
                 response.sendRedirect("../addCard.jsp");
-                //request.getRequestDispatcher("newCard").forward(request, response);
+                //request.getRequestDispatcher("../addCard.jsp").include(request, response);
             }
         
     
