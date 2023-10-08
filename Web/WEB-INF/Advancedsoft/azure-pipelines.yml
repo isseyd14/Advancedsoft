@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- josh
+- issey_release1
 
 pool:
   vmImage: ubuntu-latest
@@ -14,6 +14,7 @@ steps:
     versionSpec:  '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
@@ -25,7 +26,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 # Maven
-- task: DotNetCoreCLI@2
+- task: Maven@3
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
     command: 'test'
