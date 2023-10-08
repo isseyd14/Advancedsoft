@@ -148,8 +148,9 @@
             <form action="RegisterServlet" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" title="Please enter a valid email address">
                 </div>
+
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
@@ -174,6 +175,11 @@
                     <label for="dob">Date of Birth:</label>
                     <input type="date" id="dob" name="dob" required>
                 </div>
+                <div class="form-group">
+                    <label for="Phone">Phone:</label>
+                    <input type="text" id="Phone" name="Phone" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                </div>
+
                 <div class="form-group">
                     <input type="submit" value="Create Account">
                 </div>

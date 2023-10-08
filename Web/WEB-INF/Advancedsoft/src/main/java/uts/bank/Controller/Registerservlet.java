@@ -22,13 +22,15 @@ public class Registerservlet extends HttpServlet {
         String lname = request.getParameter("Lastname");
         String address = request.getParameter("address");
         Date dob = Date.valueOf(request.getParameter("dob"));
+        String phone = request.getParameter("Phone");
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
-            String sql = "SELECT * FROM bank.account WHERE Email=?";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
+                    "advancedsoftware", "Welcome1!");
+            String sql = "SELECT * FROM bank.user WHERE Email=?";
             ps = con.prepareStatement(sql);
             ps.setString(1,email);
             rs = ps.executeQuery();
@@ -38,7 +40,7 @@ public class Registerservlet extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                String sql1 = "INSERT INTO bank.account (Email, Pass, Type, fname, lname, Address, DOB) VALUES(?,?,?,?,?,?,? )";
+                String sql1 = "INSERT INTO bank.user (Email, Pass, Type, fname, lname, Address, DOB,Phone) VALUES(?,?,?,?,?,?,?,? )";
                 ps = con.prepareStatement(sql1);
                 ps.setString(1, email);
                 ps.setString(2, password);
@@ -47,6 +49,7 @@ public class Registerservlet extends HttpServlet {
                 ps.setString(5, lname);
                 ps.setString(6, address);
                 ps.setDate(7,dob);
+                ps.setString(8,phone);
                 ps.executeUpdate();
                 request.setAttribute("errorMessage","Account succesfully created");
                 //response.sendRedirect("login.jsp");

@@ -4,12 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+
+  </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accounts</title>
   <%
-    boolean isLoggedIn = (session.getAttribute("email") != null);
+    boolean isLoggedIn = (session.getAttribute("User") != null);
     if(!isLoggedIn){
       response.sendRedirect("login.jsp");
       return;
@@ -29,33 +32,51 @@
       <li><a href="CardServlet">Card</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav>
-<%        user iop = (user) session.getAttribute("User");%>
-
-  <table class="table table-bordered">
-  <thead>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Phone</th>
-    <th>Address</th>
-  </tr>
-  </thead>
-  <tbody>
+<div  class="container" style="margin-top:50px">
+  <table class="table table-hover">
+    <caption><h2>Account details</h2></caption>
     <tr>
-      <td><%=iop.getFname()%></td>
-      <td><%=iop.getLname()%></td>
-      <td><%=iop.getPhone()%></td>
-      <td><%=iop.getAddress()%></td>
-      <td><a href="editAccount.jsp?accountNumber=${account.accountNumber}">Edit</a></td>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone</th>
+      <th>Address</th>
+
     </tr>
-  </tbody>
-</table>
+    <%        user iop = (user) session.getAttribute("User");%>
+      <tr>
+        <td><%=iop.getFname()%></td>
+        <td><%=iop.getLname()%></td>
+        <td><%=iop.getPhone()%></td>
+        <td><%=iop.getAddress()%></td>
 
-delete account button
+        <td>
+        </td>
+      </tr>
 
+  </table>
+  <c:if test="${not empty errorMessage}">
+    <p style="color: red;">${errorMessage}</p>
+  </c:if>
+  <form action="EditAcc.jsp" method="post" >
+    <button type="submit" class="btn btn-primary" name="changePassword">Edit Details</button>
+  </form>
+  <br>
+  <form action="changePasswordServlet" method="post">
+    <button type="submit" class="btn btn-primary" name="changePassword">Change Password</button>
+  </form>
+  <br>
+  <form action="deleteAccountServlet" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+    <button type="submit" class="btn btn-danger" name="deleteAccount">Delete Account</button>
+  </form>
+</div>
+
+
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -36,11 +36,12 @@ public class  Loginservlet extends HttpServlet {
         ResultSet rs = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
-            System.out.println("Login Connected");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
+                    "advancedsoftware", "Welcome1!");
+            System.out.println("Login Connected");;
 
-            String sql = "select * from bank.account where Email=? and PASS=?";
+            String sql = "select * from bank.user where Email=? and PASS=?";
 
             ps = con.prepareStatement(sql);
 
@@ -76,7 +77,7 @@ public class  Loginservlet extends HttpServlet {
                 //System.out.println("nameDB: " + nameDB);
                 //System.out.println("userID: " + userIdDB);
             }
-            String sql1 = "select * from bank.account where Email=?";
+            String sql1 = "select * from bank.user where Email=?";
             ps = con.prepareStatement(sql1);
             ps.setString(1, email);
             rs = ps.executeQuery();
@@ -85,18 +86,13 @@ public class  Loginservlet extends HttpServlet {
             }
             //request.setAttribute("Fname", nameDB);
 
-
-
-
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
                 System.out.println("in If");
-                //    public account(String email, String fname, String lname, String password, double balance, String type, Date dob, String phone, String address) {
                 user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
-
-                response.sendRedirect("view-Balance.jsp");
+                response.sendRedirect("View-Balance.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
                 user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 
