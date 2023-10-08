@@ -15,19 +15,24 @@ import java.sql.SQLException;
 
 public class CardDAO{
 
-    // String url = "jdbc:mysql://127.0.0.1:3306/bank?allowPublicKeyRetrieval=true&useSSL=false";
-    // String username = "root";
-    // String password = "root"; 
    
-    String url = "jdbc:mysql://asdbank.mysql.database.azure.com:3306/asdbank?useSSL=false";
-    String username = "xiaobing01";
-    String password = "admin0-=";
-    
+    // String url = "jdbc:mysql://asdbank.mysql.database.azure.com:3306/asdbank?useSSL=false";
+    // String username = "xiaobing01";
+    // String password = "admin0-=";
+    // String driver = "com.mysql.cj.jdbc.Driver";
+
+    String url = "jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
+    String username = "advancedsoftware";
+    String password = "Welcome1!";
+    String driver = "com.mysql.cj.jdbc.Driver";
+
+
+ 
 
     protected Connection getConnection(){
         Connection conn = null;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(driver);
             
             conn = DriverManager.getConnection(url, username, password);
             return conn;
@@ -95,9 +100,38 @@ public class CardDAO{
     }
 
     // find card information by customer id
+    // public List<Card> findCardByCustomerId(String customerId) {
+    //     List<Card> cards = new ArrayList<>();
+    //     String sql = "SELECT * FROM card WHERE customer_id = ?";
+    //     try (Connection conn = getConnection();
+    //             PreparedStatement stmt = conn.prepareStatement(sql);){
+
+    //         stmt.setString(1, customerId);
+    //         ResultSet rs = stmt.executeQuery();
+            
+    //         while(rs.next()){
+    //             String cardNumber = rs.getString("card_number");
+    //             String cardHolder = rs.getString("card_holder");
+    //             String expiryDate = rs.getString("expiry_date");
+    //             String cvv = rs.getString("CVV");
+    //             String cardType = rs.getString("card_type");
+    //             String cardStatus = rs.getString("card_status");
+                
+    //             String accountId = rs.getString("account_id");
+    //             Double balance = rs.getDouble("balance");
+    //             String pin = rs.getString("pin");
+    //             cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));
+    //         }
+            
+    //     } catch (SQLException e) {
+    //         e.printStackTrace();
+    //     }
+    //     return cards;
+    // }
+        // find card information by account id
     public List<Card> findCardByCustomerId(String customerId) {
         List<Card> cards = new ArrayList<>();
-        String sql = "SELECT * FROM card WHERE customerId = ?";
+        String sql = "SELECT * FROM card WHERE customer_id = ?";
         try (Connection conn = getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql);){
 
@@ -111,8 +145,38 @@ public class CardDAO{
                 String cvv = rs.getString("CVV");
                 String cardType = rs.getString("card_type");
                 String cardStatus = rs.getString("card_status");
-                
                 String accountId = rs.getString("account_id");
+                
+                Double balance = rs.getDouble("balance");
+                String pin = rs.getString("pin");
+                cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cards;
+    }
+
+        // find card information by account id
+    public List<Card> findCardByAccountId(String accountId) {
+        List<Card> cards = new ArrayList<>();
+        String sql = "SELECT * FROM card WHERE account_id = ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);){
+
+            stmt.setString(1, accountId);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                String cardNumber = rs.getString("card_number");
+                String cardHolder = rs.getString("card_holder");
+                String expiryDate = rs.getString("expiry_date");
+                String cvv = rs.getString("CVV");
+                String cardType = rs.getString("card_type");
+                String cardStatus = rs.getString("card_status");
+                String customerId = rs.getString("customer_id");
+                
                 Double balance = rs.getDouble("balance");
                 String pin = rs.getString("pin");
                 cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));
@@ -152,35 +216,7 @@ public class CardDAO{
         return cards;
     }
 
-    // find card information by account id
-    public List<Card> findCardByAccountId(String accountId) {
-        List<Card> cards = new ArrayList<>();
-        String sql = "SELECT * FROM card WHERE accountId = ?";
-        try (Connection conn = getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql);){
 
-            stmt.setString(1, accountId);
-            ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                String cardNumber = rs.getString("card_number");
-                String cardHolder = rs.getString("card_holder");
-                String expiryDate = rs.getString("expiry_date");
-                String cvv = rs.getString("CVV");
-                String cardType = rs.getString("card_type");
-                String cardStatus = rs.getString("card_status");
-                String customerId = rs.getString("customer_id");
-                
-                Double balance = rs.getDouble("balance");
-                String pin = rs.getString("pin");
-                cards.add(new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, cardStatus, customerId, accountId, balance, pin));
-            }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return cards;
-    }
 
     
 
