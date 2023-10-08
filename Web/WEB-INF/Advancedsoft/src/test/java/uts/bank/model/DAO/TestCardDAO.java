@@ -64,6 +64,14 @@ public class TestCardDAO {
         Card actual = aCardDAO.findCard("5125763023039519");
         Assertions.assertEquals(expected, actual.getCardStatus());
     }
+    @Test
+    //test change pin method
+    public void ftestChangePin() throws Exception {
+        aCardDAO.changePin("5125763023039519", "4321");
+        String expected = "4321";
+        Card actual = aCardDAO.findCard("5125763023039519");
+        Assertions.assertEquals(expected, actual.getPin());
+    }
 
     @AfterAll
     public static void tearDown() throws Exception {
