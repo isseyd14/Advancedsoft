@@ -11,7 +11,7 @@ pool:
 steps:
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec:  '11'
+    versionSpec:  '19'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 - task: Maven@3
@@ -19,7 +19,7 @@ steps:
     mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '11'
+    jdkVersionOption: '19'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
