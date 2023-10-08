@@ -55,10 +55,10 @@ public class TestCardDAO {
         Assertions.assertEquals(expected, actual.getCardStatus());
     }
 
-    @AfterAll
-    public static void tearDown() throws Exception {
-        aCardDAO.deleteCard("5125763023039519");
-    }
+    // @AfterAll
+    // public static void tearDown() throws Exception {
+    //     aCardDAO.deleteCard("5125763023039519");
+    // }
 
     
 
