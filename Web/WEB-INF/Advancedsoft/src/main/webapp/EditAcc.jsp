@@ -39,10 +39,9 @@
 <%        user iop = (user) session.getAttribute("User");%>
 
 <div class="container" style="margin-top: 50px;">
-    <div class="col-md-6 col-md-offset-3">
-                <h2>Edit Details</h2>
-            </div>
             <div class="panel-body">
+                <caption><h2>Edit details</h2></caption>
+                <br>
                 <form action="UpdateUserServlet" method="post">
                     <div class="form-group">
                         <label for="fname">First Name:</label>

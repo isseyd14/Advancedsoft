@@ -20,6 +20,7 @@
         /* Your existing styles here */
 
         /* Add additional styles for the new form fields if needed */
+        .form-group input[type="email"],
         .form-group input[type="text"],
         .form-group input[type="password"],
         .form-group input[type="number"],
@@ -146,6 +147,7 @@
         <div class="login-box">
             <h3>Create an Account</h3>
             <form action="RegisterServlet" method="post" onsubmit="return validateForm()">
+
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" title="Please enter a valid email address">

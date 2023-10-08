@@ -5,7 +5,11 @@
 <html lang="en">
 <head>
   <style>
-
+    .logo {
+      max-width: 40px; /* Adjust the maximum width as needed */
+      margin-right: 20px; /* Add some spacing between the logo and text */
+      max-height: 40px;
+    }
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <meta charset="UTF-8">
@@ -23,6 +27,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
+      <img src="logo.png" alt="Logo" class="logo">
+
       <a class="navbar-brand" href="#">Frontline Bank</a>
     </div>
     <ul class="nav navbar-nav">
@@ -65,7 +71,7 @@
     <button type="submit" class="btn btn-primary" name="changePassword">Edit Details</button>
   </form>
   <br>
-  <form action="changePasswordServlet" method="post">
+  <form action="ChangePassword.jsp" method="post">
     <button type="submit" class="btn btn-primary" name="changePassword">Change Password</button>
   </form>
   <br>
