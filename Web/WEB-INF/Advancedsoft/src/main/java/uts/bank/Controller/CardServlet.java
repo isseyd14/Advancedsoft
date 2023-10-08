@@ -37,6 +37,21 @@ public class CardServlet extends BaseServlet {
 
     }
 
+    //select card by customer ID
+    public void selectByCustomerId(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            //String customerId = request.getParameter("customerId");
+            List<Card> listCard = cardDAO.findCardByCustomerId("1001");
+            session.setAttribute("listCard", listCard);
+            if(listCard !=null){
+            
+            response.sendRedirect("../card.jsp");
+            
+      }
+
+    }
+
     public void edit(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
@@ -62,7 +77,7 @@ public class CardServlet extends BaseServlet {
             String expiryDate = request.getParameter("expiryDate");
             String cvv = request.getParameter("cvv");
             String cardType = request.getParameter("cardType");
-            Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", "1001", "2001", 0, "1234");        
+            Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", "3001", "2001", 0, "1234");        
            
            
             Boolean isError = false;
