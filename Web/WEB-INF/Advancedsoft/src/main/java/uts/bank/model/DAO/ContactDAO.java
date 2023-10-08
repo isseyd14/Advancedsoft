@@ -62,4 +62,17 @@ public class ContactDAO {
         }
         return contacts;
     }
+
+    public void deleteAccount(String accountName) throws SQLException {
+        String sql = "DELETE FROM contacts WHERE owner_email = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);) {
+
+            stmt.setString(1, accountName);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
