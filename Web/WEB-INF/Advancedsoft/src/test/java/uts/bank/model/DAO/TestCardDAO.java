@@ -7,7 +7,7 @@ import org.junit.jupiter.api.*;
 
 import uts.bank.model.Card;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class TestCardDAO {
 
 
@@ -19,7 +19,7 @@ public class TestCardDAO {
         aCard = new Card("5125763023039519", "John Doe", "12/25", "123", "Visa", "Active", "6001", "6001", 0, "1234");
         
     }
-    @Order(1)
+    
     @Test
     //test addCard method
     public void testAddCard() throws Exception {
@@ -28,10 +28,10 @@ public class TestCardDAO {
         Card actual = aCardDAO.findCard("5125763023039519");
         Assertions.assertEquals(expected.getCardNumber(), actual.getCardNumber());
     }
-    @Order(2)
+    
     @Test
     //test findCardbyaccountid method
-    public void testFindCardByAccountId() throws Exception {
+    public void testAFindCardByAccountId() throws Exception {
 
         List<Card> actual = aCardDAO.findCardByAccountId("6001");
         //System.out.println(expected);
@@ -39,7 +39,7 @@ public class TestCardDAO {
         Assertions.assertEquals(1, actual.size());
     }
 
-    @Order(4)
+    
     @Test
     //test blockCard method
     public void testBlockCard() throws Exception {
@@ -48,16 +48,16 @@ public class TestCardDAO {
         Card actual = aCardDAO.findCard("5125763023039519");
         Assertions.assertEquals(expected, actual.getCardStatus());
     }
-    @Order(5)
+    
     @Test
     //test activate card method
-    public void testActiveCard() throws Exception {
+    public void testCActiveCard() throws Exception {
         aCardDAO.activateCard("5125763023039519");
         String expected = "Active";
         Card actual = aCardDAO.findCard("5125763023039519");
         Assertions.assertEquals(expected, actual.getCardStatus());
     }
-    @Order(6)
+    
     @Test
     //test change pin method
     public void testChangePin() throws Exception {
