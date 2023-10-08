@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-@WebServlet("/LoginServlet")
+@WebServlet("/viewbalanceServlet")
 public class viewbalanceservlet extends HttpServlet {
     private void setSessionAttrs(HttpSession session, String email ) {
         session.setAttribute("email", email);

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-@WebServlet("/LogiServlet")
+@WebServlet("/paytransferServlet")
 public class paytransferservlet extends HttpServlet {
     private void setSessionAttrs(HttpSession session, String email ) {
         session.setAttribute("email", email);
