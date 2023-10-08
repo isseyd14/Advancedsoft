@@ -16,15 +16,15 @@ import java.sql.SQLException;
 public class CardDAO{
 
    
-    String url = "jdbc:mysql://asdbank.mysql.database.azure.com:3306/asdbank?useSSL=false";
-    String username = "xiaobing01";
-    String password = "admin0-=";
-    String driver = "com.mysql.cj.jdbc.Driver";
-
-    // String url = "jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
-    // String username = "advancedsoftware";
-    // String password = "Welcome1!";
+    // String url = "jdbc:mysql://asdbank.mysql.database.azure.com:3306/asdbank?useSSL=false";
+    // String username = "xiaobing01";
+    // String password = "admin0-=";
     // String driver = "com.mysql.cj.jdbc.Driver";
+
+    String url = "jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
+    String username = "advancedsoftware";
+    String password = "Welcome1!";
+    String driver = "com.mysql.cj.jdbc.Driver";
 
 
  
