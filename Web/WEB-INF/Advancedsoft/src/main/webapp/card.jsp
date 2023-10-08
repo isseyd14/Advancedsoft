@@ -60,6 +60,9 @@
       
     <div>
     <a href="addCard.jsp" class="btn btn-info" role="button">Add New Card</a>
+   
+    <a href="card/selectByCustomerId" class="btn btn-info" role="button">Select By Customer Id</a>
+
     </div>
     </div> 
 </body>

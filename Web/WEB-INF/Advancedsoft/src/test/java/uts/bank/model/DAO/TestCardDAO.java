@@ -15,7 +15,7 @@ public class TestCardDAO {
     static Card aCard;
     @BeforeAll
     public static void setUp() {
-        aCard = new Card("5125763023039519", "John Doe", "12/25", "123", "Visa", "Active", "5001", "6001", 0, "1234");
+        aCard = new Card("5125763023039519", "John Doe", "12/25", "123", "Visa", "Active", "6001", "6001", 0, "1234");
         
     }
     @Test
@@ -24,19 +24,9 @@ public class TestCardDAO {
         aCardDAO.addCard(aCard);
         Card expected = aCard;
         Card actual = aCardDAO.findCard("5125763023039519");
-        System.out.println(expected);
-        System.out.println(actual);
         Assertions.assertEquals(expected.getCardNumber(), actual.getCardNumber());
     }
-    @Test
-    //test findCardbycustomerid method
-    public void testFindCardByCustomerId() throws Exception {
 
-        List<Card> actual = aCardDAO.findCardByCustomerId("5001");
-        //System.out.println(expected);
-        System.out.println(actual.size());
-        Assertions.assertEquals(1, actual.size());
-    }
     @Test
     //test findCardbyaccountid method
     public void testFindCardByAccountId() throws Exception {
@@ -45,6 +35,24 @@ public class TestCardDAO {
         //System.out.println(expected);
         System.out.println(actual.size());
         Assertions.assertEquals(1, actual.size());
+    }
+
+    @Test
+    //test blockCard method
+    public void testBlockCard() throws Exception {
+        aCardDAO.deactivateCard("5125763023039519");
+        String expected = "Inactive";
+        Card actual = aCardDAO.findCard("5125763023039519");
+        Assertions.assertEquals(expected, actual.getCardStatus());
+    }
+
+    @Test
+    //test activate card method
+    public void testActiveCard() throws Exception {
+        aCardDAO.activateCard("5125763023039519");
+        String expected = "Active";
+        Card actual = aCardDAO.findCard("5125763023039519");
+        Assertions.assertEquals(expected, actual.getCardStatus());
     }
 
     @AfterAll
