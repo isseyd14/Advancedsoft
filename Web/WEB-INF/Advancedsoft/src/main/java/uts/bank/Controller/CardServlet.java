@@ -41,8 +41,8 @@ public class CardServlet extends BaseServlet {
     public void selectByCustomerId(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            //String customerId = request.getParameter("customerId");
-            List<Card> listCard = cardDAO.findCardByCustomerId("1001");
+            String customerId = (String)session.getAttribute("email");
+            List<Card> listCard = cardDAO.findCardByCustomerId(customerId);
             session.setAttribute("listCard", listCard);
             if(listCard !=null){
             

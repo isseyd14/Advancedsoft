@@ -23,7 +23,7 @@ public class ChangePasswordservlet extends HttpServlet {
         ResultSet rs = null;
         try {
             if (user.getPassword().equals(oldpass) ) {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
                     "advancedsoftware", "Welcome1!");
             String sql = "UPDATE bank.user SET Pass=? WHERE Email=?";
