@@ -27,7 +27,7 @@ public class Registerservlet extends HttpServlet {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
                     "advancedsoftware", "Welcome1!");
             String sql = "SELECT * FROM bank.user WHERE Email=?";

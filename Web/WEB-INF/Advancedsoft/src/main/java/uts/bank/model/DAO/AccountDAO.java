@@ -14,7 +14,7 @@ public class AccountDAO {
         Connection con;
         try{
             String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
             return con;
         } catch (SQLException | ClassNotFoundException e){
