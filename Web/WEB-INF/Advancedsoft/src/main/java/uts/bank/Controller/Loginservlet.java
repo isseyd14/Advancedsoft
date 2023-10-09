@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import uts.bank.model.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -15,7 +16,7 @@ import java.sql.*;
 @WebServlet("/LoginServlet")
 public class Loginservlet extends HttpServlet {
     private void setSessionAttrs(HttpSession session,  user acc ) {
-        session.setAttribute("email", acc.getFname());
+        session.setAttribute("email", acc.getEmail());
         session.setAttribute("User", acc);
         //session.setAttribute("name", nameDB);
     }
@@ -90,14 +91,14 @@ public class Loginservlet extends HttpServlet {
                 System.out.println("in If");
                 user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, acco, nameDB);
+                setSessionAttrs(session, acco);
                 //createUserLog(session, con, email);
                 response.sendRedirect("View-Balance.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
                 user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, acco, nameDB);
+                setSessionAttrs(session, acco);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("staff-home.jsp");

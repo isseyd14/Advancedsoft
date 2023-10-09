@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/bank</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="bank@advancedsoftwareserver.mysql.database.azure.com" uuid="dfeab5ef-1497-4d70-9eae-f4f0ccefa606">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
