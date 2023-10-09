@@ -5,10 +5,13 @@
   Time: 4:06 pm
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontline Bank - Login</title>
@@ -37,13 +40,6 @@
             margin-top: 50px;
         }
 
-        /*.login-box {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }*/
         h1 {
             margin: 55px 0 0 0;
             font-size: 36px;
@@ -64,8 +60,9 @@
         }
 
         .logo {
-            max-width: 100px; /* Adjust the maximum width as needed */
+            max-width: 40px; /* Adjust the maximum width as needed */
             margin-right: 20px; /* Add some spacing between the logo and text */
+            max-height: 40px;
         }
 
         .form-group label {
@@ -108,10 +105,16 @@
 </head>
 <body>
 
-<header>
-    <img src="logo.png" alt="Logo" class="logo">
-    <h1>Frontline Bank</h1>
-</header>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="logo.png" alt="Logo" class="logo">
+            <a class="navbar-brand" href="#">Frontline Bank</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+    </div>
+</nav>
 
 <div class="banner">
     <h2>Hi, welcome to Frontline Bank. Please log in to your account.</h2>
@@ -146,8 +149,3 @@
 </div>
 </body>
 </html>
-
-
-
-
-
