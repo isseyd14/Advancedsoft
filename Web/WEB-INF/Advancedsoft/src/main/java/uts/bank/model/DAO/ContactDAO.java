@@ -63,12 +63,12 @@ public class ContactDAO {
         return contacts;
     }
 
-    public void deleteAccount(String accountName) throws SQLException {
+    public void deleteAccount(String ownerEmail) throws SQLException {
         String sql = "DELETE FROM contacts WHERE owner_email = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
-            stmt.setString(1, accountName);
+            stmt.setString(1, ownerEmail);
             stmt.executeUpdate();
 
         } catch (SQLException e) {

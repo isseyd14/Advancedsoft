@@ -43,7 +43,7 @@ class ContactDAOTest {
 
     @AfterAll
     public static void tearDown() throws Exception{
-        testContactDAO.deleteAccount("unit Test Account");
+        testContactDAO.deleteAccount("unit test email");
     }
 
 
