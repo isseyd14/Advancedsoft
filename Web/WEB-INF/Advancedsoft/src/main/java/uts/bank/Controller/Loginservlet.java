@@ -92,6 +92,7 @@ public class Loginservlet extends HttpServlet {
                 user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);
+                session.setAttribute("email", acco.getEmail());
                 //createUserLog(session, con, email);
                 response.sendRedirect("View-Balance.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
