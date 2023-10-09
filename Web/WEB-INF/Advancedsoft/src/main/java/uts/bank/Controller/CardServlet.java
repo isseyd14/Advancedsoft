@@ -72,12 +72,13 @@ public class CardServlet extends BaseServlet {
             HttpSession session = request.getSession();
             Validator validator = new Validator();
             validator.clear(session);
+            String customerId = (String)session.getAttribute("email");
             String cardNumber = request.getParameter("cardNumber");
             String cardHolder = request.getParameter("cardHolder");
             String expiryDate = request.getParameter("expiryDate");
             String cvv = request.getParameter("cvv");
             String cardType = request.getParameter("cardType");
-            Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", "3001", "2001", 0, "1234");        
+            Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", customerId, "2001", 0, "1234");        
            
            
             Boolean isError = false;
@@ -101,7 +102,7 @@ public class CardServlet extends BaseServlet {
             if(!isError){
                 try {
                     cardDAO.addCard(newCard);
-                    response.sendRedirect("selectAll");
+                    response.sendRedirect("selectByCustomerId");
                 } catch (SQLException | NullPointerException ex) {
                     Logger.getLogger(CardServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -124,7 +125,7 @@ public class CardServlet extends BaseServlet {
             cardDAO.deleteCard(cardNumber);
             
 
-            response.sendRedirect("selectAll");
+            response.sendRedirect("selectByCustomerId");
             
     
             }catch (SQLException | NullPointerException ex) {
@@ -143,7 +144,7 @@ public class CardServlet extends BaseServlet {
             cardDAO.activateCard(cardNumber);
             
 
-            response.sendRedirect("selectAll");
+            response.sendRedirect("selectByCustomerId");
             
     
             }catch (SQLException | NullPointerException ex) {
@@ -162,7 +163,7 @@ public class CardServlet extends BaseServlet {
             cardDAO.deactivateCard(cardNumber);
             
 
-            response.sendRedirect("selectAll");
+            response.sendRedirect("selectByCustomerId");
             
     
             }catch (SQLException | NullPointerException ex) {
@@ -183,7 +184,7 @@ public class CardServlet extends BaseServlet {
             cardDAO.changePin(cardNumber, pin);
             
 
-            response.sendRedirect("../selectAll");
+            response.sendRedirect("../selectByCustomerId");
             
     
             }catch (SQLException | NullPointerException ex) {

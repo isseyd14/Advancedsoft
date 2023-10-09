@@ -20,7 +20,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="#">Account</a></li>
-            <li><a href="card/selectAll">Card</a></li>
+            <li><a href="card/selectByCustomerId">Card</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
@@ -28,9 +28,8 @@
           </ul>
         </div>
       </nav>
-    <div class="container" style="margin-top:50px">
-        <p> card number is ${cardNumber} and </p> 
-        <p> <c:out value="${cardNumber}" /> </p>
+    <div class="container" style="margin-top:100px">
+        
             <form action="card/changePin" method="post">
                 <input type="hidden" name="cardNumber" value="${cardNumber}">
                 <label for="pin">Pin</label>
