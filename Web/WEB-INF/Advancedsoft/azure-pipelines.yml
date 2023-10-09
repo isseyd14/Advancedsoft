@@ -27,12 +27,10 @@ steps:
     goals: 'package'
 # Maven
 - task: Maven@3
-  displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
     mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
     mavenOptions: '-Xmx3072m'
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     command: 'test'
-    arguments: '--no-build --configuration $(buildConfiguration)'
     publishTestResults: true
     projects: '**/*.test.java'
