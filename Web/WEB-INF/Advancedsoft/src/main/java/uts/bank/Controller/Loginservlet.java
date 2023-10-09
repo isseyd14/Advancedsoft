@@ -14,12 +14,13 @@ import java.sql.*;
 
 @WebServlet("/LoginServlet")
 public class Loginservlet extends HttpServlet {
-    private void setSessionAttrs(HttpSession session, String email ) {
-        session.setAttribute("email", email);
+    private void setSessionAttrs(HttpSession session,  user acc ) {
+        session.setAttribute("email", acc.getFname());
+        session.setAttribute("User", acc);
         //session.setAttribute("name", nameDB);
     }
 
-    @Override
+   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -35,14 +36,12 @@ public class Loginservlet extends HttpServlet {
         ResultSet rs = null;
 
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
-            //con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root?autoReconnect=true&useSSL=false", "root", "root");
-            String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
-            System.out.println("Login Connected");
+            con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
+                    "advancedsoftware", "Welcome1!");
+            System.out.println("Login Connected");;
 
-            String sql = "select * from bank.User where Email=? and PASS=?";
+            String sql = "select * from bank.user where Email=? and PASS=?";
 
             ps = con.prepareStatement(sql);
 
@@ -51,8 +50,13 @@ public class Loginservlet extends HttpServlet {
 
             String emailDB = "";
             String passwordDB = "";
-            String typeDB = "";
-            //String nameDB = "";
+            String typeDB = "customer";
+            String nameDB = "";
+            String LnameDB = "";
+            String Address = "";
+            String Phone = "";
+            double bal = 0;
+            Date dob = null;
             //int userIdDB = 0;
 
             rs = ps.executeQuery();
@@ -60,29 +64,40 @@ public class Loginservlet extends HttpServlet {
 
             while(rs.next()) {
                 emailDB = rs.getString("email");
-                passwordDB = rs.getString("Pass");
+                passwordDB = rs.getString("PASS");
                 typeDB = rs.getString("Type");
-                //nameDB = rs.getString("name");
-                //userIdDB = rs.getInt("userID");
+                nameDB = rs.getString("Fname");
+                LnameDB = rs.getString("Lname");
+                Address = rs.getString("Address");
+                Phone = rs.getString("Phone");
+                dob = rs.getDate("dob");
 
                 System.out.println("emailDB: " + emailDB);
                 System.out.println("passwordDB: " + passwordDB);
                 //System.out.println("nameDB: " + nameDB);
                 //System.out.println("userID: " + userIdDB);
             }
+            String sql1 = "select * from bank.user where Email=?";
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                nameDB = rs.getString(("Fname"));
+            }
+            //request.setAttribute("Fname", nameDB);
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
-                System.out.println("in customer");
-
+                System.out.println("in If");
+                user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email);
+                setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
-
-                response.sendRedirect("viewbalanceservlet");
+                response.sendRedirect("View-Balance.jsp");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
+                user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 
                 HttpSession session = request.getSession();
-                setSessionAttrs(session, email);
+                setSessionAttrs(session, acco, nameDB);
                 //createUserLog(session, con, email);
 
                 response.sendRedirect("staff-home.jsp");
@@ -112,5 +127,3 @@ public class Loginservlet extends HttpServlet {
         }
     }
 }
-
-
