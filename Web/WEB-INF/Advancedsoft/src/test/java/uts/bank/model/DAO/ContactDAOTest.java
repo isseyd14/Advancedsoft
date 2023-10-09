@@ -23,7 +23,7 @@ class ContactDAOTest {
     }
 
     @Test
-    void addContact() throws SQLException {
+    public void addContact() throws SQLException {
         testContactDAO.addContact(testContact);
         List<Contact> actual = testContactDAO.findContacts("unit test email");
         boolean accountFound = false;
