@@ -1,4 +1,4 @@
-package uts.bank.advancedsoft;
+package uts.bank.Controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-@WebServlet("/paytransferServlet")
+@WebServlet("/paytransferservlet")
 public class paytransferservlet extends HttpServlet {
     private void setSessionAttrs(HttpSession session, String email ) {
         session.setAttribute("email", email);

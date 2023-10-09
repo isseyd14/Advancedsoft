@@ -70,7 +70,7 @@
 <div class="banner">
   <h2>Hi welcome to Frontline bank please login by clicking below</h2>
 </div>
-<div class="centered-button-container">
+<div >
   <a href="login.jsp" class="centered-button">Go to Login</a>
 </div>
 </body>

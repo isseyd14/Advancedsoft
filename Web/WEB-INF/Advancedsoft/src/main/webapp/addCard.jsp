@@ -9,8 +9,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 </head>
 <body>
+
+    <% 
+      
+      String cardErr = (String)session.getAttribute("cardErr");
+      String nameErr = (String)session.getAttribute("nameErr");
+      String expErr = (String)session.getAttribute("expErr");
+      String cvvErr = (String)session.getAttribute("cvvErr");
+    %>
+   
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -19,7 +29,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="#">Account</a></li>
-            <li><a href="CardServlet">Card</a></li>
+            <li><a href="card/selectAll">Card</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
@@ -31,16 +41,16 @@
     <div class="container" style="margin-top:50px"> 
     <h2>Card Management</h2>
 
-    <form action="AddCardServlet" method="post">
+    <form action="card/add" method="post">
     <div class="form-group">
-        <label for="cardNumber">Card Number:</label>
+        <label for="cardNumber">Card Number: <br><span class = "text-danger"> <%=(cardErr != null ? cardErr : "")%> </span> </label>
         
             <input class="form-control" type="text" id="cardNumber" name="cardNumber"><br><br>
         
     </div>
 
     <div class="form-group">
-    <label for="cardHolder">Card Holder:</label>
+    <label for="cardHolder">Card Holder:<br><span class = "text-danger"> <%=(nameErr != null ? nameErr : "")%> </span></label>
    
     <input class="form-control" type="text" id="cardHolder" name="cardHolder"><br><br>
     
@@ -55,7 +65,7 @@
 
 
     <div class="form-group">
-    <label for="cardExpiry">Card Expiry:</label>
+    <label for="cardExpiry">Card Expiry: <br><span class = "text-danger"> <%=(expErr != null ? expErr : "")%> </span></label>
 
     <input class="form-control" type="text" id="expiryDate" name="expiryDate"><br><br>
     </div>
@@ -63,7 +73,7 @@
 
 
     <div class="form-group">
-    <label for="cardCvv">Card CVV:</label>
+    <label for="cardCvv">Card CVV: <br><span class = "text-danger"> <%=(cvvErr != null ? cvvErr : "")%> </span></label>
 
     <input class="form-control" type="text" id="cvv" name="cvv"><br><br>
     </div>

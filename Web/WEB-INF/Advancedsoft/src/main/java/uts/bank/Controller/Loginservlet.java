@@ -1,6 +1,5 @@
 package uts.bank.Controller;
 
-import uts.bank.model.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,13 +13,14 @@ import java.sql.*;
 
 
 @WebServlet("/LoginServlet")
-public class  Loginservlet extends HttpServlet {
-    private void setSessionAttrs(HttpSession session, user acc, String nameDB ) {
+public class Loginservlet extends HttpServlet {
+    private void setSessionAttrs(HttpSession session,  user acc ) {
+        session.setAttribute("email", acc.getFname());
         session.setAttribute("User", acc);
-        session.setAttribute("Fname", nameDB);
+        //session.setAttribute("name", nameDB);
     }
 
-    @Override
+   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");

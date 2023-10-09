@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- issey_release1
+- josh_release1
 
 pool:
   vmImage: ubuntu-latest
@@ -14,7 +14,6 @@ steps:
     versionSpec:  '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
-
 - task: Maven@3
   inputs:
     mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'

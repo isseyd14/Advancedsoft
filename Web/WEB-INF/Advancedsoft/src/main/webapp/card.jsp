@@ -19,7 +19,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="#">Account</a></li>
-            <li><a href="CardServlet">Card</a></li>
+            <li><a href="card/selectAll">Card</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
@@ -31,20 +31,28 @@
         <table class="table table-hover">
             <caption><h2>List of Cards</h2></caption>
             <tr>
-                <th>Card Number</th>
-                <th>Card Holder</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th class="col-md-3">Card Number</th>
+                <th class="col-md-3">Pin</th>
+                <th class="col-md-3">Status</th>
+                <th class="col-md-3">Action</th>
 
             </tr>
             <c:forEach var="card" items="${listCard}">
                 <tr>
                     <td><c:out value="${card.cardNumber}" /></td>
-                    <td><c:out value="${card.cardHolder}" /></td>
+                    <td><c:out value="${card.pin}" /></td>
                     <td><c:out value="${card.cardStatus}" /></td>
+                   
                     <td>
-     
-                        <a href="DeleteCardServlet?cardNumber=<c:out value='${card.cardNumber}' />">Delete</a>                     
+                      <a href="card/edit?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Change Pin</a>
+                      <a href="card/delete?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Delete</a> 
+                      <c:if test="${card.cardStatus == 'Active'}">
+                        <a href="card/deactivate?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Block</a>
+                      </c:if>
+                      <c:if test="${card.cardStatus == 'Inactive'}">  
+                        <a href="card/activate?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Activate</a>
+                      </c:if>
+                                           
                     </td>
                 </tr>
             </c:forEach>
@@ -52,6 +60,9 @@
       
     <div>
     <a href="addCard.jsp" class="btn btn-info" role="button">Add New Card</a>
+   
+    <a href="card/selectByCustomerId" class="btn btn-info" role="button">Select By Customer Id</a>
+
     </div>
     </div> 
 </body>

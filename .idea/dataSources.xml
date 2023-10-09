@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="29642cc3-1725-477d-8fd2-131922d2e373">
+    <data-source source="LOCAL" name="@advancedsoftwareserver.mysql.database.azure.com" uuid="d89e2948-0754-48f9-b087-60d7e0cfb430">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/bank</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="bank@advancedsoftwareserver.mysql.database.azure.com" uuid="f898cb6f-44bc-4980-9897-6c4e2c44e4e3">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank</jdbc-url>
+      <jdbc-url>jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

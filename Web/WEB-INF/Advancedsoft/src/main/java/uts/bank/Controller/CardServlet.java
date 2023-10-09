@@ -1,45 +1,196 @@
 package uts.bank.Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-import jakarta.servlet.RequestDispatcher;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import uts.bank.model.Card;
 import uts.bank.model.DAO.CardDAO;
 
-@WebServlet("/CardServlet")
-public class CardServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+@WebServlet("/card/*")
+public class CardServlet extends BaseServlet {
+
     private CardDAO cardDAO;
 
     public CardServlet() {
         this.cardDAO = new CardDAO();
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    
+    public void selectAll(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        this.doGet(request, response);
-        }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            
             HttpSession session = request.getSession();
             List<Card> listCard = cardDAO.findAllCards();
             session.setAttribute("listCard", listCard);
             if(listCard !=null){
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("card.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("../card.jsp");
+            
       }
+
     }
 
+    //select card by customer ID
+    public void selectByCustomerId(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            //String customerId = request.getParameter("customerId");
+            List<Card> listCard = cardDAO.findCardByCustomerId("1001");
+            session.setAttribute("listCard", listCard);
+            if(listCard !=null){
+            
+            response.sendRedirect("../card.jsp");
+            
+      }
 
+    }
+
+    public void edit(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+            System.out.println(cardNumber);
+            request.getRequestDispatcher("../changepin.jsp").forward(request, response);
+
+    }
+    // public void newCard(HttpServletRequest request, HttpServletResponse response)
+    //         throws ServletException, IOException {
+    //         request.getRequestDispatcher("addCard.jsp").forward(request, response);
+
+    // }
+
+    public void add(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            Validator validator = new Validator();
+            validator.clear(session);
+            String cardNumber = request.getParameter("cardNumber");
+            String cardHolder = request.getParameter("cardHolder");
+            String expiryDate = request.getParameter("expiryDate");
+            String cvv = request.getParameter("cvv");
+            String cardType = request.getParameter("cardType");
+            Card newCard = new Card(cardNumber, cardHolder, expiryDate, cvv, cardType, "Active", "3001", "2001", 0, "1234");        
+           
+           
+            Boolean isError = false;
+            
+            if(!validator.validateCardNo(cardNumber)){
+                session.setAttribute("cardErr", "Error: Card Number format incorrect");
+                isError = true;
+            }
+            if(!validator.validateName(cardHolder)){
+                session.setAttribute("nameErr", "Error: Name format incorrect");
+                isError = true;
+            }
+            if(!validator.validateExp(expiryDate)){
+                session.setAttribute("expErr", "Error: Expiry Date format incorrect");
+                isError = true;
+            }
+            if(!validator.validateCVV(cvv)){
+                session.setAttribute("cvvErr", "Error: CVV format incorrect");
+                isError = true;
+            }
+            if(!isError){
+                try {
+                    cardDAO.addCard(newCard);
+                    response.sendRedirect("selectAll");
+                } catch (SQLException | NullPointerException ex) {
+                    Logger.getLogger(CardServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                
+                response.sendRedirect("../addCard.jsp");
+                //request.getRequestDispatcher("../addCard.jsp").include(request, response);
+            }
+        
+    
+    }
+
+    public void delete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+         
+            try{
+            cardDAO.deleteCard(cardNumber);
+            
+
+            response.sendRedirect("selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
+
+    public void activate (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+         
+            try{
+            cardDAO.activateCard(cardNumber);
+            
+
+            response.sendRedirect("selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
+
+    public void deactivate (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            session.setAttribute("cardNumber", cardNumber);
+         
+            try{
+            cardDAO.deactivateCard(cardNumber);
+            
+
+            response.sendRedirect("selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
+
+    public void changePin (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String cardNumber = request.getParameter("cardNumber");
+            String pin = request.getParameter("pin");
+            session.setAttribute("cardNumber", cardNumber);
+            session.setAttribute("pin", pin);
+         
+            try{
+            cardDAO.changePin(cardNumber, pin);
+            
+
+            response.sendRedirect("../selectAll");
+            
+    
+            }catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
+        
+            }
+        }
 
 }
 
