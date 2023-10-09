@@ -5,10 +5,14 @@
   Time: 4:06 pm
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontline Bank - Create an Account</title>
@@ -16,6 +20,7 @@
         /* Your existing styles here */
 
         /* Add additional styles for the new form fields if needed */
+        .form-group input[type="email"],
         .form-group input[type="text"],
         .form-group input[type="password"],
         .form-group input[type="number"],
@@ -94,8 +99,9 @@
             text-align: center;
         }
         .logo {
-            max-width: 100px; /* Adjust the maximum width as needed */
+            max-width: 40px; /* Adjust the maximum width as needed */
             margin-right: 20px; /* Add some spacing between the logo and text */
+            max-height: 40px;
         }
 
         .centered-button {
@@ -120,10 +126,16 @@
     </style>
 </head>
 <body>
-<header>
-    <img src="logo.png" alt="Logo" class="logo">
-    <h1>Frontline Bank</h1>
-</header>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="logo.png" alt="Logo" class="logo">
+            <a class="navbar-brand" href="#">Frontline Bank</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+    </div>
+</nav>
 
 <div class="banner">
     <h2>Hi, welcome to Frontline Bank. Please create your account.</h2>
@@ -135,10 +147,12 @@
         <div class="login-box">
             <h3>Create an Account</h3>
             <form action="RegisterServlet" method="post" onsubmit="return validateForm()">
+
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" title="Please enter a valid email address">
                 </div>
+
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
@@ -160,13 +174,14 @@
                     <input type="text" id="address" name="address" required>
                 </div>
                 <div class="form-group">
-                    <label for="startingBalance">Starting Balance:</label>
-                    <input type="number" id="startingBalance" name="startingBalance" required>
-                </div>
-                <div class="form-group">
                     <label for="dob">Date of Birth:</label>
                     <input type="date" id="dob" name="dob" required>
                 </div>
+                <div class="form-group">
+                    <label for="Phone">Phone:</label>
+                    <input type="text" id="Phone" name="Phone" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                </div>
+
                 <div class="form-group">
                     <input type="submit" value="Create Account">
                 </div>
