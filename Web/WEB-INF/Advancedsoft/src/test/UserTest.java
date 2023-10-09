@@ -19,7 +19,7 @@ public class UserTest {
     public static void setUp(){
         Date specificSQLDate = Date.valueOf("2002-08-30");
 
-        testUser = new User("unit test email", "pass", "customer", "t", "t","t",specificSQLDate,23233);
+        testUser = new User("unit test email", "pass", "customer", "t", "t","t",specificSQLDate,"23233");
     }
     @Test
     public void testAddUser() throws SQLException {
@@ -37,7 +37,7 @@ public class UserTest {
     }
     @AfterAll
     public static void tearDown() throws Exception{
-        testCardDao.deleteAccount("unit Test email");
+        testuserDao.deleteAccount("unit Test email");
     }
 
 
