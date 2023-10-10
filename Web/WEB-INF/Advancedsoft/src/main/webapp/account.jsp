@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="uts.bank.model.user" %>
+<%@ page import="uts.bank.Controller.*" %>
+>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +78,7 @@
     <button type="submit" class="btn btn-primary" name="changePassword">Change Password</button>
   </form>
   <br>
-  <form action="deleteAccountServlet" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+  <form action="DeleteAccServlet" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
     <button type="submit" class="btn btn-danger" name="deleteAccount">Delete Account</button>
   </form>
 </div>

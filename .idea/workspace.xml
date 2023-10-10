@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/ChangePassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/ChangePassword.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/EditAcc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/EditAcc.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/View-Balance.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/View-Balance.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/add-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/add-account.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
       <workItem from="1694660423390" duration="71000" />
       <workItem from="1694675719463" duration="772000" />
       <workItem from="1696856791299" duration="734000" />
-      <workItem from="1696910776795" duration="415000" />
+      <workItem from="1696910776795" duration="598000" />
     </task>
     <servers />
   </component>
