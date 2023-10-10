@@ -14,14 +14,30 @@ public class UserDAO {
         Connection con;
         try{
             String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
             return con;
         } catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException("Error connecting to the database", e);
         }
     }
-    public void addUser(user account)throws SQLException{
+    public void updateUser(user account, String fname, String lname, String phone, String Address)throws SQLException{
+        String sql = "UPDATE bank.user SET fname=?, lname=?, phone=?, address=? WHERE Email=?";
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, fname);
+            ps.setString(2, lname);
+            ps.setString(3, phone);
+            ps.setString(4, Address);
+        ps.setString(5, account.getEmail());
+        ps.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+        public void addUser(user account)throws SQLException{
         String sql = "INSERT INTO bank.user (Email, Pass, Type, fname, lname, Address, DOB,Phone) VALUES(?,?,?,?,?,?,?,? )";
         java.sql.Date sqlDate = new java.sql.Date(account.getDob().getTime());
 
