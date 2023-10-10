@@ -24,9 +24,9 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="index.jsp">Home</a></li>
             <li><a href="Pay-Transfer.jsp">Pay and Transfer</a></li>
+            <li><a href="account.jsp">Account</a></li>
             <li><a href="savecontactservlet">Contacts Management</a></li>
             <li><a href="card/selectByCustomerId">Card</a></li>
-            <li><a href="account.jsp">Card</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
