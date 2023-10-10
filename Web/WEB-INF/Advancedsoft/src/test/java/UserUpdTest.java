@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserTest {
+public class UserUpdTest {
     static UserDAO testuserDao = new UserDAO();
 
     static user testAccount;
@@ -22,14 +22,18 @@ public class UserTest {
         testAccount = new user("unit test email", "pass", "customer", "t", "t",specificSQLDate,"23233","t");
     }
     @Test
-    public void testAddUser() throws SQLException {
+    public void testupdateUser() throws SQLException {
+        Date specificSQLDate = Date.valueOf("2002-08-30");
+
+        user updatedAccount = new user("unit test email", "passt", "customert", "t", "t",specificSQLDate,"232323","tt");
         testuserDao.addUser(testAccount);
+        testuserDao.updateUser(testAccount, "passt", "customert", "232323","tt");
         user Faccount = testuserDao.findUser(testAccount.getEmail());
         // Check if the actual list contains the testAccount
         boolean userFound = false;
 
-            if (testAccount.getEmail().equals(Faccount.getEmail())) {
-                userFound = true;
+        if (updatedAccount.getFname().equals(Faccount.getFname())&&updatedAccount.getLname().equals(Faccount.getLname())) {
+            userFound = true;
         }
         // Check if the account with the specified username was found in the list
         Assertions.assertTrue(userFound, "Account not found in the database.");
