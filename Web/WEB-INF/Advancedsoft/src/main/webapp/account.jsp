@@ -34,7 +34,7 @@
       <a class="navbar-brand" href="#">Frontline Bank</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.jsp">Home</a></li>
+      <li class="active"><a href="View-Balance.jsp">Home</a></li>
       <li><a href="Pay-Transfer.jsp">Pay and Transfer</a></li>
       <li><a href="account.jsp">Account</a></li>
       <li><a href="savecontactservlet">Contacts Management</a></li>

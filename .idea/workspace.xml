@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Advancedsoft:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +24,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="2VMynrMf5Wqe44gG3AfV4Lpibxk" />
   <component name="ProjectViewState">
@@ -130,7 +138,7 @@
       <workItem from="1694675719463" duration="772000" />
       <workItem from="1696856791299" duration="734000" />
       <workItem from="1696910776795" duration="598000" />
-      <workItem from="1696928106861" duration="279000" />
+      <workItem from="1696928106861" duration="652000" />
     </task>
     <servers />
   </component>
