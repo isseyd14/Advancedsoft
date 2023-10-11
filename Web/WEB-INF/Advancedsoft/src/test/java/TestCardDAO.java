@@ -68,7 +68,7 @@ public class TestCardDAO {
         Assertions.assertEquals(expected, actual.getPin());
     }
 
-    @Test
+    @AfterAll
     public static void testDelete() throws Exception {
         aCardDAO.deleteCard("5125763023039519");
     }
