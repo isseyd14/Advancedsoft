@@ -31,7 +31,7 @@ public class ContactTest {
     }
 
     @Test
-    public void addContact() throws SQLException {
+    public void testAddContact() throws SQLException {
         testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
         testContactDAO.addContact(testContact);
         List<Contact> actual = testContactDAO.findContacts("unit test email");
