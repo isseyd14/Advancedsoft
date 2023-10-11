@@ -69,7 +69,7 @@ public class TestCardDAO {
     }
 
     @Test
-    public static void tearDelete() throws Exception {
+    public static void testDelete() throws Exception {
         aCardDAO.deleteCard("5125763023039519");
     }
 
