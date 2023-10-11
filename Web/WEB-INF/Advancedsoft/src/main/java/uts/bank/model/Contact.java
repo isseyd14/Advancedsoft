@@ -5,6 +5,8 @@ public class Contact {
     private String contactName;
     private String contactEmail;
     private String ContactNicName;
+    private int contactId;
+
 
     public Contact(String ownerEmail, String contactName, String contactEmail, String contactNicName) {
         this.ownerEmail = ownerEmail;
@@ -43,5 +45,13 @@ public class Contact {
 
     public void setContactNicName(String contactNicName) {
         ContactNicName = contactNicName;
+    }
+
+    public int getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(int contactId) {
+        this.contactId = contactId;
     }
 }

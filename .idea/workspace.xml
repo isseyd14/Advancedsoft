@@ -9,7 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="" />
+    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/Loginservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/Loginservlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/viewbalanceservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/viewbalanceservlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/ContactDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/ContactDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/Save-Contact.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/Save-Contact.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -28,33 +39,43 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2VMynrMf5Wqe44gG3AfV4Lpibxk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.55005753",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/joshuaburke/Desktop/uni/41026 Advanced Software Development/Advancedsoft/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.55005753&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="GlassFish Server.GlassFish 7.0.0.M4">
     <configuration name="GlassFish 7.0.0.M4" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 7.0.0.M4" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="e5120d43-2c3f-47ef-9f26-65e539e05186" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Advancedsoft:war exploded">
@@ -125,6 +146,59 @@
         </option>
       </method>
     </configuration>
+    <configuration name="AccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AccountTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountTest.testAddAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AccountTest" />
+      <option name="METHOD_NAME" value="testAddAccount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContactTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ContactTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContactTest.testDeleteContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ContactTest" />
+      <option name="METHOD_NAME" value="testDeleteContact" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="GlassFish Server.GlassFish 7.0.0.M4" />
+      <item itemvalue="JUnit.AccountTest" />
+      <item itemvalue="JUnit.AccountTest.testAddAccount" />
+      <item itemvalue="JUnit.ContactTest" />
+      <item itemvalue="JUnit.ContactTest.testDeleteContact" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ContactTest" />
+        <item itemvalue="JUnit.ContactTest.testDeleteContact" />
+        <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="JUnit.AccountTest.testAddAccount" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -139,6 +213,8 @@
       <workItem from="1696856791299" duration="734000" />
       <workItem from="1696910776795" duration="598000" />
       <workItem from="1696928106861" duration="652000" />
+      <workItem from="1696979703029" duration="9936000" />
+      <workItem from="1696989696196" duration="3323000" />
     </task>
     <servers />
   </component>
