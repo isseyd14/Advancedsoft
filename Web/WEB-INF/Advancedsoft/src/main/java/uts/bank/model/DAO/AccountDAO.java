@@ -52,12 +52,13 @@ public class AccountDAO {
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
+                int accountNumber = Integer.parseInt(rs.getString("account_id"));
                 String accountEmail = rs.getString("Email");
                 String accountName = rs.getString("name");
                 String accountType = rs.getString("type");
                 double accountAvaliableFunds = rs.getDouble("avaliable_funds");
                 double accountCurrentFunds = rs.getDouble("current_funds");
-                account.add(new Account(accountEmail, accountName, accountType, accountAvaliableFunds, accountCurrentFunds));
+                account.add(new Account(accountNumber, accountEmail, accountName, accountType, accountAvaliableFunds, accountCurrentFunds));
             }
 
         } catch (SQLException e) {
@@ -76,6 +77,21 @@ public class AccountDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public int getNextAccountId() throws SQLException {
+            int accountid = 0;
+            String sql = "SELECT acccount_id FROM account ORDER BY account_id DESC FETCH FIRST ROW ONLY";
+            try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);) {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    accountid = rs.getInt(accountid);
+                }
+
+            return accountid;
         }
     }
 }
