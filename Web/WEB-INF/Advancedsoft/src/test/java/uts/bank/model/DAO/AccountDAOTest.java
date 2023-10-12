@@ -1,7 +1,6 @@
 package uts.bank.model.DAO;
 
 import org.junit.jupiter.api.*;
-import uts.bank.DAO.AccountDAO;
 import uts.bank.model.Account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

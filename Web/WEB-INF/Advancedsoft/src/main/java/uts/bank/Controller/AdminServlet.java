@@ -1,5 +1,6 @@
 package uts.bank.Controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import jakarta.servlet.http.HttpSession;
-import uts.bank.DAO.AdminDAO;
+import uts.bank.model.DAO.AdminDAO;
 import uts.bank.model.User;
 import uts.bank.model.Account;
 
@@ -32,12 +33,23 @@ public class AdminServlet extends HttpServlet {
         try {
             user = adminDAO.findUser(searchEmail);
             accounts = adminDAO.findAccounts(searchEmail);
-            session.setAttribute("user", user);
-            session.setAttribute("accounts", accounts);
-            request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
+
+            if (user != null) {
+                session.setAttribute("user", user);
+                session.setAttribute("accounts", accounts);
+                request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
+            } else {
+                request.setAttribute("errorMessage", "User does not Exist");
+                RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                rd.forward(request, response);
+                return;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
-
+            request.setAttribute("errorMessage", "User does not Exist");
+            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+            rd.forward(request, response);
+            return;
         }
 
     }

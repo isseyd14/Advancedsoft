@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.bank.model.Contact;
-import uts.bank.DAO.ContactDAO;
+import uts.bank.model.DAO.ContactDAO;
 
 import java.io.IOException;
 import java.util.List;

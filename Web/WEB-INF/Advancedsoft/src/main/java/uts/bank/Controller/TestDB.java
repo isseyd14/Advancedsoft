@@ -1,7 +1,6 @@
 package uts.bank.Controller;
-import uts.bank.DAO.AdminDAO;
+import uts.bank.model.DAO.AdminDAO;
 import uts.bank.model.Account;
-import uts.bank.model.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

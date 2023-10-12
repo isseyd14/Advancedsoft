@@ -1,4 +1,4 @@
-package uts.bank.DAO;
+package uts.bank.model.DAO;
 import uts.bank.model.Account;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

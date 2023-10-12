@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uts.bank.model.Account;
-import uts.bank.DAO.AccountDAO;
+import uts.bank.model.DAO.AccountDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;

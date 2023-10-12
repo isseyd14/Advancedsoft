@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="user" value="${sessionScope.user}" />
-<c:set var="accounts" value="${sessionScope.accounts}" />
+<%--<c:set var="user" value="${sessionScope.user}" />
+<c:set var="accounts" value="${sessionScope.accounts}" />--%>
 <%--
   Created by IntelliJ IDEA.
   User: tmcm0
@@ -17,6 +17,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         .Header {
             background-color: #222; /* Slightly darker grey for the header */
@@ -30,7 +31,7 @@
         }
 
         .body {
-            margin: auto;
+            margin-top: 4%;
             height: 80vh;
         }
 
@@ -71,20 +72,23 @@
             height: 30px;
             border: 1px solid black;
         }
-        #create_btn {
+        #back_btn {
             margin-left: 2%;
-            width: 8%;
-            height: 40px;
+            width: 6%;
+            height: 30px;
             border: 1px solid black;
+            border-radius: 5px;
         }
 
         #logout_btn {
             float: right;
             margin-right: 2%;
-            width: 8%;
-            height: 40px;
+            margin-left: 40%;
+            width: 6%;
+            height: 30px;
             border: 1px solid black;
             border-radius: 5px;
+
         }
 
         .account_actions {
@@ -119,18 +123,6 @@
             "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
 
-        #add_btn {
-            margin-right: 30px;
-            width: 20vh;
-            height: 5vh;
-            background-color: transparent;
-        }
-
-        #del_btn {
-            width: 20vh;
-            height: 5vh;
-            background-color: transparent;
-        }
 
         .account_box {
             display: flex;
@@ -197,7 +189,7 @@
             margin-left: 2%;
             padding: 1%;
             font-size: 14px;
-            color: gray;
+            color: rgb(128, 128, 128);
         }
 
         .balance {
@@ -264,16 +256,29 @@
     </style>
 </head>
 <body>
-<div class="Header">
-    <form id="header_form">
-<%--        <button type="button" id="create_btn">Create Account</button>--%>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.jsp">Frontline Bank</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="admin.jsp">Home</a></li>
+            <li><a href="#">Create Account</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<%--<div class="Header">
+        <button onclick="window.location.href='admin.jsp'" id="back_btn">Back</button>
         <input type="text" id="search_tf" placeholder="Search" />
-        <button type="button" id="logout_btn">Logout</button>
-    </form>
-</div>
+        <button onclick="window.location.href='login.jsp'" id="logout_btn">Logout</button>
+</div>--%>
 <div class="body">
     <div class="account_info">
-        <form>
+<%--        <form>--%>
             <div class="form_row">
                 <label id="accountId_T">Email:</label>
                 <label id="account_id">${user.email}</label>
@@ -290,13 +295,13 @@
                 <label id="email_T">Date of Birth:</label>
                 <label id="email">${user.DOB}</label>
             </div>
-        </form>
+<%--        </form>--%>
     </div>
     <div class="profile">
         <div class="accounts_view">
             <c:forEach items="${accounts}" var="account">
             <div class="account_box">
-                <form class="account_wrapper">
+                <div class="account_wrapper">
                     <div class="accountName_wrapper">
                         <label class="account_name">${account.accountName}</label>
                         <div class="accountNum_wrapper">
@@ -313,13 +318,16 @@
                         <label class="balance">$${account.accountCurrentFunds}</label>
                     </div>
                         <div class="account_menu">
-<%--                            <img src="Images\options.png" />--%>
-                            <form action="AdminAccountDeleteServlet" method="post">
+                            <img src="Images\options.png" />
+                            <div class="dropdown-content">
+                            <form action="AdminAccountDeleteServlet" method="get">
                                 <input type="hidden" name="accountNumber" value="${account.accountNumber}">
-                                <button type="submit" id="del_btn">Delete</button>
+                                <button type="submit" name="action" value="edit">Edit</button>
+                                <button type="submit" name="action" value="delete">Delete</button>
                             </form>
+                            </div>
                         </div>
-                </form>
+                </div>
             </div>
             </c:forEach>
         </div>
@@ -328,12 +336,3 @@
 </body>
 </html>
 
-
-
-<%--<div class="dropdown-content">--%>
-<%--    <form method="post" action="${pageContext.request.contextPath}/AdminAccountDeleteServlet">--%>
-<%--        <input type="hidden" name="accountNumber" value="${account.accountNumber}">--%>
-<%--        <button type="submit" name="action" value="edit">Edit</button>--%>
-<%--        <button type="submit" name="action" value="delete">Delete</button>--%>
-<%--    </form>--%>
-<%--</div>--%>

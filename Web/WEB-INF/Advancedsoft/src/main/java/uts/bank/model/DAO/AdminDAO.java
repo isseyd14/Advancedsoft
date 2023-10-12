@@ -1,4 +1,4 @@
-package uts.bank.DAO;
+package uts.bank.model.DAO;
 
 import uts.bank.model.Account;
 import uts.bank.model.User;
@@ -75,5 +75,19 @@ public class AdminDAO {
             System.err.println("Error deleting account: " + ex.getMessage());
             throw ex;
         }
+    }
+
+    public String getEmailbyAccount(int accountNumber) throws SQLException {
+        String sql = "SELECT Email FROM account WHERE account_id = ?";
+        String userEmail = "";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, String.valueOf(accountNumber));
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                userEmail = rs.getString("Email");
+            }
+        }
+        return userEmail;
     }
 }

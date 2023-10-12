@@ -1,4 +1,4 @@
-package uts.bank.DAO;
+package uts.bank.model.DAO;
 
 import uts.bank.model.Card;
 import java.util.ArrayList;
