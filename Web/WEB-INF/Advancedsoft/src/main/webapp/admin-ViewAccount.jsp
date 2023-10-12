@@ -285,15 +285,15 @@
             </div>
             <div class="form_row">
                 <label id="name_T">First Name:</label>
-                <label id="name">${user.firstName}</label>
+                <label id="name">${user.fname}</label>
             </div>
             <div class="form_row">
                 <label id="dob_T">Last Name:</label>
-                <label id="dob">${user.lastName}</label>
+                <label id="dob">${user.lname}</label>
             </div>
             <div class="form_row">
                 <label id="email_T">Date of Birth:</label>
-                <label id="email">${user.DOB}</label>
+                <label id="email">${user.dob}</label>
             </div>
 <%--        </form>--%>
     </div>

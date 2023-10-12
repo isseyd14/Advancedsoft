@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,8 +50,6 @@
         </ul>
     </div>
 </nav>
-<c:if test="${not empty errorMessage}">
-    <p style="color: red;">${errorMessage}</p>
-</c:if>
+
 </body>
 </html>

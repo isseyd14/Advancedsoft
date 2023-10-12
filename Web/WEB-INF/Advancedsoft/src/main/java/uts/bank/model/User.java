@@ -1,7 +1,6 @@
 package uts.bank.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class User implements Serializable {
     private String email;
@@ -33,11 +32,11 @@ public class User implements Serializable {
     }
 
     public String getFname() {
-        return fname;
+        return this.fname;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFname(String fName) {
+        this.fname = fName;
     }
 
     public String getLname() {
