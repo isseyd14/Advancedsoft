@@ -22,13 +22,6 @@
         }
 
     </style>
-    <%
-        boolean isLoggedIn = (session.getAttribute("email") != null);
-        if(!isLoggedIn){
-            response.sendRedirect("login.jsp");
-            return;
-        }
-    %>
 </head>
 <body><nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
