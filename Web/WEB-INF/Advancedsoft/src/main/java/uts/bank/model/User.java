@@ -3,87 +3,102 @@ package uts.bank.model;
 import java.util.Date;
 
 public class User {
-    private String Email;
-    private String Pass;
-    private String Type;
-    private String fname;
-    private String lname;
-    private String Address;
-    private double Balance;
-    private Date DOB;
+        private String email;
+        private String pass;
+        private String type;
+        private String firstName;
+        private String lastName;
+        private String address;
+        private String DOB;
 
-    public User(String email, String pass, String type, String fname, String lname, String address, double balance, Date DOB) {
-        Email = email;
-        Pass = pass;
-        Type = type;
-        this.fname = fname;
-        this.lname = lname;
-        Address = address;
-        Balance = balance;
-        this.DOB = DOB;
+        private String phone;
+        public User(String email, String pass, String type, String firstName, String lastName, String address, String DOB, String phone) {
+            this.email = email;
+            this.pass = pass;
+            this.type = type;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.DOB = DOB;
+            this.phone = phone;
+        }
+
+        public String getEmail() {
+
+            return this.email;
+        }
+
+        public void setEmail(String email) {
+
+            this.email = email;
+        }
+
+        public String getPass() {
+
+            return this.pass;
+        }
+
+        public void setPass(String pass) {
+
+            this.pass = pass;
+        }
+
+        public String getType() {
+
+            return this.type;
+        }
+
+        public void setType(String type) {
+
+            this.type = type;
+        }
+
+        public String getFirstName() {
+
+            return this.firstName;
+        }
+
+        public void setFirstName(String firstName) {
+
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+
+            this.lastName = lastName;
+        }
+
+        public String getAddress() {
+
+            return this.address;
+        }
+
+        public void setAddress(String address) {
+
+            this.address = address;
+        }
+
+        public String getDOB() {
+
+            return this.DOB;
+        }
+
+        public void setDOB(String DOB) {
+
+            this.DOB = DOB;
+        }
+
+        public String getPhone() {
+            return this.phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
     }
 
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getPass() {
-        return Pass;
-    }
-
-    public void setPass(String pass) {
-        Pass = pass;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public double getBalance() {
-        return Balance;
-    }
-
-    public void setBalance(double balance) {
-        Balance = balance;
-    }
-
-    public Date getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
-    }
-}

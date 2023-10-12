@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uts.bank.model.Contact;
-import uts.bank.model.DAO.ContactDAO;
+import uts.bank.DAO.ContactDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;

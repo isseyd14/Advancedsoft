@@ -6,17 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uts.bank.model.Account;
-import uts.bank.model.DAO.AccountDAO;
+import uts.bank.DAO.AccountDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/AddAccountServlet")
@@ -35,12 +29,18 @@ public class AddAccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        int accountNumber = 0;
+                try {
+                    accountNumber = accountDAO.getNextAccountId();
+                } catch (SQLException ex) {
+
+                }
         String email = (String) session.getAttribute("email");
         String accountName = request.getParameter("AccountName");
         String accountType = request.getParameter("AccountType");
         double availableFunds = Double.parseDouble(request.getParameter("AvailableFunds"));
         double currentFunds = Double.parseDouble(request.getParameter("CurrentFunds"));
-        Account newAccount = new Account(email,accountName, accountType, availableFunds, currentFunds);
+        Account newAccount = new Account(accountNumber, email,accountName, accountType, availableFunds, currentFunds);
         try {
             accountDAO.addAccount(newAccount);
         } catch (SQLException e) {

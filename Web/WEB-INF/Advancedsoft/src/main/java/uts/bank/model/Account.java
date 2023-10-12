@@ -1,6 +1,8 @@
 package uts.bank.model;
 
 public class Account {
+
+    private int accountNumber;
     private String accountEmail;
     private String accountName;
     private String accountType;
@@ -8,12 +10,21 @@ public class Account {
     private double AccountCurrentFunds;
 
 
-    public Account(String accountEmail, String accountName, String accountType, double accountAvailableFunds, double accountCurrentFunds) {
+    public Account(int accountNumber, String accountEmail, String accountName, String accountType, double accountAvailableFunds, double accountCurrentFunds) {
+        this.accountNumber = accountNumber;
         this.accountEmail = accountEmail;
         this.accountName = accountName;
         this.accountType = accountType;
         this.accountAvailableFunds = accountAvailableFunds;
         AccountCurrentFunds = accountCurrentFunds;
+    }
+
+    public int getAccountNumber() {
+        return this.accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public String getAccountEmail() {

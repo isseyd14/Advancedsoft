@@ -1,59 +1,44 @@
-/* package uts.bank.advancedsoft;
+package uts.bank.Controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.sql.*;
-import model.User
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import jakarta.servlet.http.HttpSession;
+import uts.bank.DAO.AdminDAO;
+import uts.bank.model.User;
+import uts.bank.model.Account;
 
-/@WebServlet("/AdminServlet")
+@WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve the search parameter from the request
+        HttpSession session = request.getSession();
+        String searchEmail = request.getParameter("search");
+        session.setAttribute("search", searchEmail);
 
+        User user = null;
+        ArrayList<Account> accounts;
+        AdminDAO adminDAO = new AdminDAO();
 
         try {
-            user = manager.fetchUser();
-            request.setAttribute("userId", userId);
-            request.setAttribute("name", name);
-            request.setAttribute("dob", dob);
-            request.setAttribute("email", email);
-
-            account = manager.fetchAccount();
-            request.setAttribute("accountName", accountName);
-            request.setAttribute("account_no", accountNumber);
-            request.setAttribute("bsb", bsb);
-            request.setAttribute("balance", balance);
-
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
-
+            user = adminDAO.findUser(searchEmail);
+            accounts = adminDAO.findAccounts(searchEmail);
+            session.setAttribute("user", user);
+            session.setAttribute("accounts", accounts);
+            request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+
         }
+
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
-
-        if ("add_btn".equals(action)) {
-            response.sendRedirect(request.getContextPath() + "/addAccountServlet");
-        }
-        if ("del_btn".equals(action)) {
-
-        }
-
-        response.sendRedirect(request.getContextPath() + "");
-        return;
-    }
-} */
+}

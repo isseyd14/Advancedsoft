@@ -1,4 +1,4 @@
-package uts.bank.model.DAO;
+package uts.bank.DAO;
 
 import uts.bank.model.Contact;
 

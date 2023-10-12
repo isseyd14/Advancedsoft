@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,10 +10,13 @@
     <title>Admin Page</title>
     <style>
         .Header {
-            margin: auto;
-            height: 15vh;
-            border: solid 1px black;
-            background-color: #0077b6;
+            background-color: #222; /* Slightly darker grey for the header */
+            padding: 1px 0;
+            text-align: left;
+            display: flex; /* Enable flexbox layout for header */
+            align-items: center; /* Vertically center content */
+            justify-content: left; /* Vertically center content */
+            height: 10vh;
         }
 
         .body {
@@ -35,7 +40,7 @@
             margin-left: 1%;
             width: 17%;
             height: 40%;
-            border: 1px solid blue;
+            border: 1px solid black;
             border-radius: 10px;
         }
 
@@ -51,12 +56,12 @@
         }
 
         #search_tf {
-            margin-top: 3%;
             margin-left: 32%;
             width: 15%;
             height: 30px;
             border: 1px solid black;
         }
+
         #create_btn {
             margin-left: 2%;
             width: 8%;
@@ -66,11 +71,11 @@
 
         #logout_btn {
             float: right;
-            margin-top: 3%;
             margin-right: 2%;
             width: 8%;
             height: 40px;
             border: 1px solid black;
+            border-radius: 5px;
         }
 
         .account_actions {
@@ -147,53 +152,27 @@
             margin-top: -14%;
             margin-right: 15%;
         }
+        #header_form {
+            margin: auto;
+            width: 100%;
+        }
     </style>
+    <%
+        boolean isLoggedIn = (session.getAttribute("email") != null);
+        if(!isLoggedIn){
+            response.sendRedirect("login.jsp");
+            return;
+        }
+    %>
 </head>
 <body>
 <div class="Header">
-    <button type="button" id="create_btn">Create Account</button>
-    <input type="text" id="search_tf" placeholder="Search"/>
-    <button type="button" id="logout_btn">Logout</button>
-</div>
-<div class="body">
-    <div class="account_info">
-        <form>
-            <div class="form_row">
-                <label id="accountId_T">Account ID: </label>
-                <label id="account_id"></label>
-            </div>
-            <div class="form_row">
-                <label id="name_T">Name:</label>
-                <label id="name"></label>
-            </div>
-            <div class="form_row">
-                <label id="dob_T">Date of Birth:</label>
-                <label id="dob"></label>
-            </div>
-            <div class="form_row">
-                <label id="email_T">Email:</label>
-                <label id="email"></label>
-            </div>
-        </form>
-    </div>
-    <div class="profile">
-        <div class="accounts_view">
-            <div class="account_box">
-                <form>
-                    <label class="account_name">Credit</label>
-                    <label class="account_number">1200-3488</label>
-                    <label class="balance">1200</label>
-                </form>
-            </div>
-            <div class="account_box"></div>
-        </div>
-        <div class="account_actions">
-            <form id="actions_bar">
-                <button type="submit" name="action" id="add_btn">Add</button>
-                <button type="submit" name="action" id="del_btn">Delete</button>
-            </form>
-        </div>
-    </div>
+    <form method="get" action="${pageContext.request.contextPath}/AdminServlet" id="header_form">
+        <button type="button" id="create_btn">Create Account</button>
+        <input type="text" name="search" id="search_tf" placeholder="Search"/>
+        <input type="submit" value="Search">
+        <button type="button" id="logout_btn">Logout</button>
+    </form>
 </div>
 </body>
 </html>

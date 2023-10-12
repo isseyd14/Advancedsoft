@@ -1,6 +1,7 @@
 package uts.bank.model.DAO;
 
 import org.junit.jupiter.api.*;
+import uts.bank.DAO.AccountDAO;
 import uts.bank.model.Account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,8 +14,8 @@ public class AccountDAOTest {
     static Account testAccount;
 
     @BeforeAll
-    public static void setUp(){
-        testAccount = new Account("unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
+    public static void setUp() throws SQLException {
+        testAccount = new Account(testCardDao.getNextAccountId(), "unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
     }
     @Test
     public void testAddAccount() throws SQLException {

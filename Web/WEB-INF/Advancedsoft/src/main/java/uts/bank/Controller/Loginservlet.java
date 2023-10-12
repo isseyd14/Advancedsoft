@@ -85,7 +85,7 @@ public class Loginservlet extends HttpServlet {
                 setSessionAttrs(session, email);
                 //createUserLog(session, con, email);
 
-                response.sendRedirect("staff-home.jsp");
+                response.sendRedirect("admin.jsp");
             } else{
                 System.out.println("in else");
                 request.setAttribute("errorMessage", "Username or password incorrect. Try again.");
