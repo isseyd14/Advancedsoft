@@ -48,7 +48,6 @@ public class AccountDAO {
         String sql = "SELECT * FROM account WHERE Email = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);){
-            System.out.println("database connected in find accounts");
             stmt.setString(1, customerEmail);
             ResultSet rs = stmt.executeQuery();
 

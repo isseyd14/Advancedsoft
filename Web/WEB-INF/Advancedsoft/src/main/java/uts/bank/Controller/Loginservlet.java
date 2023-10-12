@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.bank.model.*;
 
+
 import java.io.IOException;
 import java.sql.*;
 
@@ -94,7 +95,7 @@ public class Loginservlet extends HttpServlet {
                 setSessionAttrs(session, acco);
                 session.setAttribute("email", acco.getEmail());
                 //createUserLog(session, con, email);
-                response.sendRedirect("View-Balance.jsp");
+                response.sendRedirect("viewbalanceservlet");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
                 user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 

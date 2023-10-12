@@ -47,6 +47,7 @@
                 <td><c:out value="${contact.contactNicName}" /></td>
                 <td><c:out value="${contact.contactEmail}" /></td>
                 <td>
+                    <a href="editContactServlet?contactId=${contact.contactId}">Edit</a>
                 </td>
             </tr>
         </c:forEach>
