@@ -14,11 +14,10 @@ import java.sql.*;
 
 @WebServlet("/DeleteAccServlet")
 public class deleteAccservlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-        user acc = (user) session.getAttribute("user");
+        user acc = (user) request.getSession().getAttribute("User");
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -28,12 +27,13 @@ public class deleteAccservlet extends HttpServlet {
             con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
                     "advancedsoftware", "Welcome1!");
             System.out.println("Login Connected");;
-
             String sql = "DELETE FROM bank.user WHERE Email = ?";
+            ps = con.prepareStatement(sql);
             ps.setString(1, acc.getEmail());
+            ps.executeUpdate();
             request.setAttribute("errorMessage", "Account Succesfully deleted");
-            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+            dispatcher.forward(request, response);
         }catch(Exception e){
             System.out.println(" Login Error - " + e.getMessage());
         } finally {
