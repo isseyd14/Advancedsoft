@@ -7,13 +7,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.*;
-
-import java.sql.*;
-import java.io.IOException;
 
 @WebServlet("/UpdateUserServlet")
 public class UpdateUserServlet extends HttpServlet {
@@ -23,7 +19,7 @@ public class UpdateUserServlet extends HttpServlet {
         String lastName = request.getParameter("lname");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        user user = (user) request.getSession().getAttribute("User");
+        User user = (User) request.getSession().getAttribute("User");
         user.setFname(firstName);
         user.setLname(lastName);
         user.setPhone(phone);

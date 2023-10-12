@@ -16,7 +16,7 @@ import java.sql.*;
 
 @WebServlet("/LoginServlet")
 public class Loginservlet extends HttpServlet {
-    private void setSessionAttrs(HttpSession session,  user acc ) {
+    private void setSessionAttrs(HttpSession session,  User acc ) {
         session.setAttribute("email", acc.getEmail());
         session.setAttribute("User", acc);
         //session.setAttribute("name", nameDB);
@@ -52,13 +52,13 @@ public class Loginservlet extends HttpServlet {
 
             String emailDB = "";
             String passwordDB = "";
-            String typeDB = "customer";
+            String typeDB = "";
             String nameDB = "";
             String LnameDB = "";
             String Address = "";
             String Phone = "";
-            double bal = 0;
-            Date dob = null;
+            //double bal = 0;
+            String dob = "";
             //int userIdDB = 0;
 
             rs = ps.executeQuery();
@@ -71,8 +71,8 @@ public class Loginservlet extends HttpServlet {
                 nameDB = rs.getString("Fname");
                 LnameDB = rs.getString("Lname");
                 Address = rs.getString("Address");
+                dob = rs.getDate("dob").toString();
                 Phone = rs.getString("Phone");
-                dob = rs.getDate("dob");
 
                 System.out.println("emailDB: " + emailDB);
                 System.out.println("passwordDB: " + passwordDB);
@@ -90,14 +90,14 @@ public class Loginservlet extends HttpServlet {
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
                 System.out.println("in If");
-                user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+                User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);
                 session.setAttribute("email", acco.getEmail());
                 //createUserLog(session, con, email);
                 response.sendRedirect("viewbalanceservlet");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
-                user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+                User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);

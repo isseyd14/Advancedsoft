@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="uts.bank.model.user" %>
+<%@ page import="uts.bank.model.User" %>
 <%@ page import="uts.bank.Controller.*" %>
 >
 
@@ -55,7 +55,7 @@
       <th>Address</th>
 
     </tr>
-    <%        user iop = (user) session.getAttribute("User");%>
+    <%        User iop = (User) session.getAttribute("User");%>
       <tr>
         <td><%=iop.getFname()%></td>
         <td><%=iop.getLname()%></td>

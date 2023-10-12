@@ -7,7 +7,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.*;
@@ -17,7 +16,7 @@ public class deleteAccservlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        user acc = (user) request.getSession().getAttribute("User");
+        User acc = (User) request.getSession().getAttribute("User");
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

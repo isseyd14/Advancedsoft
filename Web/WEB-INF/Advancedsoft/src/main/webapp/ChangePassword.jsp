@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="uts.bank.model.user" %>
+<%@ page import="uts.bank.model.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
         </ul>
     </div>
 </nav>
-<%        user iop = (user) session.getAttribute("User");%>
+<%        User iop = (User) session.getAttribute("User");%>
 
 <div class="container" style="margin-top: 50px;">
     <div class="panel-body">

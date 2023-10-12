@@ -2,7 +2,7 @@ import org.junit.jupiter.api.*;
 import uts.bank.model.Account;
 import uts.bank.model.DAO.AccountDAO;
 import uts.bank.model.DAO.UserDAO;
-import uts.bank.model.user;
+import uts.bank.model.User;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,14 +16,14 @@ public class AccountTest {
     static Account testAccount;
     static UserDAO testuserDao = new UserDAO();
 
-    static user testUser;
+    static User testUser;
 
     @BeforeAll
     public static void setUp() throws SQLException {
-        testAccount = new Account("unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
+        testAccount = new Account(testAccountDao.getNextAccountId(), "unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
 
         Date specificSQLDate = Date.valueOf("2002-08-30");
-        testUser = new user("unit test email", "pass", "customer", "t", "t",specificSQLDate,"23233","t");
+        testUser = new User("unit test email", "pass", "customer", "t", "t","04-10-1996","23233","t");
         testuserDao.addUser(testUser);
     }
     @Test
