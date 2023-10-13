@@ -102,16 +102,22 @@ public class CardServlet extends BaseServlet {
                 isError = true;
             }
             if(!isError){
+                if(cardDAO.findCard(cardNumber) != null){
+                    session.setAttribute("cardErr", "Error: Card Number already exists");
+                    response.sendRedirect("../addCard.jsp");
+                }else{
                 try {
                     cardDAO.addCard(newCard);
                     response.sendRedirect("selectByCustomerId");
                 } catch (SQLException | NullPointerException ex) {
                     Logger.getLogger(CardServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                    
+                }
             }else{
                 
                 response.sendRedirect("../addCard.jsp");
-                //request.getRequestDispatcher("../addCard.jsp").include(request, response);
             }
         
     
