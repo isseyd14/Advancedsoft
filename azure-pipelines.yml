@@ -20,10 +20,10 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: CopyFiles@2
-  inputs:
-    Contents: '**'
-    TargetFolder: 'Web/WEB-INF/Advancedsoft/target'
+# - task: CopyFiles@2
+#   inputs:
+#     Contents: '**'
+#     TargetFolder: 'Web/WEB-INF/Advancedsoft/target'
 
 - task: PublishBuildArtifacts@1
   inputs:
