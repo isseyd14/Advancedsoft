@@ -43,6 +43,17 @@ public class AdminAccountDeleteServlet extends HttpServlet {
                     return;
                 }
 
+            } else if (action.equals("edit")) {
+                try {
+                    Account account = adminDAO.getAccount(accountNumber);
+                    session.setAttribute("account", account);
+                    request.getRequestDispatcher("/admin-EditAccount.jsp").forward(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+
             } else {
                 response.sendRedirect("error.jsp");
             }

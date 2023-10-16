@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--<c:set var="user" value="${sessionScope.user}" />
 <c:set var="accounts" value="${sessionScope.accounts}" />--%>
 <%--
@@ -49,7 +49,6 @@
             margin: auto;
             margin-left: 1%;
             width: 17%;
-            height: 40%;
             border: 1px solid black;
             border-radius: 10px;
         }
@@ -123,6 +122,11 @@
             "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
 
+        input {
+            background: transparent;
+            width: 75%;
+        }
+
 
         .account_box {
             display: flex;
@@ -138,7 +142,7 @@
         .account_name {
             padding: 1%;
             font-size: 20px;
-            height: 40%;
+            height: 50%;
             margin-left: 5%;
         }
 
@@ -197,6 +201,10 @@
             font-size: 16px;
         }
 
+        .balance_wrapper input {
+            text-align: center;
+        }
+
         .curbalance_wrapper {
             display: flex;
             flex-direction: column;
@@ -253,6 +261,10 @@
         .account_menu:hover .dropdown-content {
             display: block;
         }
+
+        #submit {
+            width: auto;
+        }
     </style>
 </head>
 <body>
@@ -264,6 +276,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
             <li><a href="#">Create Account</a></li>
+            <li><a href="admin-ViewAccount.jsp">Back</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
@@ -278,61 +291,76 @@
 </div>--%>
 <div class="body">
     <div class="account_info">
-<%--        <form>--%>
+        <%--        <form>--%>
+        <div class="form_row">
+            <label id="accountId_T">Email:</label>
+            <label id="account_id">${user.email}</label>
+        </div>
             <div class="form_row">
-                <label id="email_T">Email:</label>
-                <label id="email_id">${user.email}</label>
+                <label>Password:</label>
+                <label>${user.password}</label>
             </div>
             <div class="form_row">
-                <label id="name_T">First Name:</label>
-                <label id="name">${user.fname}</label>
+                <label>Type:</label>
+                <label>${user.type}</label>
             </div>
-            <div class="form_row">
-                <label id="lname_T">Last Name:</label>
-                <label id="lname">${user.lname}</label>
-            </div>
+        <div class="form_row">
+            <label id="name_T">First Name:</label>
+            <label id="name">${user.fname}</label>
+        </div>
+        <div class="form_row">
+            <label id="lname_T">Last Name:</label>
+            <label id="lname">${user.lname}</label>
+        </div>
             <div class="form_row">
                 <label id="dob_T">Date of Birth:</label>
                 <label id="dob">${user.dob}</label>
             </div>
-<%--        </form>--%>
+            <div class="form_row">
+                <label>Phone:</label>
+                <label>${user.phone}</label>
+            </div>
+            <div class="form_row">
+                <label>Address:</label>
+                <label>${user.address}</label>
+            </div>
+
+        <%--        </form>--%>
     </div>
     <div class="profile">
         <div class="accounts_view">
-            <c:forEach items="${accounts}" var="account">
-            <div class="account_box">
-                <div class="account_wrapper">
-                    <div class="accountName_wrapper">
-                        <label class="account_name">${account.accountName}</label>
-                        <div class="accountNum_wrapper">
-                            <label class="account_number">${account.accountNumber}</label>
-                            <label class="account_number">028-611</label>
-                        </div>
-                    </div>
-                    <div class="balance_wrapper">
-                        <label class="available_title">Available</label>
-                        <label class="balance">$${account.accountAvailableFunds}</label>
-                    </div>
-                    <div class="curbalance_wrapper">
-                        <label class="available_title">Current</label>
-                        <label class="balance">$${account.accountCurrentFunds}</label>
-                    </div>
-                        <div class="account_menu">
-                            <img src="Images\options.png" />
-                            <div class="dropdown-content">
-                            <form action="AdminAccountDeleteServlet" method="get">
+                <div class="account_box">
+                    <form class="account_wrapper" action="AdminAccountEditServlet" method="get">
+                        <div class="accountName_wrapper">
+                            <input class="account_name" name="accountName" type="text" value="${account.accountName}" placeholder="${account.accountName}">
+                            <div class="accountNum_wrapper">
+                                <label class="account_number">${account.accountNumber}</label>
                                 <input type="hidden" name="accountNumber" value="${account.accountNumber}">
-                                <button type="submit" name="action" value="edit">Edit</button>
-                                <button type="submit" name="action" value="delete">Delete</button>
-                            </form>
+                                <label class="account_number">028-611</label>
                             </div>
                         </div>
+                        <div class="balance_wrapper">
+                            <label class="available_title">Available</label>
+                            <input class="balance" name="availableFunds" type="text" placeholder="${account.accountAvailableFunds}">
+                        </div>
+                        <div class="curbalance_wrapper">
+                            <label class="available_title">Current</label>
+                            <label class="balance">$${account.accountCurrentFunds}</label>
+                        </div>
+                        <div class="account_menu">
+                            <input id="submit" type="submit" name="action" placeholder="Update">
+                            <%--<img src="Images\options.png" />
+                            <div class="dropdown-content">
+                                <form action="AdminAccountEditServlet" method="get">
+                                    <input type="hidden" name="accountNumber" value="${account.accountNumber}">
+                                    <button type="submit" name="action" value="edit">Edit</button>
+                                </form>
+                            </div>--%>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            </c:forEach>
         </div>
     </div>
 </div>
 </body>
 </html>
-

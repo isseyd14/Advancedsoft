@@ -20,6 +20,7 @@ public class TestDB {
         testDeleteAccounts();
         testFindUser();
         testFindAccounts();
+        testUpdateAccount();
     }
 
     public void testFindUser() {
@@ -55,6 +56,29 @@ public class TestDB {
         int accountNumber = 11110004;
         adminDAO.deleteAccount(accountNumber);
         System.out.println("Account Successfully deleted");
+    }
+
+    public void testGetAccount(int accountNumber) throws SQLException {
+
+        Account account = adminDAO.getAccount(accountNumber);
+
+        System.out.println("Account_id: " + accountNumber);
+        System.out.println("Email: " + account.getAccountEmail());
+        System.out.println("Name: " + account.getAccountName());
+        System.out.println("Type: " + account.getAccountType());
+        System.out.println("Available Funds: " + account.getAccountAvailableFunds());
+        System.out.println("Current Funds: " + account.getAccountCurrentFunds());
+        System.out.println("Account Successfully Found");
+    }
+
+    public void testUpdateAccount() throws SQLException {
+        int accountNumber = 11110281;
+        String name = "Investments";
+        double availableFunds = 400.00;
+
+        adminDAO.updateAccount(accountNumber, name, availableFunds);
+
+        testGetAccount(11110281);
     }
 
 

@@ -38,6 +38,7 @@ public class AdminServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 session.setAttribute("accounts", accounts);
                 request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("/admin-EditAccount.jsp").forward(request, response);
             } else {
                 request.setAttribute("errorMessage", "User does not Exist");
                 RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");

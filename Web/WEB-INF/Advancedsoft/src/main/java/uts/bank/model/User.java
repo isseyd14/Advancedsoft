@@ -12,7 +12,7 @@ public class User implements Serializable {
     private String phone;
     private String address; // Add an address field
 
-    public User(String email, String fname, String lname, String password, String type, String dob, String phone, String address) {
+    public User(String email, String password, String type, String fname, String lname, String dob, String phone, String address) {
         this.email = email;
         this.fname = fname;
         this.lname = lname;

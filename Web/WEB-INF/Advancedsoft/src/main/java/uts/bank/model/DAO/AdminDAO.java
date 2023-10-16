@@ -56,12 +56,12 @@ public class AdminDAO {
                 String userEmail = rs.getString("Email");
                 String password = rs.getString("Pass");
                 String type = rs.getString("Type");
-                String firstName = rs.getString("fName");
-                String lastName = rs.getString("lName");
+                String firstName = rs.getString("fname");
+                String lastName = rs.getString("lname");
                 String address = rs.getString("Address");
                 String DOB = rs.getDate("DOB").toString();
                 String phone = rs.getString("Phone");
-                return new User(userEmail, password, type, firstName, lastName, address, DOB, phone);
+                return new User(userEmail, password, type, firstName, lastName, DOB, phone, address);
             }
         }
         return null;
@@ -89,5 +89,37 @@ public class AdminDAO {
             }
         }
         return userEmail;
+    }
+
+    public Account getAccount(int accountNumber) throws SQLException {
+        String sql = "SELECT * FROM account WHERE account_id = ?";
+        Account account = null;
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, String.valueOf(accountNumber));
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                String userEmail = rs.getString("Email");
+                String name = rs.getString("name");
+                String type = rs.getString("type");
+                double available_funds = rs.getDouble("avaliable_funds");
+                double current_funds = rs.getDouble("current_funds");
+                account = new Account(accountNumber, userEmail, name, type, available_funds, current_funds);
+            }
+        }
+        return account;
+    }
+
+    public void updateAccount(int accountNumber, String name, double available_funds) {
+        String sql = "UPDATE account SET name = ?, avaliable_funds = ? WHERE account_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, name);
+            pstmt.setDouble(2, available_funds);
+            pstmt.setInt(3, accountNumber);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
