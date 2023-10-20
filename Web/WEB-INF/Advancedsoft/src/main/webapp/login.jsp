@@ -143,6 +143,8 @@
             </c:if>
             <div class="centered-button-container">
                 <a href="Register.jsp" class="centered-button">Create an account</a>
+                <a href="ForgotPass.jsp" class="centered-button">forgot password</a>
+
             </div>
         </div>
     </div>
