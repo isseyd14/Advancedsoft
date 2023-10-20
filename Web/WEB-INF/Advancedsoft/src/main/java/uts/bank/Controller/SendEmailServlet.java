@@ -6,10 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -40,7 +39,7 @@ public class SendEmailServlet extends HttpServlet {
             message.setFrom(new InternetAddress("s33434856@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
-            message.setText(messageText);
+
 
             Transport.send(message);
             request.setAttribute("errorMessage","Password succesfully Changed");
@@ -53,4 +52,3 @@ public class SendEmailServlet extends HttpServlet {
         }
     }
 }
-
