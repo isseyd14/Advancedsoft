@@ -10,12 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/View-Balance.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/View-Balance.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/AccountTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/AdminTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/AdminTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +75,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AccountTest">
+  <component name="RunManager" selected="JUnit.UserUpdTest">
     <configuration name="GlassFish 7.0.0.M4" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 7.0.0.M4" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="e5120d43-2c3f-47ef-9f26-65e539e05186" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -188,12 +185,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContactTest.testDeleteContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserUpdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Advancedsoft" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ContactTest" />
-      <option name="METHOD_NAME" value="testDeleteContact" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="UserUpdTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -201,18 +197,18 @@
     <list>
       <item itemvalue="GlassFish Server.GlassFish 7.0.0.M4" />
       <item itemvalue="JUnit.AdminTest.testFindUser" />
+      <item itemvalue="JUnit.UserUpdTest" />
       <item itemvalue="JUnit.AdminTest" />
       <item itemvalue="JUnit.AccountTest" />
       <item itemvalue="JUnit.ContactTest" />
-      <item itemvalue="JUnit.ContactTest.testDeleteContact" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserUpdTest" />
         <item itemvalue="JUnit.AccountTest" />
         <item itemvalue="JUnit.AdminTest" />
         <item itemvalue="JUnit.AdminTest.testFindUser" />
         <item itemvalue="JUnit.ContactTest" />
-        <item itemvalue="JUnit.ContactTest.testDeleteContact" />
       </list>
     </recent_temporary>
   </component>
@@ -234,8 +230,17 @@
       <workItem from="1697155042310" duration="3294000" />
       <workItem from="1697587431824" duration="3621000" />
       <workItem from="1697679223684" duration="597000" />
-      <workItem from="1697853552314" duration="6708000" />
+      <workItem from="1697853552314" duration="9371000" />
     </task>
+    <task id="LOCAL-00001" summary="fixed up test files">
+      <option name="closed" value="true" />
+      <created>1698196976250</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698196976250</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,5 +256,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixed up test files" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed up test files" />
   </component>
 </project>

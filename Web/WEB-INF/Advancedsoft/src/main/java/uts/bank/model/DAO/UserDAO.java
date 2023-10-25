@@ -85,7 +85,7 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+        User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
 
         return acco;
     }
