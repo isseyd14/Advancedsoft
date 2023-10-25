@@ -23,15 +23,16 @@ public class AccountDAO {
     }
 
     public void addAccount(Account account)throws SQLException{
-        String sql = "INSERT INTO account (Email, name, type, avaliable_funds, current_funds) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO account (account_id, Email, name, type, avaliable_funds, current_funds) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = getConnection();
              PreparedStatement stmt = con.prepareStatement(sql);) {
 
-            stmt.setString(1, account.getAccountEmail());
-            stmt.setString(2, account.getAccountName());
-            stmt.setString(3, account.getAccountType());
-            stmt.setDouble(4, account.getAccountAvailableFunds());
-            stmt.setDouble(5, account.getAccountCurrentFunds());
+            stmt.setInt(1, account.getAccountNumber());
+            stmt.setString(2, account.getAccountEmail());
+            stmt.setString(3, account.getAccountName());
+            stmt.setString(4, account.getAccountType());
+            stmt.setDouble(5, account.getAccountAvailableFunds());
+            stmt.setDouble(6, account.getAccountCurrentFunds());
 
 
             stmt.executeUpdate();
@@ -82,13 +83,16 @@ public class AccountDAO {
 
     public int getNextAccountId() throws SQLException {
             int accountid = 0;
-            String sql = "SELECT acccount_id FROM account ORDER BY account_id DESC FETCH FIRST ROW ONLY";
+            String sql = "SELECT MAX(account_id) AS next_available_id FROM account";
             try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
                 ResultSet rs = stmt.executeQuery();
 
-                while (rs.next()) {
-                    accountid = rs.getInt(accountid);
+                if (rs.next()) {
+                    accountid = rs.getInt("next_available_id") + 1;
+                } else {
+                    // If there are no existing account IDs, you can start from 1 or any desired initial value.
+                    accountid = 100000;
                 }
 
             return accountid;

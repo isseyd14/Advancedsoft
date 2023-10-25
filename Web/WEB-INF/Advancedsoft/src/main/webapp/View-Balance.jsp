@@ -29,7 +29,7 @@
             <li><a href="card/selectByCustomerId">Card</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -37,6 +37,7 @@
     <table class="table table-hover">
         <caption><h2>List of Accounts</h2></caption>
         <tr>
+            <th>Account Number</th>
             <th>Account Name</th>
             <th>Account Type</th>
             <th>Available Funds</th>
@@ -45,6 +46,7 @@
         </tr>
         <c:forEach var="account" items="${listaccount}">
             <tr>
+                <td><c:out value="${account.accountNumber}" /></td>
                 <td><c:out value="${account.accountName}" /></td>
                 <td><c:out value="${account.accountType}" /></td>
                 <td><c:out value="${account.accountAvailableFunds}" /></td>
