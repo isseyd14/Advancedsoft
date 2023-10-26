@@ -1,0 +1,103 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="uts.bank.model.User" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .logo {
+      max-width: 40px; /* Adjust the maximum width as needed */
+      margin-right: 20px; /* Add some spacing between the logo and text */
+      max-height: 40px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Details</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="logo.png" alt="Logo" class="logo">
+      <a class="navbar-brand" href="#">Frontline Bank</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container" style="margin-top: 50px;">
+  <div class="panel-body">
+    <caption><h2>Change password</h2></caption>
+    <br>
+    <form action="ChangePassword2" method="post">
+      <div class="form-group">
+        <label for="code"> Passcode:</label>
+        <input type="text" id="code" name="code" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="pass">New Password:</label>
+        <input type="password" id="pass" name="pass" class="form-control" required>
+        <small class="text-muted">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.</small>
+      </div>
+      <div class="form-group">
+        <label for="pass1">Confirm New Password:</label>
+        <input type="password" id="pass1" name="pass1" class="form-control" required>
+      </div>
+      <div id="password-match-message" class="text-danger"></div>
+
+      <div class="form-group text-center">
+        <a href="login.jsp" class="btn btn-default">Cancel</a>
+        <input type="submit" class="btn btn-primary" value="Save Changes">
+      </div>
+    </form>
+    <c:if test="${not empty errorMessage}">
+      <p style="color: red;">${errorMessage}</p>
+    </c:if>
+  </div>
+</div>
+<script>
+  var password = document.getElementById("pass");
+  var confirmPassword = document.getElementById("pass1");
+  var message = document.getElementById("password-match-message");
+
+  function validatePassword() {
+    var passwordValue = password.value;
+    var confirmPasswordValue = confirmPassword.value;
+
+    // Password requirements
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/;
+
+    if (!regex.test(passwordValue)) {
+      message.innerHTML = "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+    } else if (passwordValue !== confirmPasswordValue) {
+      message.innerHTML = "Passwords do not match";
+    } else {
+      message.innerHTML = "";
+    }
+  }
+
+  password.addEventListener("input", validatePassword);
+  confirmPassword.addEventListener("input", validatePassword);
+</script>
+<script>
+  var password = document.getElementById("pass");
+  var confirmPassword = document.getElementById("pass1");
+  var message = document.getElementById("password-match-message");
+
+  function validatePassword() {
+    if (password.value !== confirmPassword.value) {
+      message.innerHTML = "Passwords do not match";
+    } else {
+      message.innerHTML = "";
+    }
+  }
+
+  password.addEventListener("input", validatePassword);
+  confirmPassword.addEventListener("input", validatePassword);
+</script>
+</body>
+</html>

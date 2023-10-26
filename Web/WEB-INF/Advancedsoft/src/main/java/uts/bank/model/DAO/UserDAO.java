@@ -17,8 +17,35 @@ public class UserDAO {
             throw new RuntimeException("Error connecting to the database", e);
         }
     }
+    public boolean passvalid(String pass, String email) throws SQLException{
+        String sql = "SELECT COUNT(*) FROM passcode WHERE Email = ? AND Passcode = ?";
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    return true; // Password exists if count is greater than 0
+                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Password doesn't exist or an error occurred
+    }
+    public void passcode( String email, String pass)throws SQLException{
+        String sql = "INSERT INTO bank.passcode (Email,Passcode) VALUES(?,? )";
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void updateUser(User account, String fname, String lname, String phone, String Address)throws SQLException{
-        String sql = "UPDATE bank.user SET fname=?, lname=?, phone=?, address=? WHERE Email=?";
+        String sql = "INSERT INTO bank.passcode (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, fname);

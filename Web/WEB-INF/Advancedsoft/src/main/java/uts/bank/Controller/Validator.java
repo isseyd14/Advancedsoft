@@ -45,4 +45,28 @@ import jakarta.servlet.http.HttpSession;
        session.setAttribute("expErr", "");
        session.setAttribute("cvvErr", "");
    }
+      public static boolean validatePassword(String password) {
+         if (password.length() < 8) {
+            return false;
+         }
+         if (!Pattern.compile("[A-Z]").matcher(password).find()) {
+            return false;
+         }
+         if (!Pattern.compile("[a-z]").matcher(password).find()) {
+            return false;
+         }
+         if (!Pattern.compile("[0-9]").matcher(password).find()) {
+            return false;
+         }
+         if (!Pattern.compile("[!@#$%^&*()_+\\-=\\[\\]{};':\",.<>?]").matcher(password).find()) {
+            return false;
+         }
+         // At least one digit
+         // At least one uppercase letter
+         // At least one lowercase letter
+
+
+
+         return true;
+      }
 }

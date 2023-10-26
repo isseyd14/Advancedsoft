@@ -20,6 +20,7 @@ public class ChangePasswordservlet extends HttpServlet {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        Validator validator = new Validator();
         try {
             if (user.getPassword().equals(oldpass) ) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -41,6 +42,7 @@ public class ChangePasswordservlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("ChangePassword.jsp");
                 rd.forward(request, response);
             }
+
 
 
         }  catch(Exception e){
