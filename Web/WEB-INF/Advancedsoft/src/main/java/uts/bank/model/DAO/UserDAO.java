@@ -3,6 +3,8 @@ package uts.bank.model.DAO;
 import uts.bank.model.User;
 
 import java.sql.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class UserDAO {
@@ -44,6 +46,7 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+
     public void updateUser(User account, String fname, String lname, String phone, String Address)throws SQLException{
         String sql = "INSERT INTO bank.passcode (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
         try (Connection con = getConnection();

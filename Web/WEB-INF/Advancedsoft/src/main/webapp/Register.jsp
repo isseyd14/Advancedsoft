@@ -161,6 +161,8 @@
                     <label for="confirmPassword">Confirm Password:</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
+                <div id="password-match-message" class="text-danger"></div>
+
                 <div class="form-group">
                     <label for="Firstname">First Name:</label>
                     <input type="text" id="Firstname" name="Firstname" required>
@@ -195,7 +197,30 @@
         </div>
     </div>
 </div>
+<script>
+    var password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirmPassword");
+    var message = document.getElementById("password-match-message");
 
+    function validatePassword() {
+        var passwordValue = password.value;
+        var confirmPasswordValue = confirmPassword.value;
+
+        // Password requirements
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/;
+
+        if (!regex.test(passwordValue)) {
+            message.innerHTML = "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+        } else if (passwordValue !== confirmPasswordValue) {
+            message.innerHTML = "Passwords do not match";
+        } else {
+            message.innerHTML = "";
+        }
+    }
+
+    password.addEventListener("input", validatePassword);
+    confirmPassword.addEventListener("input", validatePassword);
+</script>
 <script>
     function validateForm() {
         var password = document.getElementById("password").value;

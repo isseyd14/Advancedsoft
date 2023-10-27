@@ -31,7 +31,7 @@ public class SendEmailServlet extends HttpServlet {
         int randomNumber = 1000 + random.nextInt(9000);
         String randomNumberString = Integer.toString(randomNumber);
 
-        String messageText = "Hi there, This is the 4 digit code required to reset your password, it will only be valid for 30minutes" + randomNumberString;
+        String messageText = "Hi there, This is the 4 digit code required to reset your password, it will only be valid for 30 minutes " + randomNumberString;
 
 
         Properties properties = new Properties();

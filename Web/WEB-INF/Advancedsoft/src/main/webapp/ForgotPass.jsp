@@ -129,6 +129,8 @@
                 <div class="form-group">
                     <label for="email">Forgotten Email:</label>
                     <input type="text" id="email" name="email" required>
+                    <small class="text-muted">Contact Admin of the system: admin@gmail.com</small>
+
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Submit">
