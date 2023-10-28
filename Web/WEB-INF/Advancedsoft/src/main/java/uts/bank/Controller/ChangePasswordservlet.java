@@ -6,8 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import uts.bank.model.user;
+import uts.bank.model.User;
 
 import java.sql.*;
 import java.io.IOException;
@@ -17,10 +16,11 @@ public class ChangePasswordservlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String oldpass = request.getParameter("Chnpass");
         String newpass = request.getParameter("pass");
-        user user = (user) request.getSession().getAttribute("User");
+        User user = (User) request.getSession().getAttribute("User");
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        Validator validator = new Validator();
         try {
             if (user.getPassword().equals(oldpass) ) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,6 +42,7 @@ public class ChangePasswordservlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("ChangePassword.jsp");
                 rd.forward(request, response);
             }
+
 
 
         }  catch(Exception e){

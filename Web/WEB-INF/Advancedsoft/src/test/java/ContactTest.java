@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import uts.bank.model.Contact;
 import uts.bank.model.DAO.ContactDAO;
 import uts.bank.model.DAO.UserDAO;
-import uts.bank.model.user;
+import uts.bank.model.User;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -21,18 +21,17 @@ public class ContactTest {
     static Contact testContact;
     static UserDAO testuserDao = new UserDAO();
 
-    static user testUser;
+    static User testUser;
 
     @BeforeAll
     public static void setUp() throws SQLException {
-        Date specificSQLDate = Date.valueOf("2002-08-30");
-        testUser = new user("unit test email", "pass", "customer", "t", "t",specificSQLDate,"23233","t");
+        testUser = new User("unit test email", "pass", "customer", "t", "t","2002-08-30","23233","t");
         testuserDao.addUser(testUser);
     }
 
     @Test
     public void testAddContact() throws SQLException {
-        testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
+        testContact = new Contact("unit test email", "unit Test Contact", "unit test nic", "unit test", 1000);
         testContactDAO.addContact(testContact);
         List<Contact> actual = testContactDAO.findContacts("unit test email");
         boolean accountFound = false;
@@ -55,7 +54,7 @@ public class ContactTest {
 
     @Test
     public void testUpdateContact () throws SQLException {
-        testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
+        testContact = new Contact("unit test email", "unit Test Contact", "unit test nic", "unit test", 1000);
         testContactDAO.addContact(testContact);
         testContact.setContactEmail("updated unit test email");
         testContact.setContactNicName("updated unit test nic");
@@ -73,7 +72,7 @@ public class ContactTest {
 
     @Test
     public void testDeleteContact () throws SQLException {
-        testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
+        testContact = new Contact("unit test email", "unit Test Contact", "unit test nic", "unit test", 1000);
         testContactDAO.addContact(testContact);
         testContactDAO.deleteContact("unit test");
         List<Contact> actual = testContactDAO.findContacts("unit test email");

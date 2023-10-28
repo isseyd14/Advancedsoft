@@ -1,59 +1,57 @@
-// package uts.bank.Controller;
+package uts.bank.Controller;
 
-// import jakarta.servlet.RequestDispatcher;
-// import jakarta.servlet.ServletException;
-// import jakarta.servlet.annotation.WebServlet;
-// import jakarta.servlet.http.HttpServlet;
-// import jakarta.servlet.http.HttpServletRequest;
-// import jakarta.servlet.http.HttpServletResponse;
-// import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-// import java.io.IOException;
-// import java.sql.*;
-// import model.User
+import jakarta.servlet.http.HttpSession;
+import uts.bank.model.DAO.AdminDAO;
+import uts.bank.model.User;
+import uts.bank.model.Account;
 
+@WebServlet("/AdminServlet")
+public class AdminServlet extends HttpServlet {
 
-// /@WebServlet("/AdminServlet")
-// public class AdminServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve the search parameter from the request
+        HttpSession session = request.getSession();
+        String searchEmail = request.getParameter("search");
+        session.setAttribute("search", searchEmail);
 
-//     @Override
-//     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//             throws ServletException, IOException {
+        User user = null;
+        ArrayList<Account> accounts;
+        AdminDAO adminDAO = new AdminDAO();
 
+        try {
+            user = adminDAO.findUser(searchEmail);
+            accounts = adminDAO.findAccounts(searchEmail);
 
-//         try {
-//             user = manager.fetchUser();
-//             request.setAttribute("userId", userId);
-//             request.setAttribute("name", name);
-//             request.setAttribute("dob", dob);
-//             request.setAttribute("email", email);
+            if (user != null) {
+                session.setAttribute("user", user);
+                session.setAttribute("accounts", accounts);
+                request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("/admin-EditAccount.jsp").forward(request, response);
+            } else {
+                request.setAttribute("errorMessage", "User does not Exist");
+                RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                rd.forward(request, response);
+                return;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("errorMessage", "User does not Exist");
+            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+            rd.forward(request, response);
+            return;
+        }
 
-//             account = manager.fetchAccount();
-//             request.setAttribute("accountName", accountName);
-//             request.setAttribute("account_no", accountNumber);
-//             request.setAttribute("bsb", bsb);
-//             request.setAttribute("balance", balance);
-
-//             request.getRequestDispatcher("admin.jsp").forward(request, response);
-
-//         } catch (SQLException ex) {
-//             Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
-//         }
-//     }
-
-//     @Override
-//     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//             throws ServletException, IOException {
-//         String action = request.getParameter("action");
-
-//         if ("add_btn".equals(action)) {
-//             response.sendRedirect(request.getContextPath() + "/addAccountServlet");
-//         }
-//         if ("del_btn".equals(action)) {
-
-//         }
-
-//         response.sendRedirect(request.getContextPath() + "");
-//         return;
-//     }
-// } 
+    }
+}

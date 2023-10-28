@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="uts.bank.model.user" %>
+<%@ page import="uts.bank.model.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
         </ul>
     </div>
 </nav>
-<%        user iop = (user) session.getAttribute("User");%>
+<%        User iop = (User) session.getAttribute("User");%>
 
 <div class="container" style="margin-top: 50px;">
     <div class="panel-body">
@@ -50,6 +50,7 @@
             <div class="form-group">
                 <label for="pass">New Password:</label>
                 <input type="password" id="pass" name="pass" class="form-control" required>
+                <small class="text-muted">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.</small>
             </div>
             <div class="form-group">
                 <label for="pass1">Confirm New Password:</label>
@@ -67,6 +68,31 @@
         </c:if>
     </div>
 </div>
+<script>
+    var password = document.getElementById("pass");
+    var confirmPassword = document.getElementById("pass1");
+    var message = document.getElementById("password-match-message");
+
+    function validatePassword() {
+        var passwordValue = password.value;
+        var confirmPasswordValue = confirmPassword.value;
+
+        // Password requirements
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/;
+
+        if (!regex.test(passwordValue)) {
+            message.innerHTML = "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+        } else if (passwordValue !== confirmPasswordValue) {
+            message.innerHTML = "Passwords do not match";
+        } else {
+            message.innerHTML = "";
+        }
+    }
+
+    password.addEventListener("input", validatePassword);
+    confirmPassword.addEventListener("input", validatePassword);
+</script>
+
 <script>
     var password = document.getElementById("pass");
     var confirmPassword = document.getElementById("pass1");

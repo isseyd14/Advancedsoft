@@ -1,34 +1,31 @@
 
 import org.junit.jupiter.api.*;
 import uts.bank.model.DAO.UserDAO;
-import uts.bank.model.user;
+import uts.bank.model.User;
 import java.sql.Date;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.SQLException;
-import java.util.List;
 
 public class UserUpdTest {
     static UserDAO testuserDao = new UserDAO();
 
-    static user testAccount;
+    static User testAccount;
 
     @BeforeAll
     public static void setUp(){
-        Date specificSQLDate = Date.valueOf("2002-08-30");
 
-        testAccount = new user("unit test email", "pass", "customer", "t", "t",specificSQLDate,"23233","t");
+        testAccount = new User("unit test email", "pass", "customer", "t", "t","2002-08-30","23233","t");
     }
     @Test
     public void testupdateUser() throws SQLException {
-        Date specificSQLDate = Date.valueOf("2002-08-30");
 
-        user updatedAccount = new user("unit test email", "passt", "customert", "t", "t",specificSQLDate,"232323","tt");
+        User updatedAccount = new User("unit test email", "passt", "customert", "t", "t","2002-08-30","232323","tt");
         testuserDao.addUser(testAccount);
-        testuserDao.updateUser(testAccount, "passt", "customert", "232323","tt");
-        user Faccount = testuserDao.findUser(testAccount.getEmail());
+        testuserDao.updateUser(testAccount, "t", "t", "232323","tt");
+        User Faccount = testuserDao.findUser(testAccount.getEmail());
         // Check if the actual list contains the testAccount
         boolean userFound = false;
 

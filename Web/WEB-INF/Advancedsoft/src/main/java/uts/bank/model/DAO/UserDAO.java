@@ -1,12 +1,8 @@
 package uts.bank.model.DAO;
 
-import uts.bank.model.user;
+import uts.bank.model.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-
 
 
 public class UserDAO {
@@ -21,8 +17,35 @@ public class UserDAO {
             throw new RuntimeException("Error connecting to the database", e);
         }
     }
-    public void updateUser(user account, String fname, String lname, String phone, String Address)throws SQLException{
-        String sql = "UPDATE bank.user SET fname=?, lname=?, phone=?, address=? WHERE Email=?";
+    public boolean passvalid(String pass, String email) throws SQLException{
+        String sql = "SELECT COUNT(*) FROM passcode WHERE Email = ? AND Passcode = ?";
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    return true; // Password exists if count is greater than 0
+                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Password doesn't exist or an error occurred
+    }
+    public void passcode( String email, String pass)throws SQLException{
+        String sql = "INSERT INTO bank.passcode (Email,Passcode) VALUES(?,? )";
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateUser(User account, String fname, String lname, String phone, String Address)throws SQLException{
+        String sql = "INSERT INTO bank.passcode (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, fname);
@@ -37,9 +60,9 @@ public class UserDAO {
     }
 
 
-        public void addUser(user account)throws SQLException{
-        String sql = "INSERT INTO bank.user (Email, Pass, Type, fname, lname, Address, DOB,Phone) VALUES(?,?,?,?,?,?,?,? )";
-        java.sql.Date sqlDate = new java.sql.Date(account.getDob().getTime());
+        public void addUser(User account)throws SQLException{
+        String sql = "INSERT INTO bank.user (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
+
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
@@ -49,7 +72,7 @@ public class UserDAO {
             ps.setString(4, account.getFname());
             ps.setString(5, account.getLname());
             ps.setString(6, account.getAddress());
-            ps.setDate(7, sqlDate);
+            ps.setDate(7, Date.valueOf(account.getDob()));
             ps.setString(8, account.getPhone());
             ps.executeUpdate();
 
@@ -58,7 +81,7 @@ public class UserDAO {
         }
 
     }
-    public user findUser(String customerEmail) {
+    public User findUser(String customerEmail) {
         String emailDB = "";
         String passwordDB = "";
         String typeDB = "customer";
@@ -67,7 +90,7 @@ public class UserDAO {
         String Address = "";
         String Phone = "";
         double bal = 0;
-        Date dob = null;
+        String dob = "";
         String sql = "SELECT * FROM bank.user WHERE Email = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);){
@@ -83,13 +106,13 @@ public class UserDAO {
                 LnameDB = rs.getString("Lname");
                 Address = rs.getString("Address");
                 Phone = rs.getString("Phone");
-                dob = rs.getDate("dob");
+                dob = rs.getDate("dob").toString();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        user acco = new user(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+        User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
 
         return acco;
     }

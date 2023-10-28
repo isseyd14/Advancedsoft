@@ -1,7 +1,7 @@
 
 import org.junit.jupiter.api.*;
 import uts.bank.model.DAO.UserDAO;
-import uts.bank.model.user;
+import uts.bank.model.User;
 import java.sql.Date;
 
 
@@ -12,18 +12,17 @@ import java.sql.SQLException;
 public class UserTest {
     static UserDAO testuserDao = new UserDAO();
 
-    static user testAccount;
+    static User testAccount;
 
     @BeforeAll
     public static void setUp(){
-        Date specificSQLDate = Date.valueOf("2002-08-30");
 
-        testAccount = new user("unit test email", "pass", "customer", "t", "t",specificSQLDate,"23233","t");
+        testAccount = new User("unit test email", "pass", "customer", "t", "t","2002-08-30","23233","t");
     }
     @Test
     public void testAddUser() throws SQLException {
         testuserDao.addUser(testAccount);
-        user Faccount = testuserDao.findUser(testAccount.getEmail());
+        User Faccount = testuserDao.findUser(testAccount.getEmail());
         // Check if the actual list contains the testAccount
         boolean userFound = false;
 

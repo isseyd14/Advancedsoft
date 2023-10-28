@@ -1,19 +1,18 @@
 package uts.bank.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class user implements Serializable {
+public class User implements Serializable {
     private String email;
     private String fname;
     private String lname;
     private String password;
     private String type;
-    private Date dob;
+    private String dob;
     private String phone;
     private String address; // Add an address field
 
-    public user(String email, String fname, String lname, String password, String type, Date dob, String phone, String address) {
+    public User(String email, String password, String type, String fname, String lname, String dob, String phone, String address) {
         this.email = email;
         this.fname = fname;
         this.lname = lname;
@@ -33,11 +32,11 @@ public class user implements Serializable {
     }
 
     public String getFname() {
-        return fname;
+        return this.fname;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFname(String fName) {
+        this.fname = fName;
     }
 
     public String getLname() {
@@ -64,11 +63,11 @@ public class user implements Serializable {
         this.type = type;
     }
 
-    public Date getDob() {
-        return dob;
+    public String getDob() {
+        return this.dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
