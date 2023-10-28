@@ -9,24 +9,37 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- security logic to check if there is a user logged in if not it sends back to index -->
+    <%
+        boolean isLoggedIn = (session.getAttribute("email") != null);
+        if(!isLoggedIn){
+            response.sendRedirect("index.jsp");
+            return;
+        }
+    %>
 </head>
 <body>
+<!-- navigation bar for website -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Frontline Bank</a>
+            <a class="navbar-brand" href="index.jsp">Frontline Bank</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.jsp">Home</a></li>
-            <li><a href="viewbalanceservlet">Account</a></li>
-            <li><a href="CardServlet">Card</a></li>
+            <li class="active">
+                <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+            </li>
+            <li><a href="paytransferservlet">Pay and Transfer</a></li>
+            <li><a href="account.jsp">Account</a></li>
+            <li><a href="savecontactservlet">Contacts Management</a></li>
+            <li><a href="card/selectByCustomerId">Card</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
-
+<!-- creates form for the user to create a new account -->
 <div class="container" style="margin-top:50px">
     <h2>Add Account</h2>
 

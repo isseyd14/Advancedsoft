@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ContactDAO {
 
+    //creates connection to the database
     protected Connection getConnection(){
         Connection con = null;
         try{
@@ -20,8 +21,10 @@ public class ContactDAO {
         }
     }
 
+
+    // adds one contact to the database
     public void addContact(Contact contact)throws SQLException{
-        String sql = "INSERT INTO contacts (owner_email, contact_name, contact_nic_name, contact_email) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO contacts (owner_email, contact_name, contact_nic_name, contact_email, account_number) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
@@ -29,6 +32,7 @@ public class ContactDAO {
             stmt.setString(2, contact.getContactName());
             stmt.setString(3, contact.getContactNicName());
             stmt.setString(4, contact.getContactEmail());
+            stmt.setInt(5, contact.getAccountNumber());
 
 
 
@@ -40,6 +44,7 @@ public class ContactDAO {
 
     }
 
+    // returns a list of all contacts by user email
     public List<Contact> findContacts(String userEmail) {
         List<Contact> contacts = new ArrayList<>();
         String sql = "SELECT * FROM contacts WHERE owner_email = ?";
@@ -54,7 +59,8 @@ public class ContactDAO {
                 String contactNicName = rs.getString("contact_nic_name");
                 String contactEmail = rs.getString("contact_email");
                 int contactId = rs.getInt("contacts_id");
-                Contact contact = new Contact(ownerEmail, contactName, contactNicName, contactEmail);
+                int accountNumber = rs.getInt("account_number");
+                Contact contact = new Contact(ownerEmail, contactName, contactNicName, contactEmail, accountNumber);
                 contact.setContactId(contactId);
                 contacts.add(contact);
             }
@@ -65,11 +71,14 @@ public class ContactDAO {
         return contacts;
     }
 
+
+    //returns just one contact by contact id
     public Contact findOneContact(int contactID){
         String ownerEmail ="";
         String contactName ="";
         String contactNicName ="";
         String contactEmail ="";
+        int accountNumber = 0;
         String sql = "SELECT * FROM contacts WHERE contacts_id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);){
@@ -81,16 +90,19 @@ public class ContactDAO {
                 contactName = rs.getString("contact_name");
                 contactNicName = rs.getString("contact_nic_name");
                 contactEmail = rs.getString("contact_email");
+                accountNumber = rs.getInt("account_number");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new Contact(ownerEmail, contactName, contactNicName, contactEmail);
+        return new Contact(ownerEmail, contactName, contactNicName, contactEmail, accountNumber);
     }
 
+
+    //updates one contact
     public void updateContact(Contact contact) throws SQLException {
-        String sql = "UPDATE contacts SET owner_email=?, contact_name=?, contact_nic_name=?, contact_email=? WHERE contacts_id=?";
+        String sql = "UPDATE contacts SET owner_email=?, contact_name=?, contact_nic_name=?, contact_email=?, account_number=? WHERE contacts_id=?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
@@ -98,7 +110,8 @@ public class ContactDAO {
             stmt.setString(2, contact.getContactName());
             stmt.setString(3, contact.getContactNicName());
             stmt.setString(4, contact.getContactEmail());
-            stmt.setInt(5, contact.getContactId()); // Assuming you have a method to get the contact ID
+            stmt.setInt(5, contact.getAccountNumber());
+            stmt.setInt(6, contact.getContactId()); // Assuming you have a method to get the contact ID
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -106,6 +119,7 @@ public class ContactDAO {
         }
     }
 
+    // deletes one contact
     public void deleteContact(String contact_email) throws SQLException {
         String sql = "DELETE FROM bank.contacts WHERE contact_email = ?";
         try (Connection conn = getConnection();

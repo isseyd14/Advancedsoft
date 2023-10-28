@@ -9,7 +9,7 @@ public class Account {
     private double accountAvailableFunds;
     private double AccountCurrentFunds;
 
-
+    // contructor for account
     public Account(int accountNumber, String accountEmail, String accountName, String accountType, double accountAvailableFunds, double accountCurrentFunds) {
         this.accountNumber = accountNumber;
         this.accountEmail = accountEmail;
@@ -19,6 +19,7 @@ public class Account {
         AccountCurrentFunds = accountCurrentFunds;
     }
 
+    // getter and setters for account
     public int getAccountNumber() {
         return this.accountNumber;
     }

@@ -7,14 +7,19 @@ public class Contact {
     private String ContactNicName;
     private int contactId;
 
+    private int accountNumber;
 
-    public Contact(String ownerEmail, String contactName, String contactEmail, String contactNicName) {
+    // constructor for contact
+    public Contact(String ownerEmail, String contactName,  String contactNicName,String contactEmail, int accountNumber) {
         this.ownerEmail = ownerEmail;
         this.contactName = contactName;
         this.contactEmail = contactEmail;
         ContactNicName = contactNicName;
+        this.accountNumber = accountNumber;
     }
 
+
+    //getters and setters for contact
     public String getOwnerEmail() {
         return ownerEmail;
     }
@@ -53,5 +58,13 @@ public class Contact {
 
     public void setContactId(int contactId) {
         this.contactId = contactId;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

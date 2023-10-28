@@ -15,25 +15,22 @@ public class editContactServlet extends HttpServlet {
 
     private ContactDAO contactDAO;
 
+    //constructor
     public editContactServlet() {this.contactDAO = new ContactDAO();}
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
+        // gets the contact id from the edit button
         int contactId = Integer.parseInt(request.getParameter("contactId"));
 
         // Use the contactId to fetch the corresponding contact from the database
-        Contact contact = fetchContactFromDatabase(contactId);
+        Contact contact =  contactDAO.findOneContact(contactId);
 
         // Set the contact in the request scope to make it available in the JSP
         request.getSession().setAttribute("contactId",contactId);
         request.getSession().setAttribute("contact", contact); // Set the contact in the session
         request.getRequestDispatcher("edit-contact.jsp").forward(request, response);
 
-        System.out.println(contact.getContactId());
+        //System.out.println(contact.getContactId());
     }
 
-    // Your method to fetch the contact from the database
-    private Contact fetchContactFromDatabase(int contactId) {
-        // Implement the database retrieval logic here and return the Contact object
-       return contactDAO.findOneContact(contactId);
-    }
 }
