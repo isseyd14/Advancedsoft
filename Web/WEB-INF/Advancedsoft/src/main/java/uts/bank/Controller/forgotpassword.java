@@ -18,7 +18,7 @@ public class forgotpassword extends HttpServlet {
         String oldpass = request.getParameter("code");
         UserDAO testuserDao = new UserDAO();
         String newpass = request.getParameter("pass");
-        String email = (String) request.getSession().getAttribute("email");
+        String email = (String) request.getSession().getAttribute("emailReset");
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

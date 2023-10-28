@@ -56,7 +56,7 @@ public class SendEmailServlet extends HttpServlet {
             message.setSubject(subject);
             message.setText(messageText);
             Transport.send(message);
-            request.setAttribute("errorMessage","Email succesfully sent");
+            request.getSession().setAttribute("emailReset",to);
             RequestDispatcher rd = request.getRequestDispatcher("changepass2.jsp");
             rd.forward(request, response);
             testuserDao.passcode(to,randomNumberString);
