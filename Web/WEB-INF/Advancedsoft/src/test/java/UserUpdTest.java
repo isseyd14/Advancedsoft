@@ -17,7 +17,7 @@ public class UserUpdTest {
     @BeforeAll
     public static void setUp(){
 
-        testAccount = new User("unit test email", "pass", "customer", "t", "t","2002-08-30","23233","t");
+        testAccount = new User("unit test email", "pass", "customer", "fname", "lname","2002-08-30","23233","t");
     }
     @Test
     public void testupdateUser() throws SQLException {

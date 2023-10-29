@@ -10,11 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/Loginservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/Loginservlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/SendEmailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/SendEmailServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/forgotpassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/forgotpassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/ForgotPass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/ForgotPass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="GlassFish Server.GlassFish 7.0.0.M4">
+  <component name="RunManager" selected="JUnit.java in Advancedsoft">
     <configuration name="GlassFish 7.0.0.M4" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 7.0.0.M4" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -159,16 +158,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountTest.testAddAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Advancedsoft" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AccountTest" />
-      <option name="METHOD_NAME" value="testAddAccount" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ContactTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Advancedsoft" />
       <option name="PACKAGE_NAME" value="" />
@@ -188,19 +177,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserUpdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserUpdTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in Advancedsoft" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="GlassFish Server.GlassFish 7.0.0.M4" />
+      <item itemvalue="JUnit.UserUpdTest" />
+      <item itemvalue="JUnit.java in Advancedsoft" />
       <item itemvalue="JUnit.AccountTest" />
-      <item itemvalue="JUnit.AccountTest.testAddAccount" />
       <item itemvalue="JUnit.ContactTest" />
       <item itemvalue="JUnit.ContactTest.testDeleteContact" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in Advancedsoft" />
+        <item itemvalue="JUnit.UserUpdTest" />
         <item itemvalue="JUnit.ContactTest" />
         <item itemvalue="JUnit.ContactTest.testDeleteContact" />
         <item itemvalue="JUnit.AccountTest" />
-        <item itemvalue="JUnit.AccountTest.testAddAccount" />
       </list>
     </recent_temporary>
   </component>

@@ -45,15 +45,15 @@ public class UserDAO {
         }
     }
     public void updateUser(User account, String fname, String lname, String phone, String Address)throws SQLException{
-        String sql = "INSERT INTO bank.passcode (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
+        String sql = "UPDATE bank.user SET fname=?, lname=?, phone=?, address=? WHERE Email=?";;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, fname);
             ps.setString(2, lname);
             ps.setString(3, phone);
             ps.setString(4, Address);
-        ps.setString(5, account.getEmail());
-        ps.executeUpdate();
+            ps.setString(5, account.getEmail());
+            ps.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -112,7 +112,7 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+        User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
 
         return acco;
     }
