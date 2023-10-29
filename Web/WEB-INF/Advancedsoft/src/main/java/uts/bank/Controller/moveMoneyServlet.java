@@ -11,8 +11,10 @@ import uts.bank.model.Contact;
 import uts.bank.model.DAO.AccountDAO;
 import uts.bank.model.DAO.ContactDAO;
 import uts.bank.model.DAO.TransactionDAO;
+import uts.bank.model.Transaction;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/moveMoneyServlet")
 public class moveMoneyServlet extends HttpServlet {
@@ -36,6 +38,7 @@ public class moveMoneyServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Transaction transaction;
         // gets details from form to send money to different account
         int contactId = Integer.parseInt(request.getParameter("ContactName"));
         int accountId = Integer.parseInt(request.getParameter("AccountName"));
@@ -44,8 +47,17 @@ public class moveMoneyServlet extends HttpServlet {
         //creates contact and account objects
         Contact contact = contactDAO.findOneContact(contactId);
         Account account = accountDAO.findOneAccount(accountId);
+        try {
+            transaction = new Transaction(transactionDAO.getNexttransactionId(), amonut, account.getAccountEmail(), contact.getContactEmail(), account.getAccountNumber());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         //create the transaction in the database
-        transactionDAO.addTransaction(contact, account, amonut);
+        try {
+            transactionDAO.addTransaction(transaction);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         // take the money from the account
         accountDAO.updateAccountBalance(account,amonut);
         //send back to the main account page

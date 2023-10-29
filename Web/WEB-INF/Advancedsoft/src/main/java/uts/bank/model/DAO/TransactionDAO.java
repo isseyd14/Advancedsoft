@@ -2,11 +2,11 @@ package uts.bank.model.DAO;
 
 import uts.bank.model.Account;
 import uts.bank.model.Contact;
+import uts.bank.model.Transaction;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionDAO {
 
@@ -24,22 +24,77 @@ public class TransactionDAO {
     }
 
     // adds a transaction to the database
-    public void addTransaction(Contact contact, Account account, int amount){
-        System.out.println(account.getAccountEmail());
-        String sql = "INSERT INTO transaction (amount, owner_email, payee_email, account_id) VALUES (?, ?, ?, ?)";
+    public void addTransaction(Transaction transaction) throws SQLException {
+        String sql = "INSERT INTO transaction (transaction_id, amount, owner_email, payee_email, account_id) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
-            stmt.setInt(1, amount);
-            stmt.setString(2, account.getAccountEmail());
-            stmt.setString(3, contact.getContactEmail());
-            stmt.setInt(4, account.getAccountNumber());
+            stmt.setInt(1, transaction.getTransaction_id());
+            stmt.setDouble(2, transaction.getAmount());
+            stmt.setString(3, transaction.getOwner_email());
+            stmt.setString(4, transaction.getPayee_email());
+            stmt.setInt(5, transaction.getAccount_id());
 
             stmt.executeUpdate();
             System.out.println("done???");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // finds the next avaliable transaction id
+    public int getNexttransactionId() throws SQLException {
+        int transactionid = 0;
+        String sql = "SELECT MAX(transaction_id) AS next_available_id FROM transaction";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);) {
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                transactionid = rs.getInt("next_available_id") + 1;
+            } else {
+                // If there are no existing account IDs, you can start from 1 or any desired initial value.
+                transactionid = 100000;
+            }
+
+            return transactionid;
+        }
+    }
+
+    public void deleteTransaction(int transactionId) throws SQLException {
+        String sql = "DELETE FROM transaction WHERE transaction_id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);) {
+
+            stmt.setInt(1, transactionId);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Transaction> findTransactions(String owner_email) {
+        List<Transaction> transaction = new ArrayList<>();
+        String sql = "SELECT * FROM transaction WHERE owner_email = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);){
+            stmt.setString(1, owner_email);
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                int transaction_idDB = rs.getInt("transaction_id");
+                double amountDB = rs.getDouble("amount");
+                String owner_emailDB = rs.getString("owner_email");
+                String payee_emailDB = rs.getString("payee_email");
+                int account_idDB = rs.getInt("account_id");
+                transaction.add(new Transaction(transaction_idDB, amountDB, owner_emailDB, payee_emailDB, account_idDB));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transaction;
     }
 
 }
