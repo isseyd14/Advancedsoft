@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/moveMoneyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/moveMoneyServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/TransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +239,7 @@
       <workItem from="1697948970900" duration="769000" />
       <workItem from="1697972087843" duration="4933000" />
       <workItem from="1698468222678" duration="4195000" />
-      <workItem from="1698541632352" duration="1489000" />
+      <workItem from="1698541632352" duration="2467000" />
     </task>
     <task id="LOCAL-00001" summary="fixed up unit tests again">
       <option name="closed" value="true" />
@@ -251,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698539217272</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="adding transaction test files">
+      <option name="closed" value="true" />
+      <created>1698543244854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698543244854</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +276,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed up unit tests again" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed up unit tests again" />
+    <MESSAGE value="adding transaction test files" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding transaction test files" />
   </component>
 </project>
