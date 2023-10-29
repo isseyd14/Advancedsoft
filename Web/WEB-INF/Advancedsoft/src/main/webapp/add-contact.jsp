@@ -29,6 +29,7 @@
       <li class="active">
         <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
       </li>
+      <li><a href="viewbalanceservlet">View Accounts</a></li>
       <li><a href="paytransferservlet">Pay and Transfer</a></li>
       <li><a href="account.jsp">Account</a></li>
       <li><a href="savecontactservlet">Contacts Management</a></li>
@@ -42,6 +43,25 @@
 <!-- creates form for the user to create a contact -->
 <div class="container" style="margin-top:50px">
   <h2>Add Contact</h2>
+
+
+  <!-- Display error messages if they are present -->
+  <%
+    String error = request.getParameter("error");
+    if ("invalid-email".equals(error)) {
+  %>
+  <div class="alert alert-danger">
+    Invalid email format. Please enter a valid email address.
+  </div>
+  <%
+  } else if ("invalid-account-number".equals(error)) {
+  %>
+  <div class="alert alert-danger">
+    Invalid account number. Please enter a valid numeric account number.
+  </div>
+  <%
+    }
+  %>
 
   <form action="AddContactServlet" method="post">
     <div class="form-group">

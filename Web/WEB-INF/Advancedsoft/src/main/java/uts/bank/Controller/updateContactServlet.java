@@ -33,27 +33,40 @@ public class updateContactServlet extends HttpServlet {
         HttpSession session = request.getSession();
         // gets all elements from form and puts them into a contact object
         String contactName = request.getParameter("contactName");
-        System.out.println(contactName);
-        String contactNicName = request.getParameter("contactEmail");
-        System.out.println(contactNicName);
-        String contactEmail = request.getParameter("contactNicName");
-        System.out.println(contactEmail);
-        int accountNumber = Integer.parseInt(request.getParameter("accountNumber"));
-        Contact contact = (Contact) session.getAttribute("contact");
-        contact.setContactId((Integer) session.getAttribute("contactId"));
-        System.out.println(contact.getContactEmail());
-        contact.setContactName(contactName);
-        contact.setContactNicName(contactNicName);
-        contact.setContactEmail(contactEmail);
-        contact.setAccountNumber(accountNumber);
-        // updates the contact in the database
-        try {
-            contactDAO.updateContact(contact);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        String contactNicName = request.getParameter("contactNicName");
+
+        // Inside your updateContactServlet's doPost method
+        String contactEmail = request.getParameter("contactEmail");
+        String accountNumberStr = request.getParameter("accountNumber");
+
+        // Validate the email format using a regular expression
+        if (!contactEmail.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            // Handle invalid email format
+            response.sendRedirect("edit-contact.jsp?error=invalid-email");
+        } else {
+            // Try to parse the account number as a valid integer
+            try {
+                int accountNumber = Integer.parseInt(accountNumberStr);
+                Contact contact = (Contact) session.getAttribute("contact");
+                contact.setContactId((Integer) session.getAttribute("contactId"));
+                contact.setContactName(contactName);
+                contact.setContactNicName(contactNicName);
+                contact.setContactEmail(contactEmail);
+                contact.setAccountNumber(accountNumber);
+                // updates the contact in the database
+                try {
+                    contactDAO.updateContact(contact);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                // sends to the main contact page
+                response.sendRedirect("savecontactservlet");
+            } catch (NumberFormatException e) {
+                // Handle the case where parsing as an integer fails
+                response.sendRedirect("edit-contact.jsp?error=invalid-account-number");
+            }
         }
-        // sends to the main contact page
-        response.sendRedirect("savecontactservlet");
+
 
     }
 }

@@ -29,6 +29,7 @@
             <li class="active">
                 <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
             </li>
+            <li><a href="viewbalanceservlet">View Accounts</a></li>
             <li><a href="paytransferservlet">Pay and Transfer</a></li>
             <li><a href="account.jsp">Account</a></li>
             <li><a href="savecontactservlet">Contacts Management</a></li>
@@ -42,6 +43,18 @@
 <!-- creates form for the user to create a new account -->
 <div class="container" style="margin-top:50px">
     <h2>Add Account</h2>
+
+    <%
+        String error = request.getParameter("error");
+        if ("invalid-input".equals(error)) {
+    %>
+    <div class="alert alert-danger">
+        Invalid input. Please enter valid numbers for Available Funds and Current Funds.
+    </div>
+    <%
+        }
+    %>
+
 
     <form action="AddAccountServlet" method="post">
         <div class="form-group">

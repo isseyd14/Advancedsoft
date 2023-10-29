@@ -37,19 +37,31 @@ public class AddContactServlet extends HttpServlet {
         String contactName = request.getParameter("ContactName");
         String contactNicName = request.getParameter("ContactNicName");
         String contactEmail = request.getParameter("ContactEmail");
-        int accountNumber = Integer.parseInt(request.getParameter("accountNumber"));
-        System.out.println(accountNumber);
+        String accountNumberStr = request.getParameter("accountNumber");
 
-        Contact newContact = new Contact(email, contactName, contactNicName, contactEmail, accountNumber);
-        // putting the new contact object into the database
-        try {
-            contactDAO.addContact(newContact);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        // Validate the email format using a regular expression
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            // Handle invalid email format
+            response.sendRedirect("add-contact.jsp?error=invalid-email");
+        } else {
+            // Try to parse the account number as a valid integer
+            try {
+                int accountNumber = Integer.parseInt(accountNumberStr);
+                Contact newContact = new Contact(email, contactName, contactNicName, contactEmail, accountNumber);
+                // putting the new contact object into the database
+                try {
+                    contactDAO.addContact(newContact);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                // sending the user back to the main contacts page
+                response.sendRedirect("savecontactservlet");
+            } catch (NumberFormatException e) {
+                // Handle the case where parsing as an integer fails
+                response.sendRedirect("add-contact.jsp?error=invalid-account-number");
+            }
         }
-        // sending the user back to the main contacts page
-        response.sendRedirect("savecontactservlet");
 
     }
 

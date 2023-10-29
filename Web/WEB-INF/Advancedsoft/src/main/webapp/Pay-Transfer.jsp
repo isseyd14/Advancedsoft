@@ -30,6 +30,7 @@
       <li class="active">
         <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
       </li>
+      <li><a href="viewbalanceservlet">View Accounts</a></li>
       <li><a href="paytransferservlet">Pay and Transfer</a></li>
       <li><a href="account.jsp">Account</a></li>
       <li><a href="savecontactservlet">Contacts Management</a></li>
@@ -43,6 +44,20 @@
 <!-- creates from with two drop down menus, one for accounts and one for contacts -->
 <div class="container" style="margin-top:50px">
   <h2>Add Account</h2>
+
+  <!-- Display error message if it's present -->
+  <%
+    String error = request.getParameter("error");
+    if ("invalid-amount".equals(error)) {
+  %>
+  <div class="alert alert-danger">
+    Invalid amount. Please enter a valid numeric value for the amount.
+  </div>
+  <%
+    }
+  %>
+
+
   <form action="moveMoneyServlet" method="post">
     <div class="form-group">
       <label for="ContactName">Select Contact:</label>

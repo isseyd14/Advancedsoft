@@ -27,6 +27,7 @@
             <li class="active">
                 <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
             </li>
+            <li><a href="viewbalanceservlet">View Accounts</a></li>
             <li><a href="paytransferservlet">Pay and Transfer</a></li>
             <li><a href="account.jsp">Account</a></li>
             <li><a href="savecontactservlet">Contacts Management</a></li>

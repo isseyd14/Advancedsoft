@@ -42,26 +42,38 @@ public class moveMoneyServlet extends HttpServlet {
         // gets details from form to send money to different account
         int contactId = Integer.parseInt(request.getParameter("ContactName"));
         int accountId = Integer.parseInt(request.getParameter("AccountName"));
-        int amonut = Integer.parseInt(request.getParameter("Amount"));
+        String amountStr = request.getParameter("Amount");
 
-        //creates contact and account objects
-        Contact contact = contactDAO.findOneContact(contactId);
-        Account account = accountDAO.findOneAccount(accountId);
+
+        // Try to parse the amount as a valid double
         try {
-            transaction = new Transaction(transactionDAO.getNexttransactionId(), amonut, account.getAccountEmail(), contact.getContactEmail(), account.getAccountNumber());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            int amount = Integer.parseInt(amountStr);
+
+            //creates contact and account objects
+            Contact contact = contactDAO.findOneContact(contactId);
+            Account account = accountDAO.findOneAccount(accountId);
+            try {
+                transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), contact.getContactEmail(), account.getAccountNumber());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            //create the transaction in the database
+            try {
+                transactionDAO.addTransaction(transaction);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            // take the money from the account
+            accountDAO.updateAccountBalance(account,amount);
+            //send back to the main account page
+            RequestDispatcher dispatcher = request.getRequestDispatcher("viewbalanceservlet");
+            dispatcher.forward(request, response);
+
+
+        } catch (NumberFormatException e) {
+            // Handle the case where parsing as a double fails
+            response.sendRedirect("Pay-Transfer.jsp?error=invalid-amount");
         }
-        //create the transaction in the database
-        try {
-            transactionDAO.addTransaction(transaction);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        // take the money from the account
-        accountDAO.updateAccountBalance(account,amonut);
-        //send back to the main account page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("viewbalanceservlet");
-        dispatcher.forward(request, response);
+
     }
 }
