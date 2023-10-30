@@ -25,3 +25,25 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 # Maven
+
+stage: 'Deploy'
+displayName: 'deploy web app'
+dependsOn: Build
+jobs:
+- deployment: 
+  pool:
+    vmImage: 'ubuntu-20.04'
+  environment: dev
+  variables: Release
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+          - download: current
+            artifact: drop
+          - task: azureWebApp@1
+            displayName: 'azure deploy service'
+            inputs:
+              azureSubscription: 'Azure for Students (3c01d404-c8eb-4faa-b755-f585f940e4f9)'
+              appName: '$asdbank'
+              package: '$(Pipeline.Workspace)/drop/$(buildconfiguration)/*.zip'
