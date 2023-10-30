@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+- issey release2
 
 pool:
   vmImage: ubuntu-latest
@@ -26,19 +26,20 @@ steps:
     goals: 'package'
 # Maven
 
-stage: 'Deploy'
-displayName: 'deploy web app'
-dependsOn: Build
-jobs:
-- deployment: 
-  pool:
-    vmImage: 'ubuntu-20.04'
-  environment: dev
-  variables: Release
-  strategy:
-    runOnce:
-      deploy:
-        steps:
+- stage: 'Deploy'
+  displayName: 'deploy web app'
+  dependsOn: Build
+  jobs:
+  - deployment: 
+    pool:
+      vmImage: 'ubuntu-20.04'
+    environment: dev
+    variables:
+    - group: Release
+    strategy:
+      runOnce:
+        deploy:
+          steps:
           - download: current
             artifact: drop
           - task: azureWebApp@1
