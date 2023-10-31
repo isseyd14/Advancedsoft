@@ -122,4 +122,28 @@ public class AdminDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void deposit(int accountNumber, double current_funds) {
+        String sql = "UPDATE account SET current_funds = ?, avaliable_funds = ? WHERE account_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setDouble(1, current_funds);
+            pstmt.setDouble(2, current_funds);
+            pstmt.setInt(3, accountNumber);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void withdraw(int accountNumber, double current_funds) {
+        String sql = "UPDATE account SET current_funds = ?, avaliable_funds = ? WHERE account_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setDouble(1, current_funds);
+            pstmt.setDouble(2, current_funds);
+            pstmt.setInt(3, accountNumber);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

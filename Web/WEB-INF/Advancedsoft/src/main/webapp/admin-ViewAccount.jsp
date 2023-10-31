@@ -20,19 +20,46 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         .Header {
-            background-color: #222; /* Slightly darker grey for the header */
-            padding: 1px 0;
+            /*background-color: #222; !* Slightly darker grey for the header *!*/
+            /*padding: 1px 0;*/
             text-align: left;
             display: flex; /* Enable flexbox layout for header */
             align-items: center; /* Vertically center content */
             justify-content: left; /* Vertically center content */
             height: 10vh;
-
         }
 
         .body {
-            margin-top: 4%;
-            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            height: 100vh;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Adjust width as needed */
+            height: 30%;
+            margin-top: 5%;
+            border: 1px solid black;
+        }
+
+        .box button {
+            /* Style for each button in the nav */
+            padding: 10px 20px;
+            background-color: #f0f0f0; /* Adjust background color as needed */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .box button:hover {
+            background-color: #e0e0e0; /* Adjust hover background color as needed */
+        }
+
+        .box_bar {
+            margin: auto;
         }
 
         .profile {
@@ -45,12 +72,12 @@
         }
 
         .account_info {
-            float: left;
+            display: flex;
+            flex-direction: column; /* Display elements in a single column */
+            align-items: center;
             margin: auto;
-            margin-left: 1%;
-            width: 17%;
-            height: 40%;
-            border: 1px solid black;
+            padding: 1%;
+            width: 90%;
             border-radius: 10px;
         }
 
@@ -66,56 +93,10 @@
             overflow-y: auto;
         }
 
-        #search_tf {
-            margin-left: 32%;
-            width: 15%;
-            height: 30px;
-            border: 1px solid black;
-        }
-        #back_btn {
-            margin-left: 2%;
-            width: 6%;
-            height: 30px;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-
-        #logout_btn {
-            float: right;
-            margin-right: 2%;
-            margin-left: 40%;
-            width: 6%;
-            height: 30px;
-            border: 1px solid black;
-            border-radius: 5px;
-
-        }
-
-        .account_actions {
-            display: flex;
-            margin: auto;
-            margin-top: 5%;
-            width: 40%;
-            height: 8%;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .account_details {
-            display: block;
-            float: left;
-            margin-top: 5%;
-            margin-left: 3%;
-        }
-
         .form_row {
-            margin-top: 10%;
-            margin-left: 3%;
-            margin-bottom: 10px;
-        }
-
-        #actions_bar {
-            padding: 10px;
+            margin: auto;
+            padding-top: 5px;
+            text-align: center;
         }
 
         label {
@@ -271,14 +252,10 @@
         </ul>
     </div>
 </nav>
-<%--<div class="Header">
-        <button onclick="window.location.href='admin.jsp'" id="back_btn">Back</button>
-        <input type="text" id="search_tf" placeholder="Search" />
-        <button onclick="window.location.href='login.jsp'" id="logout_btn">Logout</button>
-</div>--%>
+
 <div class="body">
+    <div class="box">
     <div class="account_info">
-<%--        <form>--%>
             <div class="form_row">
                 <label id="email_T">Email:</label>
                 <label id="email_id">${user.email}</label>
@@ -295,7 +272,13 @@
                 <label id="dob_T">Date of Birth:</label>
                 <label id="dob">${user.dob}</label>
             </div>
-<%--        </form>--%>
+    </div>
+        <div class="box_bar">
+            <button>User Details</button>
+            <button><a href="deposit.jsp">Deposit</a></button>
+            <button><a href="withdraw.jsp">Withdraw</a></button>
+            <button>Transactions</button>
+        </div>
     </div>
     <div class="profile">
         <div class="accounts_view">
