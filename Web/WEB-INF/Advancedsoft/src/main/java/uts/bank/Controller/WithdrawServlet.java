@@ -28,12 +28,16 @@ public class WithdrawServlet extends HttpServlet {
         AdminDAO adminDAO = new AdminDAO();
         try {
             account = adminDAO.getAccount(accountNumber);
-            updatedFunds = account.getAccountCurrentFunds() - amount;
-            adminDAO.deposit(accountNumber, updatedFunds);
+            if (amount <= account.getAccountCurrentFunds()) {
+                updatedFunds = account.getAccountCurrentFunds() - amount;
+                adminDAO.deposit(accountNumber, updatedFunds);
 
-            accounts = adminDAO.findAccounts(account.getAccountEmail());
-            session.setAttribute("accounts", accounts);
-            request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
+                accounts = adminDAO.findAccounts(account.getAccountEmail());
+                session.setAttribute("accounts", accounts);
+                request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
+            } else {
+                System.out.println("Cannot withdraw more than balance");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
