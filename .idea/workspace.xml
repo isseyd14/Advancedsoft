@@ -9,17 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/Loginservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/Loginservlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/viewbalanceservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/viewbalanceservlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/ContactDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/ContactDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/Save-Contact.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/webapp/Save-Contact.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,9 +33,12 @@
     <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
+    &quot;associatedIndex&quot;: 2
+    }</component>
   <component name="ProjectId" id="2VMynrMf5Wqe44gG3AfV4Lpibxk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,19 +49,25 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/joshuaburke/Desktop/uni/41026 Advanced Software Development/Advancedsoft/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/issey/Desktop/mail.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.55005753&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5137931&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\issey\Documents\GitHub\Advancedsoft\Web\WEB-INF\Advancedsoft\lib" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -146,25 +145,6 @@
         </option>
       </method>
     </configuration>
-    <configuration name="AccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Advancedsoft" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AccountTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountTest.testAddAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Advancedsoft" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AccountTest" />
-      <option name="METHOD_NAME" value="testAddAccount" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ContactTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Advancedsoft" />
       <option name="PACKAGE_NAME" value="" />
@@ -174,29 +154,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContactTest.testDeleteContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TransactionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Advancedsoft" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ContactTest" />
-      <option name="METHOD_NAME" value="testDeleteContact" />
+      <option name="MAIN_CLASS_NAME" value="TransactionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionTest.testAddAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TransactionTest" />
+      <option name="METHOD_NAME" value="testAddAccount" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserUpdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserUpdTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in Advancedsoft" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Advancedsoft" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="GlassFish Server.GlassFish 7.0.0.M4" />
-      <item itemvalue="JUnit.AccountTest" />
-      <item itemvalue="JUnit.AccountTest.testAddAccount" />
+      <item itemvalue="JUnit.TransactionTest" />
+      <item itemvalue="JUnit.TransactionTest.testAddAccount" />
+      <item itemvalue="JUnit.UserUpdTest" />
+      <item itemvalue="JUnit.java in Advancedsoft" />
       <item itemvalue="JUnit.ContactTest" />
-      <item itemvalue="JUnit.ContactTest.testDeleteContact" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TransactionTest" />
+        <item itemvalue="JUnit.TransactionTest.testAddAccount" />
+        <item itemvalue="JUnit.java in Advancedsoft" />
+        <item itemvalue="JUnit.UserUpdTest" />
         <item itemvalue="JUnit.ContactTest" />
-        <item itemvalue="JUnit.ContactTest.testDeleteContact" />
-        <item itemvalue="JUnit.AccountTest" />
-        <item itemvalue="JUnit.AccountTest.testAddAccount" />
       </list>
     </recent_temporary>
   </component>
@@ -215,10 +223,75 @@
       <workItem from="1696928106861" duration="652000" />
       <workItem from="1696979703029" duration="9936000" />
       <workItem from="1696989696196" duration="3323000" />
+      <workItem from="1697026580747" duration="1347000" />
+      <workItem from="1697095558633" duration="115000" />
+      <workItem from="1697711694144" duration="3762000" />
+      <workItem from="1697778721123" duration="5188000" />
+      <workItem from="1697784088930" duration="3332000" />
+      <workItem from="1697787441457" duration="3292000" />
+      <workItem from="1697841995301" duration="114000" />
+      <workItem from="1697842130974" duration="1676000" />
+      <workItem from="1697843945538" duration="1873000" />
+      <workItem from="1697851559326" duration="8754000" />
+      <workItem from="1697948970900" duration="769000" />
+      <workItem from="1697972087843" duration="4933000" />
+      <workItem from="1698468222678" duration="4195000" />
+      <workItem from="1698541632352" duration="4286000" />
     </task>
+    <task id="LOCAL-00001" summary="fixed up unit tests again">
+      <option name="closed" value="true" />
+      <created>1698539217272</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698539217272</updated>
+    </task>
+    <task id="LOCAL-00002" summary="adding transaction test files">
+      <option name="closed" value="true" />
+      <created>1698543244854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698543244854</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixing up readme.md">
+      <option name="closed" value="true" />
+      <created>1698544165675</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698544165675</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added input validation on all my features files">
+      <option name="closed" value="true" />
+      <created>1698545706383</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698545706383</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixed up unit tests again" />
+    <MESSAGE value="adding transaction test files" />
+    <MESSAGE value="fixing up readme.md" />
+    <MESSAGE value="added input validation on all my features files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added input validation on all my features files" />
   </component>
 </project>

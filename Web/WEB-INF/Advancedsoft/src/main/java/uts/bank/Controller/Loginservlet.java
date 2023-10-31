@@ -66,7 +66,7 @@ public class Loginservlet extends HttpServlet {
 
             while(rs.next()) {
                 emailDB = rs.getString("email");
-                passwordDB = rs.getString("PASS");
+                passwordDB = rs.getString("Pass");
                 typeDB = rs.getString("Type");
                 nameDB = rs.getString("Fname");
                 LnameDB = rs.getString("Lname");
@@ -90,14 +90,15 @@ public class Loginservlet extends HttpServlet {
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
                 System.out.println("in If");
-                User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+                //    public User(String email, String password, String type, String fname, String lname, String dob, String phone, String address) {
+                User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);
                 session.setAttribute("email", acco.getEmail());
                 //createUserLog(session, con, email);
                 response.sendRedirect("viewbalanceservlet");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
-                User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+                User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
 
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);

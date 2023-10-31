@@ -31,7 +31,7 @@ public class ContactTest {
 
     @Test
     public void testAddContact() throws SQLException {
-        testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
+        testContact = new Contact("unit test email", "unit Test Contact", "unit test nic", "unit test", 1000);
         testContactDAO.addContact(testContact);
         List<Contact> actual = testContactDAO.findContacts("unit test email");
         boolean accountFound = false;
@@ -54,7 +54,7 @@ public class ContactTest {
 
     @Test
     public void testUpdateContact () throws SQLException {
-        testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
+        testContact = new Contact("unit test email", "unit Test Contact", "unit test nic", "unit test", 1000);
         testContactDAO.addContact(testContact);
         testContact.setContactEmail("updated unit test email");
         testContact.setContactNicName("updated unit test nic");
@@ -72,7 +72,7 @@ public class ContactTest {
 
     @Test
     public void testDeleteContact () throws SQLException {
-        testContact = new Contact("unit test email", "unit Test Contact", "unit test", "unit test nic");
+        testContact = new Contact("unit test email", "unit Test Contact", "unit test nic", "unit test", 1000);
         testContactDAO.addContact(testContact);
         testContactDAO.deleteContact("unit test");
         List<Contact> actual = testContactDAO.findContacts("unit test email");

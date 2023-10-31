@@ -125,26 +125,23 @@
     <div class="login-container">
         <div class="login-box">
             <h3>Login</h3>
-            <form action="LoginServlet" method="post">
+            <form action="sendEmailServlet" method="post">
                 <div class="form-group">
-                    <label for="email">Email:</label>
+                    <label for="email">Forgotten Email:</label>
                     <input type="text" id="email" name="email" required>
+                    <br>
+                    <small class="text-muted">If you no longer have access to email contact Admin of the system: admin@gmail.com </small>
+
                 </div>
                 <div class="form-group">
-                    <label for="Password">Password:</label>
-                    <input type="Password" id="Password" name="Password" required>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Log In">
+                    <input type="submit" value="Submit">
                 </div>
             </form>
             <c:if test="${not empty errorMessage}">
                 <p style="color: red;">${errorMessage}</p>
             </c:if>
             <div class="centered-button-container">
-                <a href="Register.jsp" class="centered-button">Create an account</a>
-                <a href="ForgotPass.jsp" class="centered-button">forgot password</a>
-
+                <a href="login.jsp" class="centered-button">Cancel</a>
             </div>
         </div>
     </div>

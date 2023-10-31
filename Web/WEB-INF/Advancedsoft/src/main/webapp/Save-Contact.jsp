@@ -7,31 +7,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <!-- security logic to check if there is a user logged in if not it sends back to index -->
     <%
         boolean isLoggedIn = (session.getAttribute("email") != null);
         if(!isLoggedIn){
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("index.jsp");
             return;
         }
     %>
 </head>
 <body>
+<!-- navigation bar for website -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Frontline Bank</a>
+            <a class="navbar-brand" href="index.jsp">Frontline Bank</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.jsp">Home</a></li>
-            <li><a href="Pay-Transfer.jsp">Pay and Transfer</a></li>
-            <li><a href="viewbalanceservlet">Accounts</a></li>
-            <li><a href="CardServlet">Card</a></li>
+            <li class="active">
+                <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+            </li>
+            <li><a href="viewbalanceservlet">View Accounts</a></li>
+            <li><a href="paytransferservlet">Pay and Transfer</a></li>
+            <li><a href="account.jsp">Account</a></li>
+            <li><a href="savecontactservlet">Contacts Management</a></li>
+            <li><a href="card/selectByCustomerId">Card</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
+<!-- creates list of all contacts user has -->
 <div  class="container" style="margin-top:50px">
     <table class="table table-hover">
         <caption><h2>List of Contacts</h2></caption>
@@ -39,6 +46,7 @@
             <th>Name</th>
             <th>Contact Email</th>
             <th>Contact Nic Name</th>
+            <th>Account Number</th>
 
         </tr>
         <c:forEach var="contact" items="${listcontacts}">
@@ -46,16 +54,22 @@
                 <td><c:out value="${contact.contactName}" /></td>
                 <td><c:out value="${contact.contactNicName}" /></td>
                 <td><c:out value="${contact.contactEmail}" /></td>
+                <td><c:out value="${contact.accountNumber}" /></td>
                 <td>
                     <a href="editContactServlet?contactId=${contact.contactId}">Edit</a>
+                </td>
+                <td>
+                    <a href="deletecontactservlet?contactEmail=${contact.contactEmail}">delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
+    <!-- error message if there are no contacts -->
     <c:if test="${empty listcontacts}">
         <p>No Contacts found for this user.</p>
     </c:if>
 </div>
+<!-- button for adding new contacts -->
 <div>
     <a href="add-contact.jsp" class="btn btn-info" role="button">Add New Contact</a>
 </div>

@@ -41,8 +41,6 @@ public class AdminTest {
     @Test
     public void testFindUser() throws SQLException {
         String email = "unit test email1";
-        //testUser = new User(email, "pass", "customer", "t", "t","2002-08-30","23233","t");
-        //testuserDao.addUser(testUser);
 
         testUser = testAdminDAO.findUser(email);
         boolean userFound = testUser != null;
@@ -50,13 +48,12 @@ public class AdminTest {
         // Check if the account with the specified username was found in the list
         Assertions.assertTrue(userFound, "User not found in the database.");
         System.out.println("add admin test");
-        //testuserDao.deleteAccount("unit test email1");
+        testAdminDAO.deleteAccount(testAccount.getAccountNumber());
     }
 
     @Test
     public void testAFindAccount () throws SQLException {
-        //testAccount = new Account(testAccountDao.getNextAccountId(), "unit test email1", "unit Test Account", "Savings", 1000.0, 1000.0);
-        //testAccountDao.addAccount(testAccount);
+        testAccountDao.addAccount(testAccount);
 
         ArrayList<Account> actual = testAdminDAO.findAccounts("unit test email1");
         boolean accountFound = false;
@@ -69,24 +66,20 @@ public class AdminTest {
         // Check if the account with the specified username was found in the list
         Assertions.assertTrue(accountFound, "Account not found in the database.");
         System.out.println("add admin test");
-        //testAccountDao.deleteAccount("unit test email1");
+        testAdminDAO.deleteAccount(testAccount.getAccountNumber());
     }
 
-   /* @Test
+   @Test
     public void testDeleteAccount () throws SQLException {
-            //testAccountDao.addAccount(testAccount);
-            testAdminDAO.deleteAccount(11110007);
+            testAccountDao.addAccount(testAccount);
+            testAdminDAO.deleteAccount(testAccount.getAccountNumber());
             List<Account> actual = testAdminDAO.findAccounts("unit test email1");
             assertEquals(0, actual.size());
             System.out.println("delete account test");
-        }*/
+        }
 
-    @Test
-    public void testDeleteAccount() throws Exception{
-        //testAccountDao.deleteAccount("unit test email1");
+    @AfterAll
+    public static void tearDown() throws Exception{
         testuserDao.deleteAccount("unit test email1");
-
     }
-
-
 }

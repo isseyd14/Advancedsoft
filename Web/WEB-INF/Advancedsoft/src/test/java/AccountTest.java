@@ -20,11 +20,9 @@ public class AccountTest {
 
     @BeforeAll
     public static void setUp() throws SQLException {
-        testAccount = new Account(testAccountDao.getNextAccountId(), "unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
-
-        Date specificSQLDate = Date.valueOf("2002-08-30");
-        testUser = new User("unit test email", "pass", "customer", "t", "t","04-10-1996","23233","t");
+        testUser = new User("unit test email", "pass", "customer", "t", "t","2002-08-30","23233","t");
         testuserDao.addUser(testUser);
+        testAccount = new Account(testAccountDao.getNextAccountId(), "unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
     }
     @Test
     public void testAddAccount() throws SQLException {

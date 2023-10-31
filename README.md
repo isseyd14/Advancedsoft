@@ -13,3 +13,38 @@ Xiaobing Zhu    (Card management and transaction history)
 2. Navigate to the project directory.  
 3. Run the following Maven command to build the project:  
    % mvn clean install  
+
+# Team Member Contributions
+Joshua Burke
+- Creation of Database
+- Controller
+    - AddAccountServlet
+    - AddContactServlet
+    - deleteContactservlet
+    - editContactServlet
+    - moveMoneySerlvet
+    - paytransferservlet
+    - savecontactservlet
+    - updateContactServlet
+    - viewbalanceservlet
+    - viewHistoryServlet
+- DAO
+    - AccountDAO
+    - ContactDAO
+    - TransactionDAO
+- Model
+    - Account
+    - Contact
+- JSP Files
+    - add-contact.jsp
+    - edit-contact.jsp
+    - Pay-transfer.jsp
+    - Save-contact.jsp
+    - View-balance.jsp
+- Test Files
+    - AccountTest
+    - ContactTest 
+
+Issey Dowling  
+Thomas McMahon  
+Xiaobing Zhu 
