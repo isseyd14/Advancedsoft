@@ -51,4 +51,4 @@ stages:
                   inputs:
                     azureSubscription: 'bank resource manager'
                     appName: 'frontlinebank'
-                    package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.war'
+                    package: '$(Pipeline.Workspace)/drop/*.war'
