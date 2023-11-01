@@ -46,4 +46,4 @@ stages:
               azureSubscription: 'bank resource manager'
               appType: 'webApp'
               WebAppName: 'frontlinebank'
-              packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.war'
+              packageForLinux: '$(Pipeline.Workspace)/drop/*.war'
