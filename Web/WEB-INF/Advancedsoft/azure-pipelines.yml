@@ -20,7 +20,7 @@ stages:
               azureSubscription: 'bank resource manager'
               appType: 'webApp'
               WebAppName: 'frontlinebank'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
           - task: Maven@3
             inputs:
               mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
