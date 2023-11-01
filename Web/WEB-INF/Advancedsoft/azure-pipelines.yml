@@ -1,27 +1,35 @@
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Build
-  jobs:
-  - job: Build
-    steps:
-    - task: JavaToolInstaller@0
-      inputs:
-        versionSpec: '17'
-        jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
-    - task: Maven@3
-      inputs:
-        mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '17'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'package'
+  - stage: Build
+    jobs:
+      - job: Build
+        steps:
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '17'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'bank resource manager'
+              appType: 'webApp'
+              WebAppName: 'frontlinebank'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
+              mavenOptions: '-Xmx3072m'
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: '17'
+              jdkArchitectureOption: 'x64'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              goals: 'package'
+
 #maven
