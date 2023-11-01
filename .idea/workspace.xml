@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="" />
+    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/azure-pipelines.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/azure-pipelines.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,11 +208,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TransactionTest" />
-        <item itemvalue="JUnit.TransactionTest.testAddAccount" />
+        <item itemvalue="JUnit.ContactTest" />
         <item itemvalue="JUnit.java in Advancedsoft" />
         <item itemvalue="JUnit.UserUpdTest" />
-        <item itemvalue="JUnit.ContactTest" />
+        <item itemvalue="JUnit.TransactionTest.testAddAccount" />
+        <item itemvalue="JUnit.TransactionTest" />
       </list>
     </recent_temporary>
   </component>

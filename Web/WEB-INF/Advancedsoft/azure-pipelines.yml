@@ -24,6 +24,16 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               goals: 'package'
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: 'path/to/your/java/project/target/*.war'
+              artifact: 'warfiles'
+  - stage: Deploy
+    jobs:
+      - job: Deploy
+        displayName: 'Deploy to Azure Web App'
+        dependsOn: Build
+        steps:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
@@ -31,5 +41,3 @@ stages:
               appType: 'webApp'
               WebAppName: 'frontlinebank'
               packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
-
-#maven
