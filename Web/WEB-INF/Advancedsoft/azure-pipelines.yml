@@ -24,10 +24,11 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               goals: 'package'
-          - task: PublishPipelineArtifact@1
+          - task: PublishBuildArtifacts@1
             inputs:
-              targetPath: '$(Pipeline.Workspace)'
-              publishLocation: 'pipeline'
+              PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
   - stage: Deploy
     jobs:
       - job: Deploy
