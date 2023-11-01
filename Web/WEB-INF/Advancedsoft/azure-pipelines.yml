@@ -29,14 +29,21 @@ stages:
               PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
               ArtifactName: 'drop'
               publishLocation: 'Container'
+
   - stage: Deploy
     jobs:
       - job: Deploy
         steps:
+          - task: DownloadBuildArtifacts@1
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'Container'
+              downloadPath: '$(System.ArtifactsDirectory)'
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
               azureSubscription: 'bank resource manager'
               appType: 'webApp'
               WebAppName: 'frontlinebank'
-              packageForLinux: '$(Pipeline.Workspace)/**/*.war'
+              packageForLinux: '$(System.ArtifactsDirectory)/**/*.war'
