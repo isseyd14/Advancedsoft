@@ -5,7 +5,6 @@ import uts.bank.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class AdminDAO {
 
@@ -19,7 +18,7 @@ public class AdminDAO {
     public Connection getConnection() {
         try {
             String url = "jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, "advancedsoftware", "Welcome1!");
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException("Error connecting to the database", e);
@@ -141,6 +140,22 @@ public class AdminDAO {
             pstmt.setDouble(1, current_funds);
             pstmt.setDouble(2, current_funds);
             pstmt.setInt(3, accountNumber);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateUser(String email, String password, String fName, String lName, String address, String dob, String phone) {
+        String sql = "UPDATE user SET pass = ?, fname = ?, lname = ?, Address = ?, DOB = ?, Phone = ? WHERE Email = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, password);
+            pstmt.setString(2, fName);
+            pstmt.setString(3, lName);
+            pstmt.setString(4, address);
+            pstmt.setDate(5, Date.valueOf(dob));
+            pstmt.setString(6, phone);
+            pstmt.setString(7, email);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

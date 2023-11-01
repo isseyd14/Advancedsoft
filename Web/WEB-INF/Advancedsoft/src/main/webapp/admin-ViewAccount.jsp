@@ -274,7 +274,7 @@
             </div>
     </div>
         <div class="box_bar">
-            <button>User Details</button>
+            <button><a href="UserDetails.jsp">User Details</a></button>
             <button><a href="deposit.jsp">Deposit</a></button>
             <button><a href="withdraw.jsp">Withdraw</a></button>
             <button>Transactions</button>

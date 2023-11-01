@@ -99,7 +99,7 @@
 <div class="body">
     <div class="profile">
         <h2>Deposit</h2>
-        <form action="DepositServlet" method="Get">
+        <form action="${pageContext.request.contextPath}/DepositServlet" method="Get">
         <label>Amount:</label>
         <input class="deposit_inp" type="text" name="deposit" placeholder="$">
         <div class="Account_box">

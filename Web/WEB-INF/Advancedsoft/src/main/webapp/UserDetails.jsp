@@ -24,73 +24,61 @@
             height: 100vh;
         }
 
-        .box {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Adjust width as needed */
-            height: 30%;
-            margin-top: 5%;
-            border: 1px solid black;
-        }
-
-        .box button {
-            /* Style for each button in the nav */
-            padding: 10px 20px;
-            background-color: #f0f0f0; /* Adjust background color as needed */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .box button:hover {
-            background-color: #e0e0e0; /* Adjust hover background color as needed */
-        }
-
-        .box_bar {
-            margin: auto;
-        }
-
         .profile {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-left: 20%;
-            margin-right: 20%;
-            margin-top: 1%;
+            margin: auto;
             padding: 10px;
             border-radius: 10px;
-            height: 75vh;
+            height: 80vh;
             border: 1px solid black;
+            width: 45%;
         }
 
-        .account_info {
-            display: flex;
-            flex-direction: column; /* Display elements in a single column */
-            align-items: center;
-            margin: auto;
-            padding: 1%;
-            width: 90%;
-            border-radius: 10px;
+        .deposit_inp {
+            width: 30%;
         }
 
-        .form_row {
-            margin: auto;
-            padding-top: 5px;
-            text-align: center;
+        h2 {
+            margin-bottom: 5%;
         }
 
-        label {
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        #submit {
+            margin-top: 5%;
+            height: 20%;
+            width: 20%;
         }
 
-        .action_box {
-            margin: auto;
-            height: 90%;
+        #Accounts {
+            height: 25px;
             width: 70%;
-            border: 1px solid black;
-            border-radius: 5px;
         }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 70%;
+        }
+
+        .Account_box {
+            margin-top: 2%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row {
+            margin-top: 3%;
+            margin: auto;
+        }
+
 
     </style>
 </head>
@@ -103,6 +91,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
             <li><a href="#">Create Account</a></li>
+            <li><a href="admin-ViewAccount.jsp">Back</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
@@ -112,35 +101,112 @@
 </nav>
 
 <div class="body">
-    <div class="box">
-        <div class="account_info">
-            <div class="form_row">
-                <label id="email_T">Email:</label>
-                <label id="email_id">${user.email}</label>
-            </div>
-            <div class="form_row">
-                <label id="name_T">First Name:</label>
-                <label id="name">${user.fname}</label>
-            </div>
-            <div class="form_row">
-                <label id="lname_T">Last Name:</label>
-                <label id="lname">${user.lname}</label>
-            </div>
-            <div class="form_row">
-                <label id="dob_T">Date of Birth:</label>
-                <label id="dob">${user.dob}</label>
-            </div>
-        </div>
-        <div class="box_bar">
-            <button>Accounts</button>
-            <button><a href="deposit.jsp">Deposit</a></button>
-            <button>Withdraw</button>
-            <button>Transactions</button>
-        </div>
-    </div>
+<%--    <div class="box">--%>
+<%--        <div class="account_info">--%>
+<%--            <div class="form_row">--%>
+<%--                <label id="email_T">Email:</label>--%>
+<%--                <label id="email_id">${user.email}</label>--%>
+<%--            </div>--%>
+<%--            <div class="form_row">--%>
+<%--                <label id="name_T">First Name:</label>--%>
+<%--                <label id="name">${user.fname}</label>--%>
+<%--            </div>--%>
+<%--            <div class="form_row">--%>
+<%--                <label id="lname_T">Last Name:</label>--%>
+<%--                <label id="lname">${user.lname}</label>--%>
+<%--            </div>--%>
+<%--            <div class="form_row">--%>
+<%--                <label id="dob_T">Date of Birth:</label>--%>
+<%--                <label id="dob">${user.dob}</label>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="box_bar">--%>
+<%--            <button>Accounts</button>--%>
+<%--            <button><a href="deposit.jsp">Deposit</a></button>--%>
+<%--            <button>Withdraw</button>--%>
+<%--            <button>Transactions</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
     <div class="profile">
-        <form class="action_box">
-            <h2>Deposit</h2>
+        <h2>User Details</h2>
+        <form action="${pageContext.request.contextPath}/AdminUpdateUserServlet" method="get">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Email: </label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="email" value="${user.email}" readonly/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>First Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="fName" value="${user.fname}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Last Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="lName" value="${user.lname}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Address:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="address" value="${user.address}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label id="date">Date of Birth:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="dob" value="${user.dob}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Phone Number:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="phone" value="${user.phone}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>New Password:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="newPassword"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Confirm Password:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="Password"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit">Save Changes</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
