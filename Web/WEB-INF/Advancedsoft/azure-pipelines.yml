@@ -32,9 +32,6 @@ stages:
     jobs:
       - job: Deploy
         steps:
-          - task: DownloadPipelineArtifact@2
-            inputs:
-              artifactName: 'pipeline'
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
