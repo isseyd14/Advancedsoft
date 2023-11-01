@@ -14,13 +14,6 @@ stages:
               versionSpec: '17'
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'PreInstalled'
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: 'bank resource manager'
-              appType: 'webApp'
-              WebAppName: 'frontlinebank'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
           - task: Maven@3
             inputs:
               mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
@@ -31,5 +24,12 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               goals: 'package'
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'bank resource manager'
+              appType: 'webApp'
+              WebAppName: 'frontlinebank'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
 
 #maven
