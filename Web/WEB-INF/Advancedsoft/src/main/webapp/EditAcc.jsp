@@ -4,6 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <!-- security logic to check if there is a user logged in if not it sends back to index -->
+    <%
+        boolean isLoggedIn = (session.getAttribute("email") != null);
+        if(!isLoggedIn){
+            response.sendRedirect("index.jsp");
+            return;
+        }
+    %>
     <style>
         .logo {
             max-width: 40px; /* Adjust the maximum width as needed */
