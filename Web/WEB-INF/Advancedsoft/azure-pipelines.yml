@@ -30,20 +30,25 @@ stages:
               ArtifactName: 'drop'
               publishLocation: 'Container'
 
-  - stage: Deploy
+  - stage: 'Deploy'
+    displayName: 'Deploy the web application'
+    dependsOn: Build
     jobs:
-      - job: Deploy
-        steps:
-          - task: DownloadBuildArtifacts@1
-            inputs:
-              buildType: 'current'
-              downloadType: 'single'
-              artifactName: 'drop'
-              downloadPath: 'Container'
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: 'bank resource manager'
-              appType: 'webApp'
-              WebAppName: 'frontlinebank'
-              packageForLinux: '$(Pipeline.Workspace)/drop/*.war'
+      - deployment: Deploy
+        pool:
+          vmImage: 'ubuntu-20.04'
+        environment: dev
+        variables:
+          - group: Release
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: drop
+                - task: AzureWebApp@1
+                  displayName: 'Azure App Service Deploy: website'
+                  inputs:
+                    azureSubscription: 'Resource Manager - Tailspin - Space Game'
+                    appName: 'frontlinebank'
+                    package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.war'
