@@ -24,16 +24,14 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               goals: 'package'
-  - stage: Deploy
-    jobs:
-      - job: Deploy
-        steps:
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: 'bank resource manager'
-              appType: 'webApp'
-              WebAppName: 'frontlinebank'
-              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
-
 #maven
+# - task: CopyFiles@2
+#   inputs:
+#     Contents: '**'
+#     TargetFolder: 'Web/WEB-INF/Advancedsoft/target'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
