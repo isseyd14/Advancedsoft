@@ -26,8 +26,8 @@ stages:
               goals: 'package'
           - task: PublishPipelineArtifact@1
             inputs:
-              targetPath: 'path/to/your/java/project/target/*.war'
-              artifact: 'warfiles'
+              targetPath: '$(Pipeline.Workspace)'
+              publishLocation: 'pipeline'
   - stage: Deploy
     jobs:
       - job: Deploy
