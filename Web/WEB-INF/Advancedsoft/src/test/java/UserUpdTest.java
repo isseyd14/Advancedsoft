@@ -19,12 +19,13 @@ public class UserUpdTest {
 
         testAccount = new User("unit test email", "pass", "customer", "t", "t","2002-08-30","23233","t");
     }
-    @Test
+
+        @Test
     public void testupdateUser() throws SQLException {
 
         User updatedAccount = new User("unit test email", "passt", "customert", "t", "t","2002-08-30","232323","tt");
         testuserDao.addUser(testAccount);
-        testuserDao.updateUser(testAccount, "passt", "customert", "232323","tt");
+        testuserDao.updateUser(testAccount, "customert", "t", "232323","tt");
         User Faccount = testuserDao.findUser(testAccount.getEmail());
         // Check if the actual list contains the testAccount
         boolean userFound = false;
