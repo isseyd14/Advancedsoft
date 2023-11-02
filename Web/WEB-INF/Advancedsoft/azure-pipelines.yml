@@ -50,5 +50,5 @@ stages:
                   displayName: 'Azure App Service Deploy: website'
                   inputs:
                     azureSubscription: 'bank resource manager'
-                    appName: 'webAppLinux'
+                    appName: 'frontlinebank'
                     package: '$(Pipeline.Workspace)/drop/*.war'
