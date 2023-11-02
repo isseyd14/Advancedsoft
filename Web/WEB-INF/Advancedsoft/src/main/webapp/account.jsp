@@ -25,13 +25,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accounts</title>
-  <%
-    boolean isLoggedIn = (session.getAttribute("User") != null);
-    if(!isLoggedIn){
-      response.sendRedirect("login.jsp");
-      return;
-    }
-  %>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

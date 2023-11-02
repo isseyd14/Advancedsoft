@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   <style>
     * {box-sizing: border-box;}
     
@@ -85,6 +86,7 @@
       }
     }
     </style>
+
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -103,7 +105,7 @@
             <li><a href="card/selectByCustomerId">Card</a></li>
         </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
           </ul>
         </div>
@@ -111,12 +113,14 @@
     <div class="container" style="margin-top:50px">
         <table class="table table-hover">
             <caption><h2>List of Transactions</h2></caption>
+
             <div class="search-container">
               <form action="trans/selectByKeyword">
                 <input type="text" placeholder="Search.." name="keyword">
                 <button type="submit">Search</button>
               </form>
             </div>
+
             <tr>
                 <th class="col-md-3">Account ID</th>
                 <th class="col-md-3">Amount</th>
@@ -135,7 +139,7 @@
         </table>
       
     <div>
-    
+
    
     
 

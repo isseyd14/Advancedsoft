@@ -35,7 +35,7 @@ public class TransactionTest {
         testAccount = new Account(testAccountDao.getNextAccountId(), "unit test email", "unit Test Account", "Savings", 1000.0, 1000.0);
         testAccountDao.addAccount(testAccount);
         testContact = new Contact("unit test email", "testtras@gmail.com", "testtras@gmail.com", "testtras@gmail.com",11110001);
-        testTransaction = new Transaction(testTransactionDao.getNexttransactionId(), 5, "unit test email", "testtras@gmail.com", 11110001);
+        testTransaction = new Transaction(testTransactionDao.getNexttransactionId(), 5, "unit test email", "testtras@gmail.com", 11110001, 11110279);
     }
 
     @Test

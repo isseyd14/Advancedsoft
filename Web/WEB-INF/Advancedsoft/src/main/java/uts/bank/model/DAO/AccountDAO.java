@@ -137,13 +137,27 @@ public class AccountDAO {
     }
 
     //updates account balance
-    public void updateAccountBalance(Account account, int amount){
+    public void takeAccountBalance(Account account, int amount){
         String sql = "UPDATE account SET avaliable_funds=?, current_funds=? WHERE account_id=?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
             stmt.setDouble(1, account.getAccountAvailableFunds()-amount);
             stmt.setDouble(2, account.getAccountCurrentFunds()-amount);
+            stmt.setInt(3, account.getAccountNumber());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void giveAccountBalance(Account account, int amount){
+        String sql = "UPDATE account SET avaliable_funds=?, current_funds=? WHERE account_id=?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);) {
+
+            stmt.setDouble(1, account.getAccountAvailableFunds()+amount);
+            stmt.setDouble(2, account.getAccountCurrentFunds()+amount);
             stmt.setInt(3, account.getAccountNumber());
             stmt.executeUpdate();
         } catch (SQLException e) {

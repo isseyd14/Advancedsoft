@@ -1,6 +1,7 @@
 package uts.bank.Controller;
 import uts.bank.model.DAO.AdminDAO;
 import uts.bank.model.Account;
+import uts.bank.model.Transaction;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class TestDB {
         testFindUser();
         testFindAccounts();
         testUpdateAccount();
+        testGetTransactionsByEmail();
     }
 
     public void testFindUser() {
@@ -79,6 +81,23 @@ public class TestDB {
         adminDAO.updateAccount(accountNumber, name, availableFunds);
 
         testGetAccount(11110281);
+    }
+
+    public void testGetTransactionsByEmail() throws SQLException {
+        String email = "test";
+        ArrayList<Transaction> transactions = adminDAO.getTransactionsByEmail(email);
+
+        for (Transaction transaction : transactions) {
+            System.out.println("TransactionId: " + transaction.getTransaction_id());
+            System.out.println("Amount: " + transaction.getAmount());
+            System.out.println("Owner Email: " + transaction.getOwner_email());
+            System.out.println("Payee Email: " + transaction.getPayee_email());
+            System.out.println("Owner Account Id: " + transaction.getAccount_id());
+            System.out.println("Payee Account Id: " + transaction.getPayee_accountid());
+            System.out.println();
+        }
+
+
     }
 
 

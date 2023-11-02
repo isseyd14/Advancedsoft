@@ -89,7 +89,8 @@ public class TransactionDAO {
                 String owner_emailDB = rs.getString("owner_email");
                 String payee_emailDB = rs.getString("payee_email");
                 int account_idDB = rs.getInt("account_id");
-                transaction.add(new Transaction(transaction_idDB, amountDB, owner_emailDB, payee_emailDB, account_idDB));
+                int payee_accountIdDB = rs.getInt("payee_accountid");
+                transaction.add(new Transaction(transaction_idDB, amountDB, owner_emailDB, payee_emailDB, account_idDB, payee_accountIdDB));
             }
 
         } catch (SQLException e) {

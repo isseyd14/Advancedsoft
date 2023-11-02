@@ -6,13 +6,15 @@ public class Transaction {
     private String owner_email;
     private String payee_email;
     private int account_id;
+    private int payee_accountid;
 
-    public Transaction(int transaction_id, double amount, String owner_email,  String payee_email, int account_id) {
+    public Transaction(int transaction_id, double amount, String owner_email,  String payee_email, int account_id, int payee_accountid) {
         this.transaction_id = transaction_id;
         this.owner_email = owner_email;
         this.amount = amount;
         this.payee_email = payee_email;
         this.account_id = account_id;
+        this.payee_accountid = payee_accountid;
     }
 
     public int getTransaction_id() {
@@ -53,5 +55,12 @@ public class Transaction {
 
     public void setAccount_id(int account_id) {
         this.account_id = account_id;
+    }
+
+    public int getPayee_accountid() {
+        return payee_accountid;
+    }
+    public void setPayee_accountid(int payee_accountid) {
+        this.payee_accountid = payee_accountid;
     }
 }

@@ -130,7 +130,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <img src="logo.png" alt="Logo" class="logo">
-            <a class="navbar-brand" href="#">Frontline Bank</a>
+            <a class="navbar-brand" href="index.jsp">Frontline Bank</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
         </ul>

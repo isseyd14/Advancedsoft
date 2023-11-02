@@ -83,7 +83,6 @@
 
         .accounts_view {
             margin: auto;
-            margin-top: 5px;
             border: 1px solid black;
             border-radius: 10px;
             display: flex; /* Use flexbox */
@@ -91,6 +90,7 @@
             height: auto; /* Allow the container to grow based on its content */
             max-height: 80vh; /* Set a maximum height if needed */
             overflow-y: auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
         }
 
         .form_row {
@@ -110,10 +110,15 @@
             width: 80%;
             height: 80px;
             border: 1px solid black;
-            border-radius: 10px;
+            border-radius: 7px;
             margin-left: 10%;
             margin-top: 2%;
             margin-bottom: 2%;
+            transition: background-color 0.3s;
+        }
+
+        .account_box:hover {
+            background-color: #f0f0f0; /* Change to the highlight color you prefer */
         }
 
         .account_name {
@@ -133,11 +138,6 @@
             font-size: 12px;
             word-spacing: 20px;
             margin-left: 5%;
-        }
-
-        #header_form {
-            margin: auto;
-            width: 100%;
         }
 
         .account_wrapper {
@@ -212,11 +212,10 @@
             z-index: 1;
         }
 
-        /* Style for the dropdown links */
         .account_menu .dropdown-content button {
             background-color: transparent;
             border: none;
-            color: black; /* Change this to the color you want */
+            color: black;
             text-align: left;
             padding: 12px 16px;
             text-decoration: none;
@@ -234,6 +233,7 @@
         .account_menu:hover .dropdown-content {
             display: block;
         }
+
     </style>
 </head>
 <body>
@@ -244,10 +244,9 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
-            <li><a href="#">Create Account</a></li>
+            <li><a href="Register.jsp">Create Account</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
             <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
@@ -274,10 +273,10 @@
             </div>
     </div>
         <div class="box_bar">
-            <button><a href="UserDetails.jsp">User Details</a></button>
-            <button><a href="deposit.jsp">Deposit</a></button>
-            <button><a href="withdraw.jsp">Withdraw</a></button>
-            <button>Transactions</button>
+            <a class="btn btn-info" href="UserDetails.jsp">User Details</a>
+            <a class="btn btn-info" href="deposit.jsp">Deposit</a>
+            <a class="btn btn-info" href="withdraw.jsp">Withdraw</a>
+            <a class="btn btn-info" href="AdminUserTransactionServlet">Transactions</a>
         </div>
     </div>
     <div class="profile">

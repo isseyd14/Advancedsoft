@@ -47,7 +47,10 @@ public class TransDAO{
                 String payee_email = rs.getString("payee_email");
                 double amount = rs.getDouble("amount");
                 int transaction_id = rs.getInt("transaction_id");
+
                 trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, Integer.parseInt(accountId)));
+
+
 
             }
         } catch (SQLException e) {
@@ -71,6 +74,7 @@ public class TransDAO{
                 double amount = rs.getDouble("amount");
                 int transaction_id = rs.getInt("transaction_id");
                 int accountId = rs.getInt("account_id");
+
                 trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, accountId));
 
             }
@@ -96,6 +100,7 @@ public class TransDAO{
                 double amount = rs.getDouble("amount");
                 int transaction_id = rs.getInt("transaction_id");
                 trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, Integer.parseInt(accountId)));
+
 
             }
         } catch (SQLException e) {

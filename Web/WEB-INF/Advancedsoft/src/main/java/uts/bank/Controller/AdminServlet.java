@@ -21,7 +21,6 @@ import uts.bank.model.Account;
 public class AdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve the search parameter from the request
         HttpSession session = request.getSession();
         String searchEmail = request.getParameter("search");
         session.setAttribute("search", searchEmail);
@@ -40,19 +39,16 @@ public class AdminServlet extends HttpServlet {
                 request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
                 request.getRequestDispatcher("/admin-EditAccount.jsp").forward(request, response);
                 request.getRequestDispatcher("/UserDetails.jsp").forward(request, response);
-//                request.getRequestDispatcher("/deposit.jsp").forward(request, response);
-//                request.getRequestDispatcher("/withdraw.jsp").forward(request, response);
-
             } else {
-                request.setAttribute("errorMessage", "User does not Exist");
-                RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+                request.setAttribute("errorMessage", "Cannot find User with that Email");
+                RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
                 rd.forward(request, response);
                 return;
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("errorMessage", "User does not Exist");
-            RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/admin.jsp");
             rd.forward(request, response);
             return;
         }

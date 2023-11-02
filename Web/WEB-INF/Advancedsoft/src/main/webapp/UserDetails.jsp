@@ -90,43 +90,15 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
-            <li><a href="#">Create Account</a></li>
             <li><a href="admin-ViewAccount.jsp">Back</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
             <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
 
 <div class="body">
-<%--    <div class="box">--%>
-<%--        <div class="account_info">--%>
-<%--            <div class="form_row">--%>
-<%--                <label id="email_T">Email:</label>--%>
-<%--                <label id="email_id">${user.email}</label>--%>
-<%--            </div>--%>
-<%--            <div class="form_row">--%>
-<%--                <label id="name_T">First Name:</label>--%>
-<%--                <label id="name">${user.fname}</label>--%>
-<%--            </div>--%>
-<%--            <div class="form_row">--%>
-<%--                <label id="lname_T">Last Name:</label>--%>
-<%--                <label id="lname">${user.lname}</label>--%>
-<%--            </div>--%>
-<%--            <div class="form_row">--%>
-<%--                <label id="dob_T">Date of Birth:</label>--%>
-<%--                <label id="dob">${user.dob}</label>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="box_bar">--%>
-<%--            <button>Accounts</button>--%>
-<%--            <button><a href="deposit.jsp">Deposit</a></button>--%>
-<%--            <button>Withdraw</button>--%>
-<%--            <button>Transactions</button>--%>
-<%--        </div>--%>
-<%--    </div>--%>
     <div class="profile">
         <h2>User Details</h2>
         <form action="${pageContext.request.contextPath}/AdminUpdateUserServlet" method="get">
@@ -204,7 +176,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit">Save Changes</button>
+                    <button class="btn btn-info" type="submit">Save Changes</button>
                 </div>
             </div>
         </form>
