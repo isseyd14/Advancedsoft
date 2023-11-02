@@ -3,8 +3,6 @@ package uts.bank.model.DAO;
 import uts.bank.model.User;
 
 import java.sql.*;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class UserDAO {
@@ -26,9 +24,9 @@ public class UserDAO {
             ps.setString(1, email);
             ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    return true; // Password exists if count is greater than 0
-                }
+            if (rs.next()) {
+                return true; // Password exists if count is greater than 0
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -46,24 +44,23 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
-
     public void updateUser(User account, String fname, String lname, String phone, String Address)throws SQLException{
-        String sql = "INSERT INTO bank.passcode (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
+        String sql = "UPDATE bank.user SET fname=?, lname=?, phone=?, address=? WHERE Email=?";;
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, fname);
             ps.setString(2, lname);
             ps.setString(3, phone);
             ps.setString(4, Address);
-        ps.setString(5, account.getEmail());
-        ps.executeUpdate();
+            ps.setString(5, account.getEmail());
+            ps.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
 
-        public void addUser(User account)throws SQLException{
+    public void addUser(User account)throws SQLException{
         String sql = "INSERT INTO bank.user (Email, Pass, Type, fname, lname, Address, DOB, Phone) VALUES(?,?,?,?,?,?,?,? )";
 
 
@@ -115,7 +112,7 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        User acco = new User(emailDB,nameDB,LnameDB,passwordDB,typeDB,dob,Phone,Address);
+        User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
 
         return acco;
     }
@@ -132,5 +129,3 @@ public class UserDAO {
         }
     }
 }
-
-
