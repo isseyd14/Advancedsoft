@@ -31,19 +31,7 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: IISWebAppManagementOnMachineGroup@0
-  displayName: 'IIS Web App Manage'
-  inputs:
-    IISDeploymentType: '$(Parameters.IISDeploymentType)'
-    ActionIISWebsite: '$(Parameters.ActionIISWebsite)'
-    WebsiteName: '$(Parameters.WebsiteName)'
-    AddBinding: '$(Parameters.AddBinding)'
-    Bindings: '$(Parameters.Bindings)'
-    ParentWebsiteNameForVD: '$(Parameters.WebsiteName)'
-    VirtualPathForVD: '$(Parameters.VirtualPathForApplication)'
-    ParentWebsiteNameForApplication: '$(Parameters.WebsiteName)'
-    VirtualPathForApplication: '$(Parameters.VirtualPathForApplication)'
-    AppPoolName: '$(Parameters.AppPoolName)'
+
 - task: IISWebAppDeploymentOnMachineGroup@0
   displayName: 'IIS Web App Deploy'
   inputs:
