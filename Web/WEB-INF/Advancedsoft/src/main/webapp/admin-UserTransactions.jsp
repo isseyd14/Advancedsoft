@@ -83,12 +83,14 @@
 
     .accounts_view {
       margin: auto;
+      border: 1px solid black;
       border-radius: 5px;
       display: flex; /* Use flexbox */
       flex-direction: column; /* Stack child elements vertically */
       height: auto; /* Allow the container to grow based on its content */
-      max-height: 80vh; /* Set a maximum height if needed */
+      max-height: 55vh; /* Set a maximum height if needed */
       overflow-y: auto;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
     }
 
     .form_row {
@@ -179,6 +181,7 @@
   </div>
   <div class="profile">
     <form class="accounts_view" method="get" action="AdminUserTransactionServlet">
+      <div style="max-height: 55vh; overflow-y: auto;">
         <table class="table table-hover">
           <tr>
             <th>Transaction ID</th>
@@ -200,6 +203,7 @@
             </tr>
           </c:if>
         </table>
+      </div>
     </form>
   </div>
 </div>
