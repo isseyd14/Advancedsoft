@@ -34,21 +34,12 @@ stages:
     displayName: 'Deploy the web application'
     dependsOn: Build
     jobs:
-      - deployment: Deploy
-        pool:
-          vmImage: 'ubuntu-20.04'
-        environment: dev2
-        variables:
-          - group: Release
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - download: current
-                  artifact: drop
-                - task: AzureWebApp@1
-                  displayName: 'Azure App Service Deploy: website'
-                  inputs:
-                    azureSubscription: 'bank resource manager'
-                    appName: 'frontlinebank'
-                    package: '$(Pipeline.Workspace)/drop/*.war'
+      - job: deploy
+        steps:
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'bank resource manager'
+              appType: 'webAppLinux'
+              WebAppName: 'frontlinebank'
+              packageForLinux: '$(Pipeline.Workspace)/drop/*.war'
