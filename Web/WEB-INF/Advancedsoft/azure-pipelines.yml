@@ -48,5 +48,5 @@ stages:
                   displayName: 'Azure App Service Deploy: website'
                   inputs:
                     azureSubscription: 'bank resource manager'
-                    appName: 'frontlinebank'
+                    appName: 'banktest'
                     package: '$(Pipeline.Workspace)/drop/*.war'
