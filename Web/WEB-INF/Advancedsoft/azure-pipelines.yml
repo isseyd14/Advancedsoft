@@ -49,5 +49,5 @@ stages:
                   inputs:
                     WebSiteName: '$(Parameters.WebsiteName)'
                     VirtualApplication: demo
-                    package: '$(Pipeline.Workspace)/drop/*.war'
+                    Package: '$(System.DefaultWorkingDirectory)/_isseyd14.Advancedsoft (5)'
                     XmlVariableSubstitution: True
