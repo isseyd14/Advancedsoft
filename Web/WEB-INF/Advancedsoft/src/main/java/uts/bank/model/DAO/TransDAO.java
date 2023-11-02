@@ -47,8 +47,8 @@ public class TransDAO{
                 String payee_email = rs.getString("payee_email");
                 double amount = rs.getDouble("amount");
                 int transaction_id = rs.getInt("transaction_id");
-                int payee_accountId = rs.getInt("payee_accountid");
-                trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, Integer.parseInt(accountId), payee_accountId));
+                
+                trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, Integer.parseInt(accountId)));
 
             }
         } catch (SQLException e) {
@@ -72,8 +72,31 @@ public class TransDAO{
                 double amount = rs.getDouble("amount");
                 int transaction_id = rs.getInt("transaction_id");
                 int accountId = rs.getInt("account_id");
-                int payee_accountId = rs.getInt("payee_accountid");
-                trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, accountId, payee_accountId));
+                trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, accountId));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trans;
+    }
+
+    //search histroy
+    public List<Transaction> findTransByKeyword(String accountId, String keyword) {
+        List<Transaction> trans = new ArrayList<>();
+        String sql = "SELECT * FROM transaction WHERE account_id = ? and payee_email like ?";
+        try (Connection conn = getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);){
+            stmt.setString(1, accountId);
+            stmt.setString(2, "%"+keyword+"%");
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                String owner_email = rs.getString("owner_email");
+                String payee_email = rs.getString("payee_email");
+                double amount = rs.getDouble("amount");
+                int transaction_id = rs.getInt("transaction_id");
+                trans.add(new Transaction(transaction_id, amount, owner_email, payee_email, Integer.parseInt(accountId)));
 
             }
         } catch (SQLException e) {

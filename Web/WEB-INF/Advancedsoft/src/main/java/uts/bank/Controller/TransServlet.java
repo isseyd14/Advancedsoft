@@ -51,5 +51,25 @@ public class TransServlet extends BaseServlet{
       
 
     }
+    public void selectByKeyword(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            HttpSession session = request.getSession();
+            String keyword = request.getParameter("keyword");
+            System.out.println(keyword);
+            String accountId = (String) session.getAttribute("accountId");
+            session.setAttribute("keyword", keyword);
+          
+            
+            
+            List<Transaction> listTrans = transDAO.findTransByKeyword(accountId,keyword);
+            session.setAttribute("listTrans", listTrans);
+            
+            
+            response.sendRedirect("../transaction.jsp");
+            
+      
+
+    }
+
     
 }

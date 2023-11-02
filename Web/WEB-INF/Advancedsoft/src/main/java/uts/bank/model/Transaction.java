@@ -17,6 +17,14 @@ public class Transaction {
         this.payee_accountid = payee_accountid;
     }
 
+    public Transaction(int transaction_id, double amount, String owner_email,  String payee_email, int account_id) {
+        this.transaction_id = transaction_id;
+        this.owner_email = owner_email;
+        this.amount = amount;
+        this.payee_email = payee_email;
+        this.account_id = account_id;
+    }
+
     public int getTransaction_id() {
         return transaction_id;
     }
