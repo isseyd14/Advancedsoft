@@ -36,6 +36,8 @@ stages:
     jobs:
       - job: deploy
         steps:
+          - download: current
+            artifact: drop
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
