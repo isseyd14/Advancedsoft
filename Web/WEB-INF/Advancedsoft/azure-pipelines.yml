@@ -30,8 +30,7 @@ steps:
     PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-    
-steps:
+
 - task: IISWebAppDeploymentOnMachineGroup@0
   displayName: 'IIS Web App Deploy'
   inputs:
