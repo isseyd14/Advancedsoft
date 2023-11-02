@@ -63,8 +63,13 @@ public class moveMoneyServlet extends HttpServlet {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+            Account payeeAccount = accountDAO.findOneAccount(contact.getAccountNumber() );
             // take the money from the account
-            accountDAO.updateAccountBalance(account,amount);
+            accountDAO.takeAccountBalance(account,amount);
+            if(payeeAccount != null){
+                accountDAO.giveAccountBalance(payeeAccount, amount);
+            }
             //send back to the main account page
             RequestDispatcher dispatcher = request.getRequestDispatcher("viewbalanceservlet");
             dispatcher.forward(request, response);
