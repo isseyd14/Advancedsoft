@@ -10,7 +10,7 @@ public class ContactDAO {
 
     //creates connection to the database
     protected Connection getConnection(){
-        Connection con = null;
+        Connection con;
         try{
             String url="jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false";
             Class.forName("com.mysql.cj.jdbc.Driver");

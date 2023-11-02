@@ -6,6 +6,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <!-- security logic to check if there is a user logged in if not it sends back to index -->
+    <%
+        boolean isLoggedIn = (session.getAttribute("email") != null);
+        if(!isLoggedIn){
+            response.sendRedirect("index.jsp");
+            return;
+        }
+    %>
   <style>
     .logo {
       max-width: 40px; /* Adjust the maximum width as needed */
@@ -17,13 +25,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accounts</title>
-  <%
-    boolean isLoggedIn = (session.getAttribute("User") != null);
-    if(!isLoggedIn){
-      response.sendRedirect("login.jsp");
-      return;
-    }
-  %>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

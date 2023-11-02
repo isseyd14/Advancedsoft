@@ -9,11 +9,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec:  '17'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
 - task: Maven@3
   inputs:
     mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
@@ -24,4 +19,14 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-# Maven
+
+# - task: CopyFiles@2
+#   inputs:
+#     Contents: '**'
+#     TargetFolder: 'Web/WEB-INF/Advancedsoft/target'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

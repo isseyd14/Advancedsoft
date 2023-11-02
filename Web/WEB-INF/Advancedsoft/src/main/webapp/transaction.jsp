@@ -34,40 +34,29 @@
       </nav>
     <div class="container" style="margin-top:50px">
         <table class="table table-hover">
-            <caption><h2>List of Cards</h2></caption>
+            <caption><h2>List of Transactions</h2></caption>
             <tr>
-                <th class="col-md-3">Card Number</th>
-                <th class="col-md-3">Pin</th>
-                <th class="col-md-3">Status</th>
-                <th class="col-md-3">Action</th>
+                <th class="col-md-3">Account ID</th>
+                <th class="col-md-3">Amount</th>
+                <th class="col-md-3">Payee Email</th>
+                
 
             </tr>
-            <c:forEach var="card" items="${listCard}">
+            <c:forEach var="trans" items="${listTrans}">
                 <tr>
-                    <td><c:out value="${card.cardNumber}" /></td>
-                    <td><c:out value="${card.pin}" /></td>
-                    <td><c:out value="${card.cardStatus}" /></td>
-                   
-                    <td>
-                      <a href="card/edit?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Change Pin</a>
-                      <a href="card/delete?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Delete</a> 
-                      <c:if test="${card.cardStatus == 'Active'}">
-                        <a href="card/deactivate?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Block</a>
-                      </c:if>
-                      <c:if test="${card.cardStatus == 'Inactive'}">  
-                        <a href="card/activate?cardNumber=<c:out value='${card.cardNumber}' />" class="btn btn-info" role="button">Activate</a>
-                      </c:if>
-                                           
-                    </td>
+                    <td><c:out value="${trans.account_id}" /></td>
+                    <td><c:out value="${trans.amount}" /></td>
+                    <td><c:out value="${trans.payee_email}" /></td>
+                                
                 </tr>
             </c:forEach>
         </table>
       
     <div>
-    <a href="addCard.jsp" class="btn btn-info" role="button">Add New Card</a>
-
-
+    <a href="trans/selectAll" class="btn btn-info" role="button">Show All</a>
+   
     
+
     </div>
     </div> 
 </body>

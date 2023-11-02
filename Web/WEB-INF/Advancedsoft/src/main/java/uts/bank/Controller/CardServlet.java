@@ -41,14 +41,16 @@ public class CardServlet extends BaseServlet {
     public void selectByCustomerId(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
+            Validator validator = new Validator();
+            validator.clear(session);
             String customerId = (String)session.getAttribute("email");
             List<Card> listCard = cardDAO.findCardByCustomerId(customerId);
             session.setAttribute("listCard", listCard);
-            if(listCard !=null){
+            
             
             response.sendRedirect("../card.jsp");
             
-      }
+      
 
     }
 
@@ -100,16 +102,22 @@ public class CardServlet extends BaseServlet {
                 isError = true;
             }
             if(!isError){
+                if(cardDAO.findCard(cardNumber) != null){
+                    session.setAttribute("cardErr", "Error: Card Number already exists");
+                    response.sendRedirect("../addCard.jsp");
+                }else{
                 try {
                     cardDAO.addCard(newCard);
                     response.sendRedirect("selectByCustomerId");
                 } catch (SQLException | NullPointerException ex) {
                     Logger.getLogger(CardServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                    
+                }
             }else{
                 
                 response.sendRedirect("../addCard.jsp");
-                //request.getRequestDispatcher("../addCard.jsp").include(request, response);
             }
         
     
@@ -138,6 +146,7 @@ public class CardServlet extends BaseServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             String cardNumber = request.getParameter("cardNumber");
+            System.out.println(cardNumber);
             session.setAttribute("cardNumber", cardNumber);
          
             try{
@@ -157,6 +166,7 @@ public class CardServlet extends BaseServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             String cardNumber = request.getParameter("cardNumber");
+            System.out.println(cardNumber);
             session.setAttribute("cardNumber", cardNumber);
          
             try{
@@ -176,6 +186,7 @@ public class CardServlet extends BaseServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             String cardNumber = request.getParameter("cardNumber");
+            System.out.println(cardNumber);
             String pin = request.getParameter("pin");
             session.setAttribute("cardNumber", cardNumber);
             session.setAttribute("pin", pin);

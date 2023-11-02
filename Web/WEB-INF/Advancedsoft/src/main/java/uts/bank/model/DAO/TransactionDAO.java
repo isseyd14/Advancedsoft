@@ -25,7 +25,7 @@ public class TransactionDAO {
 
     // adds a transaction to the database
     public void addTransaction(Transaction transaction) throws SQLException {
-        String sql = "INSERT INTO transaction (transaction_id, amount, owner_email, payee_email, account_id) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO transaction (transaction_id, amount, owner_email, payee_email, account_id, payee_accountid) VALUES (?, ?, ?, ?, ?,?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);) {
 
@@ -34,6 +34,7 @@ public class TransactionDAO {
             stmt.setString(3, transaction.getOwner_email());
             stmt.setString(4, transaction.getPayee_email());
             stmt.setInt(5, transaction.getAccount_id());
+            stmt.setInt(6, transaction.getAccount_id());
 
             stmt.executeUpdate();
             System.out.println("done???");

@@ -58,7 +58,8 @@
                 <td><c:out value="${account.accountAvailableFunds}" /></td>
                 <td><c:out value="${account.accountCurrentFunds}" /></td>
                 <td>
-                    <a href="viewHistoryServlet?contactId=${account.accountNumber}">view History</a>
+                    <a href="trans/selectByAccountId?accountNumber=<c:out value='${account.accountNumber}' />" class="btn btn-info" role="button">Transaction history</a>
+                    
                 </td>
             </tr>
         </c:forEach>
@@ -67,10 +68,11 @@
     <c:if test="${empty listaccount}">
         <p>No accounts found for this user.</p>
     </c:if>
+    <div><!-- button for adding new accounts -->
+        <a href="add-account.jsp" class="btn btn-info" role="button">Add New Account</a>
 </div>
-<!-- button for adding new accounts -->
-<div>
-    <a href="add-account.jsp" class="btn btn-info" role="button">Add New Account</a>
+
+
 </div>
 
 </body>
