@@ -1,40 +1,53 @@
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
-- issey_release2
+  - josh_release2
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '17'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        steps:
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '17'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
+          - task: Maven@3
+            inputs:
+              mavenPomFile: 'Web/WEB-INF/Advancedsoft/pom.xml'
+              mavenOptions: '-Xmx3072m'
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: '17'
+              jdkArchitectureOption: 'x64'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              goals: 'package'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
 
-# - task: CopyFiles@2
-#   inputs:
-#     Contents: '**'
-#     TargetFolder: 'Web/WEB-INF/Advancedsoft/target'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: 'Web/WEB-INF/Advancedsoft/target'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-
-- task: IISWebAppDeploymentOnMachineGroup@0
-  displayName: 'IIS Web App Deploy'
-  inputs:
-    WebSiteName: '$(Parameters.WebsiteName)'
-    VirtualApplication: demo
-    Package: '$(System.DefaultWorkingDirectory)/_isseyd14.Advancedsoft (5)'
-    XmlVariableSubstitution: True
+  - stage: 'Deploy'
+    displayName: 'Deploy the web application'
+    dependsOn: Build
+    jobs:
+      - deployment: Deploy
+        environment: dev2
+        variables:
+          - group: Release
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: drop
+                - task: IISWebAppDeploymentOnMachineGroup@0
+                  displayName: 'IIS Web App Deploy'
+                  inputs:
+                    WebSiteName: '$(Parameters.WebsiteName)'
+                    VirtualApplication: demo
+                    Package: '$(System.DefaultWorkingDirectory)/_isseyd14.Advancedsoft (5)'
+                    XmlVariableSubstitution: True
