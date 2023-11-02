@@ -1,5 +1,6 @@
 package uts.bank.Controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,39 +26,36 @@ public class AdminAccountEditServlet extends HttpServlet {
         String accountName = request.getParameter("accountName");
         String availableFunds = request.getParameter("availableFunds");
 
-        Account account;
-        ArrayList<Account> accounts;
+        Account account = null;
+        ArrayList<Account> accounts = null;
         AdminDAO adminDAO = new AdminDAO();
 
-        if (action.equals("Submit")) {
+        if (action.equals("submit")) {
             try {
-                if (!accountName.isEmpty() && !availableFunds.isEmpty()) {
+                account = adminDAO.getAccount(accountNumber);
+                if (Double.parseDouble(availableFunds) <= account.getAccountCurrentFunds()) {
                     adminDAO.updateAccount(accountNumber, accountName, Double.parseDouble(availableFunds));
-
-                } else if (accountName.isEmpty() && !availableFunds.isEmpty()) {
-                    accountName = adminDAO.getAccount(accountNumber).getAccountName();
-                    adminDAO.updateAccount(accountNumber, accountName, Double.parseDouble(availableFunds));
-
-                } else if (!accountName.isEmpty()){
-                    double availableFunds1 = adminDAO.getAccount(accountNumber).getAccountAvailableFunds();
-                    adminDAO.updateAccount(accountNumber, accountName, availableFunds1);
                 } else {
-                    accountName = adminDAO.getAccount(accountNumber).getAccountName();
-                    double availableFunds1 = adminDAO.getAccount(accountNumber).getAccountAvailableFunds();
-                    adminDAO.updateAccount(accountNumber, accountName, availableFunds1);
-
+                    request.setAttribute("errorMessage", "Not Enough Funds");
+                    RequestDispatcher rd = request.getRequestDispatcher("/admin-EditAccount.jsp");
+                    rd.forward(request, response);
+                    return;
 
                 }
 
-                account = adminDAO.getAccount(accountNumber);
-                request.setAttribute("account", account);
                 accounts = adminDAO.findAccounts(adminDAO.getEmailbyAccount(accountNumber));
-                request.setAttribute("accounts", accounts);
-                request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
 
             } catch (SQLException e) {
-
+                System.out.println("One or more elements could not be updated");
             }
         }
+
+        if (account != null) {
+            account.setAccountName(accountName);
+            account.setAccountAvailableFunds(Double.parseDouble(availableFunds));
+        }
+
+        request.getSession().setAttribute("accounts", accounts);
+        request.getRequestDispatcher("/admin-ViewAccount.jsp").forward(request, response);
     }
 }

@@ -265,6 +265,8 @@
         #submit {
             width: auto;
         }
+
+
     </style>
 </head>
 <body>
@@ -275,20 +277,14 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
-            <li><a href="#">Create Account</a></li>
+            <li><a href="Register.jsp">Create Account</a></li>
             <li><a href="admin-ViewAccount.jsp">Back</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
             <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
-<%--<div class="Header">
-        <button onclick="window.location.href='admin.jsp'" id="back_btn">Back</button>
-        <input type="text" id="search_tf" placeholder="Search" />
-        <button onclick="window.location.href='login.jsp'" id="logout_btn">Logout</button>
-</div>--%>
 <div class="body">
     <div class="account_info">
         <%--        <form>--%>
@@ -332,7 +328,7 @@
                 <div class="account_box">
                     <form class="account_wrapper" action="AdminAccountEditServlet" method="get">
                         <div class="accountName_wrapper">
-                            <input class="account_name" name="accountName" type="text" value="${account.accountName}" placeholder="${account.accountName}">
+                            <input class="account_name" name="accountName" type="text" value="${account.accountName}">
                             <div class="accountNum_wrapper">
                                 <label class="account_number">${account.accountNumber}</label>
                                 <input type="hidden" name="accountNumber" value="${account.accountNumber}">
@@ -341,25 +337,24 @@
                         </div>
                         <div class="balance_wrapper">
                             <label class="available_title">Available</label>
-                            <input class="balance" name="availableFunds" type="text" placeholder="${account.accountAvailableFunds}">
+                            <input class="balance" name="availableFunds" type="text" value="${account.accountAvailableFunds}">
                         </div>
                         <div class="curbalance_wrapper">
                             <label class="available_title">Current</label>
                             <label class="balance">$${account.accountCurrentFunds}</label>
                         </div>
                         <div class="account_menu">
-                            <input id="submit" type="submit" name="action" placeholder="Update">
-                            <%--<img src="Images\options.png" />
-                            <div class="dropdown-content">
-                                <form action="AdminAccountEditServlet" method="get">
-                                    <input type="hidden" name="accountNumber" value="${account.accountNumber}">
-                                    <button type="submit" name="action" value="edit">Edit</button>
-                                </form>
-                            </div>--%>
+                            <button class="btn btn-info" id="submit" type="submit" name="action" value="submit">Update</button>
                         </div>
                     </form>
                 </div>
         </div>
+        <c:if test="${not empty errorMessage}">
+            <p style="text-align: center;
+            color: red;
+            padding: 10px;
+            font-size: 14px;">${errorMessage}</p>
+        </c:if>
     </div>
 </div>
 </body>

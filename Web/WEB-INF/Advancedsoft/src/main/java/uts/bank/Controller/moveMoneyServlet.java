@@ -53,7 +53,7 @@ public class moveMoneyServlet extends HttpServlet {
             Contact contact = contactDAO.findOneContact(contactId);
             Account account = accountDAO.findOneAccount(accountId);
             try {
-                transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), contact.getContactEmail(), account.getAccountNumber());
+                transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), contact.getContactEmail(), account.getAccountNumber(), contact.getAccountNumber());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.bank.model.Account;
 import uts.bank.model.DAO.AdminDAO;
+import uts.bank.model.DAO.TransactionDAO;
+import uts.bank.model.Transaction;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,11 +28,16 @@ public class WithdrawServlet extends HttpServlet {
         double updatedFunds;
         ArrayList<Account> accounts;
         AdminDAO adminDAO = new AdminDAO();
+        TransactionDAO transactionDAO = new TransactionDAO();
+        Transaction transaction = null;
         try {
             account = adminDAO.getAccount(accountNumber);
             if (amount <= account.getAccountCurrentFunds()) {
                 updatedFunds = account.getAccountCurrentFunds() - amount;
-                adminDAO.deposit(accountNumber, updatedFunds);
+                adminDAO.withdraw(accountNumber, updatedFunds);
+
+                transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), account.getAccountEmail(), accountNumber, accountNumber);
+                adminDAO.newTransaction(transaction);
 
                 accounts = adminDAO.findAccounts(account.getAccountEmail());
                 session.setAttribute("accounts", accounts);

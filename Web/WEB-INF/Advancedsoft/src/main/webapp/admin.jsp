@@ -21,6 +21,11 @@
             "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
 
+        .main {
+            margin: auto;
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -31,7 +36,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
-            <li><a href="#">Create Account</a></li>
+            <li><a href="Register.jsp">Create Account</a></li>
             <li>
                 <form method="get" action="${pageContext.request.contextPath}/AdminServlet">
                     <input type="text" name="search" id="search_tf" placeholder="Search"/>
@@ -39,11 +44,17 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
             <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
-
+<div class="main">
+    <c:if test="${not empty errorMessage}">
+    <p style="text-align: center;
+            color: red;
+            padding: 10px;
+            font-size: 14px;">${errorMessage}</p>
+    </c:if>
+</div>
 </body>
 </html>

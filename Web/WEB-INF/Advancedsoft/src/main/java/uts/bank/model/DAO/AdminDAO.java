@@ -1,6 +1,7 @@
 package uts.bank.model.DAO;
 
 import uts.bank.model.Account;
+import uts.bank.model.Transaction;
 import uts.bank.model.User;
 
 import java.sql.*;
@@ -160,5 +161,30 @@ public class AdminDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Transaction> getTransactionsByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM transaction WHERE owner_email = ?";
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int transaction_id = rs.getInt("transaction_id");
+                double amount = rs.getDouble("amount");
+                String owner_email = rs.getString("owner_email");
+                String payee_email = rs.getString("payee_email");
+                int accountId = rs.getInt("account_id");
+                int payee_accountId = rs.getInt("payee_accountid");
+                transactions.add(new Transaction(transaction_id, amount, owner_email, payee_email, accountId, payee_accountId));
+            }
+        }
+        return transactions;
+    }
+
+    public void newTransaction(Transaction transaction) {
+        String sql = "INSERT INTO transaction VALUES (?, ?, ?, ?, ?, ?)";
+
     }
 }

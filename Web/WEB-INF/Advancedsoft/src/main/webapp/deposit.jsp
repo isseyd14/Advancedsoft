@@ -44,10 +44,13 @@
             margin-bottom: 2%;
         }
 
-        #submit {
+        .submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 5%;
-            height: 20%;
-            width: 20%;
+            width: 50%;
+            height: 10%;
         }
 
         #Accounts {
@@ -83,15 +86,9 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="admin.jsp">Home</a></li>
-            <li><a href="#">Create Account</a></li>
-<%--            <li>--%>
-<%--                <form method="get" action="${pageContext.request.contextPath}/AdminServlet">--%>
-<%--                    <input type="text" name="search" id="search_tf" placeholder="Search"/>--%>
-<%--                </form>--%>
-<%--            </li>--%>
+            <li><a href="admin-ViewAccount.jsp">Back</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
             <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
@@ -110,7 +107,9 @@
                     </c:forEach>
                 </select>
         </div>
-            <input id="submit" type="submit" name="action" value="submit">
+            <div class="submit">
+            <button class="btn btn-info" type="submit" name="action" value="submit">Deposit</button>
+            </div>
         </form>
     </div>
 </div>
