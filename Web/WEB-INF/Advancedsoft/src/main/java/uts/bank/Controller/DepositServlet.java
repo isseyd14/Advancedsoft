@@ -36,7 +36,7 @@ public class DepositServlet extends HttpServlet {
             updatedFunds = account.getAccountCurrentFunds() + amount;
             adminDAO.deposit(accountNumber, updatedFunds);
 
-            transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), account.getAccountEmail(), accountNumber, accountNumber);
+            transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, "staff@gmail.com", account.getAccountEmail(), 0, accountNumber);
             adminDAO.newTransaction(transaction);
 
             accounts = adminDAO.findAccounts(account.getAccountEmail());

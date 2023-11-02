@@ -36,7 +36,7 @@ public class WithdrawServlet extends HttpServlet {
                 updatedFunds = account.getAccountCurrentFunds() - amount;
                 adminDAO.withdraw(accountNumber, updatedFunds);
 
-                transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), account.getAccountEmail(), accountNumber, accountNumber);
+                transaction = new Transaction(transactionDAO.getNexttransactionId(), amount, account.getAccountEmail(), "staff@gmail.com", accountNumber, 0);
                 adminDAO.newTransaction(transaction);
 
                 accounts = adminDAO.findAccounts(account.getAccountEmail());

@@ -164,10 +164,11 @@ public class AdminDAO {
     }
 
     public ArrayList<Transaction> getTransactionsByEmail(String email) throws SQLException {
-        String sql = "SELECT * FROM transaction WHERE owner_email = ?";
+        String sql = "SELECT * FROM transaction WHERE owner_email = ? OR payee_email = ?";
         ArrayList<Transaction> transactions = new ArrayList<>();
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, email);
+            pstmt.setString(2, email);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -183,8 +184,16 @@ public class AdminDAO {
         return transactions;
     }
 
-    public void newTransaction(Transaction transaction) {
+    public void newTransaction(Transaction transaction) throws SQLException {
         String sql = "INSERT INTO transaction VALUES (?, ?, ?, ?, ?, ?)";
-
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, transaction.getTransaction_id());
+            pstmt.setDouble(2, transaction.getAmount());
+            pstmt.setString(3, transaction.getOwner_email());
+            pstmt.setString(4, transaction.getPayee_email());
+            pstmt.setInt(5, transaction.getAccount_id());
+            pstmt.setInt(6, transaction.getPayee_accountid());
+            pstmt.executeUpdate();
+        }
     }
 }

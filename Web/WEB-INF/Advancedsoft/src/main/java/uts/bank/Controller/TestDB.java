@@ -1,6 +1,7 @@
 package uts.bank.Controller;
 import uts.bank.model.DAO.AdminDAO;
 import uts.bank.model.Account;
+import uts.bank.model.DAO.TransactionDAO;
 import uts.bank.model.Transaction;
 
 import java.sql.SQLException;
@@ -11,10 +12,11 @@ import java.sql.*;
 public class TestDB {
 
     private AdminDAO adminDAO;
+    private TransactionDAO transactionDAO;
     private Connection conn;
     public TestDB() {
         this.adminDAO = new AdminDAO();
-
+        this.transactionDAO = new TransactionDAO();
     }
 
     public void testCases() throws SQLException {
@@ -23,6 +25,7 @@ public class TestDB {
         testFindAccounts();
         testUpdateAccount();
         testGetTransactionsByEmail();
+        testNewTransaction();
     }
 
     public void testFindUser() {
@@ -98,6 +101,13 @@ public class TestDB {
         }
 
 
+    }
+
+    public void testNewTransaction() throws SQLException {
+        Transaction transaction = new Transaction(transactionDAO.getNexttransactionId(), 20, "test", "test", 0, 11110283);
+        adminDAO.newTransaction(transaction);
+
+        System.out.println("Transaction Added");
     }
 
 
