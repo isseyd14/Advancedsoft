@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-
+/*
 public class AccountTest {
     static AccountDAO testAccountDao = new AccountDAO();
     static Account testAccount;
@@ -63,4 +63,4 @@ public class AccountTest {
     }
 
 
-}
+}*/

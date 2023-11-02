@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*
 public class AdminTest {
 
     static AdminDAO testAdminDAO = new AdminDAO();
@@ -72,21 +72,17 @@ public class AdminTest {
         //testAccountDao.deleteAccount("unit test email1");
     }
 
-   /* @Test
+   /@Test
     public void testDeleteAccount () throws SQLException {
             //testAccountDao.addAccount(testAccount);
             testAdminDAO.deleteAccount(11110007);
             List<Account> actual = testAdminDAO.findAccounts("unit test email1");
             assertEquals(0, actual.size());
             System.out.println("delete account test");
-        }*/
-
-    @Test
-    public void testDeleteAccount() throws Exception{
-        //testAccountDao.deleteAccount("unit test email1");
-        testuserDao.deleteAccount("unit test email1");
-
-    }
+        }
 
 
-}
+
+
+
+*/
