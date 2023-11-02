@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/test/java/UserUpdTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,7 +226,7 @@
       <workItem from="1697948970900" duration="769000" />
       <workItem from="1697972087843" duration="4933000" />
       <workItem from="1698366718314" duration="3008000" />
-      <workItem from="1698891404933" duration="551000" />
+      <workItem from="1698891404933" duration="862000" />
     </task>
     <servers />
   </component>
