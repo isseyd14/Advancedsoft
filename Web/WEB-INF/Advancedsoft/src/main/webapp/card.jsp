@@ -17,8 +17,11 @@
             <a class="navbar-brand" href="#">Frontline Bank</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.jsp">Home</a></li>
-            <li><a href="Pay-Transfer.jsp">Pay and Transfer</a></li>
+            <li class="active">
+                <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+            </li>
+            <li><a href="viewbalanceservlet">View Accounts</a></li>
+            <li><a href="paytransferservlet">Pay and Transfer</a></li>
             <li><a href="account.jsp">Account</a></li>
             <li><a href="savecontactservlet">Contacts Management</a></li>
             <li><a href="card/selectByCustomerId">Card</a></li>
@@ -62,9 +65,9 @@
       
     <div>
     <a href="addCard.jsp" class="btn btn-info" role="button">Add New Card</a>
-   
-    
 
+
+    
     </div>
     </div> 
 </body>

@@ -36,9 +36,12 @@ public class TransServlet extends BaseServlet{
     public void selectByAccountId(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            Validator validator = new Validator();
-            validator.clear(session);
-            String accountId = (String)session.getAttribute("accound");
+            String accountId = request.getParameter("accountNumber");
+            System.out.println(accountId);
+            session.setAttribute("accountId", accountId);
+          
+            
+            
             List<Transaction> listTrans = transDAO.findTransByAccountId(accountId);
             session.setAttribute("listTrans", listTrans);
             
