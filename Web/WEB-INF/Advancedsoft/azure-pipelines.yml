@@ -32,10 +32,3 @@ steps:
     publishLocation: 'Container'
 
 
-- task: IISWebAppDeploymentOnMachineGroup@0
-  displayName: 'IIS Web App Deploy'
-  inputs:
-    WebSiteName: '$(Parameters.WebsiteName)'
-    VirtualApplication: demo
-    Package: '$(System.DefaultWorkingDirectory)/_isseyd14.Advancedsoft (5)/drop'
-    XmlVariableSubstitution: True
