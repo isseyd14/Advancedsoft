@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- security logic to check if there is a user logged in if not it sends back to index -->
-    <%
+    <!-- security logic to check if there is a user logged in if not it sends back to index -->
+    <% 
         boolean isLoggedIn = (session.getAttribute("email") != null);
-        if(!isLoggedIn){
-            response.sendRedirect("index.jsp");
+        if (!isLoggedIn) {
+            response.sendRedirect("index.jsp"); // Redirect to the index page if not logged in
             return;
         }
     %>
@@ -30,7 +30,6 @@
         <div class="navbar-header">
             <img src="logo.png" alt="Logo" class="logo">
             <a class="navbar-brand" href="#">Frontline Bank</a>
-
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="View-Balance.jsp">Home</a></li>
@@ -44,7 +43,7 @@
         </ul>
     </div>
 </nav>
-<%        User iop = (User) session.getAttribute("User");%>
+<% User user = (User) session.getAttribute("User"); %>
 
 <div class="container" style="margin-top: 50px;">
     <div class="panel-body">
@@ -52,7 +51,7 @@
         <br>
         <form action="ChangePassword" method="post">
             <div class="form-group">
-                <label for="Chnpass"> Current Password:</label>
+                <label for="Chnpass">Current Password:</label>
                 <input type="text" id="Chnpass" name="Chnpass" class="form-control" required>
             </div>
             <div class="form-group">
@@ -76,6 +75,7 @@
         </c:if>
     </div>
 </div>
+
 <script>
     var password = document.getElementById("pass");
     var confirmPassword = document.getElementById("pass1");
@@ -102,6 +102,7 @@
 </script>
 
 <script>
+    // Validate password match
     var password = document.getElementById("pass");
     var confirmPassword = document.getElementById("pass1");
     var message = document.getElementById("password-match-message");
