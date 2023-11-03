@@ -8,36 +8,39 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.bank.model.*;
-
-
 import java.io.IOException;
 import java.sql.*;
 
-
 @WebServlet("/LoginServlet")
 public class Loginservlet extends HttpServlet {
+    // Method to set session attributes
     private void setSessionAttrs(HttpSession session,  User acc ) {
         session.setAttribute("email", acc.getEmail());
         session.setAttribute("User", acc);
-        //session.setAttribute("name", nameDB);
     }
 
    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Get user input from the login form
         String email = request.getParameter("email");
         String password = request.getParameter("Password");
+
+        // Check if email and password are provided
         if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            // If not, set an error message and forward the request back to the login page
             request.setAttribute("errorMessage", "Please enter a valid email or password.");
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request, response);
             return;
         }
+
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
+            // Establish a database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://advancedsoftwareserver.mysql.database.azure.com:3306/bank?useSSL=false",
                     "advancedsoftware", "Welcome1!");
@@ -57,14 +60,12 @@ public class Loginservlet extends HttpServlet {
             String LnameDB = "";
             String Address = "";
             String Phone = "";
-            //double bal = 0;
             String dob = "";
-            //int userIdDB = 0;
 
             rs = ps.executeQuery();
 
-
             while(rs.next()) {
+                // Retrieve user information from the database
                 emailDB = rs.getString("email");
                 passwordDB = rs.getString("Pass");
                 typeDB = rs.getString("Type");
@@ -76,9 +77,8 @@ public class Loginservlet extends HttpServlet {
 
                 System.out.println("emailDB: " + emailDB);
                 System.out.println("passwordDB: " + passwordDB);
-                //System.out.println("nameDB: " + nameDB);
-                //System.out.println("userID: " + userIdDB);
             }
+
             String sql1 = "select * from bank.user where Email=?";
             ps = con.prepareStatement(sql1);
             ps.setString(1, email);
@@ -86,27 +86,22 @@ public class Loginservlet extends HttpServlet {
             while(rs.next()) {
                 nameDB = rs.getString(("Fname"));
             }
-            //request.setAttribute("Fname", nameDB);
 
             if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("customer")){
-                System.out.println("in If");
-                //    public User(String email, String password, String type, String fname, String lname, String dob, String phone, String address) {
+                // If user is a customer, create a User object and set it in the session
                 User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);
                 session.setAttribute("email", acco.getEmail());
-                //createUserLog(session, con, email);
                 response.sendRedirect("viewbalanceservlet");
             } else if(email.equals(emailDB) && password.equals(passwordDB) && typeDB.equals("staff")) {
+                // If user is a staff member, create a User object and set it in the session
                 User acco = new User(emailDB,passwordDB,typeDB,nameDB,LnameDB,dob,Phone,Address);
-
                 HttpSession session = request.getSession();
                 setSessionAttrs(session, acco);
-                //createUserLog(session, con, email);
-
                 response.sendRedirect("admin.jsp");
-            } else{
-                System.out.println("in else");
+            } else {
+                // If email and password do not match any user, set an error message
                 request.setAttribute("errorMessage", "Username or password incorrect. Try again.");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 rd.forward(request, response);
