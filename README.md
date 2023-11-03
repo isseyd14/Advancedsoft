@@ -48,3 +48,18 @@ Joshua Burke
 Issey Dowling  
 Thomas McMahon  
 Xiaobing Zhu 
+- Controller
+    - BaseServlet
+    - CardServlet
+    - TransServlet
+- DAO
+    - CardDAO
+    - TransDAO
+- Model
+    - Card
+- JSP Files
+    - addCard.jsp
+    - changepin.jsp
+    - transaction.jsp
+    - card.jsp
+    - View-balance.jsp
