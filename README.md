@@ -45,7 +45,33 @@ Joshua Burke
     - AccountTest
     - ContactTest 
 
-Issey Dowling  
+Issey Dowling 
+- Controller
+  - ChangePasswordservlet
+  - deleteaccservlet
+  - forgotpassword
+  - loginservlet
+  - registerservlet
+  - sendemailservlet
+  - updateuserservlet
+  - validator
+- DAO
+  - User
+- Model
+  - User
+- JSP Files
+  - index
+  - account
+  - changepass2
+  - changepassword
+  - editacc
+  - forgotpass
+  - register
+  - login
+- Test Files
+  - UserTest
+  - userUpdTest
+
 Thomas McMahon  
 Xiaobing Zhu 
 - Controller
