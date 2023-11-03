@@ -10,10 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="468dd99b-c94c-4e0f-9a53-941483652664" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/moveMoneyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/moveMoneyServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/ContactDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/model/DAO/ContactDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/SendEmailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/SendEmailServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/forgotpassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/WEB-INF/Advancedsoft/src/main/java/uts/bank/Controller/forgotpassword.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,6 +248,7 @@
       <workItem from="1698468222678" duration="4195000" />
       <workItem from="1698541632352" duration="4286000" />
       <workItem from="1698892123975" duration="1646000" />
+      <workItem from="1698969809150" duration="2081000" />
     </task>
     <task id="LOCAL-00001" summary="fixed up unit tests again">
       <option name="closed" value="true" />

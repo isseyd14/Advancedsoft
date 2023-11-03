@@ -16,24 +16,28 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Random;
 
-
 @WebServlet("/sendEmailServlet")
 public class SendEmailServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDAO testuserDao = new UserDAO();
+        // Initialize a UserDAO for database operations
+        UserDAO userDAO = new UserDAO();
 
+        // Get the recipient email address from the request
         String to = request.getParameter("email");
-        request.setAttribute ("email","email");
-        String subject = "Change password";
+
+        // Generate a 4-digit random code for password reset
         Random random = new Random();
         int randomNumber = 1000 + random.nextInt(9000);
         String randomNumberString = Integer.toString(randomNumber);
 
-        String messageText = "Hi there, This is the 4 digit code required to reset your password, it will only be valid for 30minutes" + randomNumberString;
+        // Compose the email subject and message
+        String subject = "Change password";
+        String messageText = "Hi there, This is the 4-digit code required to reset your password. " +
+                "It will only be valid for 30 minutes: " + randomNumberString;
 
-
+        // Configure email properties for sending
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
@@ -41,7 +45,7 @@ public class SendEmailServlet extends HttpServlet {
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.ssl.trust", "smtp.gmail.com"); // Trust Gmail's SSL certificate
 
-
+        // Create a session for sending the email
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -50,21 +54,31 @@ public class SendEmailServlet extends HttpServlet {
         });
 
         try {
+            // Create and send the email message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("s33434856@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
             message.setText(messageText);
             Transport.send(message);
-            request.getSession().setAttribute("emailReset",to);
+
+            // Set the recipient's email for password reset in the session
+            request.getSession().setAttribute("emailReset", to);
+
+            // Forward the request to the changepass2.jsp page
             RequestDispatcher rd = request.getRequestDispatcher("changepass2.jsp");
             rd.forward(request, response);
-            testuserDao.passcode(to,randomNumberString);
 
+            // Store the random code in the database
+            userDAO.passcode(to, randomNumberString);
+
+            // Respond to the client indicating a successful email send
             response.getWriter().println("Email sent successfully!");
         } catch (MessagingException e) {
+            // Handle email sending exceptions
             throw new ServletException(e);
         } catch (SQLException e) {
+            // Handle database-related exceptions
             throw new RuntimeException(e);
         }
     }
