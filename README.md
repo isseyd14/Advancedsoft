@@ -72,7 +72,31 @@ Issey Dowling
   - UserTest
   - userUpdTest
 
-Thomas McMahon  
+Thomas McMahon
+- Controller
+    - AdminServlet
+    - AdminAccountDeleteServlet
+    - AdminAccountEditServlet
+    - AdminUpdateUserServlet
+    - AdminUserTransactionServlet
+    - DepositServlet
+    - WithdrawServlet
+- DAO
+    - AdminDAO
+- Model
+    - Transaction
+- JSP Files
+    - admin.jsp
+    - admin-EditAccount.jsp
+    - admin-UserTransactions.jsp
+    - admin-ViewAccount.jsp
+    - UserDetails.jsp
+    - Withdraw.jsp
+    - Deposit.jsp
+- Test Files
+  - AdminTest
+  - TestDB
+  
 Xiaobing Zhu 
 - Controller
     - BaseServlet
